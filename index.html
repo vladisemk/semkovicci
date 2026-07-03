@@ -22,7 +22,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 
     <style>
-        /* === RESET & BASE === */
         * {
             margin: 0;
             padding: 0;
@@ -74,9 +73,7 @@
             display: none !important;
         }
 
-        /* ================================================================ */
-        /* TIMELINE NAVIGATION */
-        /* ================================================================ */
+        /* === TIMELINE NAVIGATION === */
         .timeline-nav {
             position: fixed;
             right: 28px;
@@ -141,9 +138,7 @@
             opacity: 1;
         }
 
-        /* ================================================================ */
-        /* HERO */
-        /* ================================================================ */
+        /* === HERO === */
         .hero-section {
             position: relative;
             width: 100%;
@@ -203,9 +198,7 @@
             50% { opacity: 1; }
         }
 
-        /* ================================================================ */
-        /* STORY BLOCK */
-        /* ================================================================ */
+        /* === STORY BLOCK === */
         .story-block {
             position: relative;
             height: 200vh;
@@ -283,12 +276,9 @@
             font-style: normal;
         }
 
-        /* ================================================================ */
-        /* BOTTLE BLOCK — АНИМАЦИЯ ЭТИКЕТКИ */
-        /* ================================================================ */
+        /* === BOTTLE BLOCK — АНИМАЦИЯ ЭТИКЕТКИ === */
         .bottle-slide {
             text-align: center;
-            overflow: hidden;
         }
 
         .label-animation {
@@ -299,7 +289,6 @@
             margin-top: 10px;
         }
 
-        /* Каждый элемент стартует скрытым */
         .label-line {
             opacity: 0;
             transform: scaleX(0);
@@ -332,28 +321,26 @@
             line-height: 1;
         }
 
-        /* Когда класс label-visible добавлен — этикетка "наклеивается" */
-        .bottle-slide.label-visible .label-wine-name {
+        /* Класс, запускающий анимацию */
+        .label-visible .label-wine-name {
             opacity: 1;
             transform: scaleX(1);
             transition-delay: 0.2s;
         }
 
-        .bottle-slide.label-visible .label-rule {
+        .label-visible .label-rule {
             opacity: 1;
             transform: scaleX(1);
             transition-delay: 0.5s;
         }
 
-        .bottle-slide.label-visible .label-vintage {
+        .label-visible .label-vintage {
             opacity: 1;
             transform: scaleX(1);
             transition-delay: 0.8s;
         }
 
-        /* ================================================================ */
-        /* WINE DATA CARD */
-        /* ================================================================ */
+        /* === WINE DATA CARD === */
         .wine-data-card {
             margin-top: 30px;
             padding-top: 24px;
@@ -387,9 +374,7 @@
             margin-bottom: 4px;
         }
 
-        /* ================================================================ */
-        /* CTA + FOOTER */
-        /* ================================================================ */
+        /* === CTA + FOOTER === */
         .cta-section {
             position: relative;
             width: 100%;
@@ -480,7 +465,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0;
             flex-wrap: wrap;
         }
 
@@ -503,8 +487,7 @@
             width: 50px;
             height: 1px;
             background: rgba(196, 155, 76, 0.4);
-            margin: 0 8px;
-            margin-bottom: 18px;
+            margin: 0 8px 18px;
         }
 
         .footer-bottom {
@@ -517,65 +500,51 @@
             letter-spacing: 3px;
         }
 
-        /* ================================================================ */
-        /* RESPONSIVE */
-        /* ================================================================ */
+        /* === RESPONSIVE === */
         @media (max-width: 768px) {
             .hero-content h1 {
                 font-size: 2.4rem;
                 letter-spacing: 2px;
             }
-
             .text-slide {
                 width: 90%;
                 padding: 24px 20px;
             }
-
             .text-slide h2 {
                 font-size: 1.4rem;
             }
-
             .text-slide p {
                 font-size: 0.95rem;
             }
-
             .label-vintage {
                 font-size: 2.5rem;
             }
-
             .timeline-nav {
                 right: 8px;
                 gap: 14px;
             }
-
             .timeline-dot {
                 width: 8px;
                 height: 8px;
             }
-
             .timeline-dot.active {
                 width: 10px;
                 height: 10px;
             }
-
             .timeline-label {
                 display: none;
             }
-
             .wine-data-card {
                 grid-template-columns: 1fr;
                 gap: 8px;
             }
-
             .cta-form {
                 flex-direction: column;
             }
-
             .lang-switcher {
                 top: 12px;
                 right: 12px;
             }
-
             .journey-dash {
                 width: 30px;
             }
@@ -604,7 +573,7 @@
     <!-- ================================================================ -->
     <!-- HERO -->
     <!-- ================================================================ -->
-    <div class="hero-section" id="hero">
+    <section class="hero-section" id="hero">
         <div class="hero-content">
             <div class="lang-en">
                 <h1>Semko Vicci</h1>
@@ -617,12 +586,12 @@
                 <p class="scroll-hint">▼  Скрольте вниз, чтобы узнать историю  ▼</p>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- ================================================================ -->
-    <!-- БЛОК 1: ТАРАС ПОКИДАЕТ УКРАИНУ -->
+    <!-- БЛОК 1 -->
     <!-- ================================================================ -->
-    <div class="story-block" id="block1">
+    <section class="story-block" id="block1">
         <div class="story-bg" style="background-image: url('images/taras-leaving-1939.jpeg');"></div>
         <div class="text-track">
             <div class="text-slide">
@@ -630,24 +599,24 @@
                     <span class="year-badge">1939 · Western Ukraine</span>
                     <h2>The land he had to leave behind</h2>
                     <p>
-                        Taras Semko knew his land the way a man knows his mother's face. Every furrow on his small farm near Ternopil had been shaped by his hands. But history doesn't knock before it enters. After Western Ukraine was annexed by the Soviet Union, Taras was branded a <em>kulak</em> — his hard work suddenly a mark against him. With no future in the collective farms and the threat of arrest looming, he made the hardest decision of his life: to walk away. Not from the soil — soil stays in a man's blood — but from a place where that soil was no longer his. Through Kraków, through strange cities, through the chaos of war, he drifted south. Somewhere warm, he'd heard. Somewhere a man could start again.
+                        Taras Semko knew his land the way a man knows his mother's face. Every furrow on his small farm near Ternopil had been shaped by his hands. But history doesn't knock before it enters. After Western Ukraine was annexed by the Soviet Union, Taras was branded a <em>kulak</em> — his hard work suddenly a mark against him. With no future in the collective farms and the threat of arrest looming, he made the hardest decision of his life: to walk away. Not from the soil — soil stays in a man's blood — but from a place where that soil was no longer his. Through Kraków, through strange cities, through the chaos of war, he drifted south.
                     </p>
                 </div>
                 <div class="lang-ru lang-hidden">
                     <span class="year-badge">1939 · Западная Украина</span>
                     <h2>Земля, которую пришлось оставить</h2>
                     <p>
-                        Тарас Семко знал свою землю, как знают лицо матери. Каждая борозда на его хуторе под Тернополем была пройдена его руками. Но большая политика ворвалась в эту тихую жизнь без стука. После присоединения Западной Украины к СССР его объявили «кулаком» — тем, чьё трудолюбие стало клеймом. Не видя будущего в колхозе и опасаясь ареста, он принял решение, которое далось ему тяжелее всего: уйти. Не от земли — земля всегда с ним. Уйти оттуда, где эта земля перестала быть своей. Через Краков, через чужие города, через войну — он двинулся на юг, туда, где, как говорили, ещё можно начать всё заново.
+                        Тарас Семко знал свою землю, как знают лицо матери. Каждая борозда на его хуторе под Тернополем была пройдена его руками. Но большая политика ворвалась без стука. После присоединения Западной Украины к СССР его объявили «кулаком». Не видя будущего в колхозе и опасаясь ареста, он принял решение уйти. Не от земли — земля всегда с ним. Уйти оттуда, где эта земля перестала быть своей. Через Краков, чужие города, войну — он двинулся на юг.
                     </p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- ================================================================ -->
-    <!-- БЛОК 2: ЭНЦО ТЕРЯЕТ ВСЁ -->
+    <!-- БЛОК 2 -->
     <!-- ================================================================ -->
-    <div class="story-block" id="block2">
+    <section class="story-block" id="block2">
         <div class="story-bg" style="background-image: url('images/enzo-tuscany-1943.jpeg');"></div>
         <div class="text-track">
             <div class="text-slide">
@@ -655,24 +624,24 @@
                     <span class="year-badge">1943 · Tuscany, Italy</span>
                     <h2>Ashes of the family vine</h2>
                     <p>
-                        Enzo Vicci was born with the smell of fermenting must in his cradle. His family had made wine in the Chianti hills for six generations — long enough that the vines practically knew their names. But war doesn't spare the vine. His father and elder brother were killed. The century-old vineyards were trampled, the family home requisitioned. Enzo was left with nothing except the memory in his hands and one treasure: a handful of Sangiovese cuttings, wrapped in damp cloth, pressed against his chest. He told himself: <em>the Vicci name doesn't end here.</em> At the port of Genoa he wasn't just looking for a ship. He was looking for a new Tuscany, somewhere across the ocean. Word had reached him about the fertile valleys of Australia. It sounded like a promise.
+                        Enzo Vicci was born with the smell of fermenting must in his cradle. His family had made wine in the Chianti hills for six generations. But war doesn't spare the vine. His father and elder brother were killed. The century-old vineyards were trampled. Enzo was left with nothing except the memory in his hands and one treasure: a handful of Sangiovese cuttings, wrapped in damp cloth. He told himself: <em>the Vicci name doesn't end here.</em> At the port of Genoa he was looking for a new Tuscany, somewhere across the ocean.
                     </p>
                 </div>
                 <div class="lang-ru lang-hidden">
                     <span class="year-badge">1943 · Тоскана, Италия</span>
                     <h2>Пепел фамильных лоз</h2>
                     <p>
-                        Энцо Виччи родился с запахом виноградного сусла в колыбели. Их семья делала вино в Кьянти на протяжении шести поколений. Но война не щадит даже лозу. Отец и старший брат погибли. Вековые виноградники вытоптаны, дом реквизирован. У Энцо не осталось ничего, кроме памяти рук и одного сокровища: горсти черенков фамильного Санджовезе, бережно завёрнутых во влажную холстину. Он сказал себе: «Виччи не заканчиваются здесь». В порту Генуи он искал не просто корабль — он искал новую Тоскану за океаном. Слухи о плодородных долинах Австралии звучали как обещание.
+                        Энцо Виччи родился с запахом виноградного сусла в колыбели. Их семья делала вино в Кьянти шесть поколений. Но война не щадит лозу. Отец и брат погибли. Вековые виноградники вытоптаны. У Энцо осталась лишь память рук и сокровище: горсть черенков Санджовезе в холстине. «Виччи не заканчиваются здесь». В порту Генуи он искал новую Тоскану за океаном.
                     </p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- ================================================================ -->
-    <!-- БЛОК 3: ВСТРЕЧА В ПОРТУ НЕАПОЛЯ -->
+    <!-- БЛОК 3 -->
     <!-- ================================================================ -->
-    <div class="story-block" id="block3">
+    <section class="story-block" id="block3">
         <div class="story-bg" style="background-image: url('images/naples-port-1946.jpeg');"></div>
         <div class="text-track">
             <div class="text-slide">
@@ -680,24 +649,24 @@
                     <span class="year-badge">1946 · Port of Naples</span>
                     <h2>A handshake that changed everything</h2>
                     <p>
-                        Post-war Naples was a madhouse. Taras, stranded in Italy by the conflict, was working the docks, still dreaming of a patch of land to call his own. Enzo was pushing towards the gangway of a ship bound for Sydney when a thief lunged for his suitcase — the one carrying the precious cuttings. Taras didn't think. He just moved. A shoulder to the ribs, a brief scuffle, and the suitcase was back in its owner's hands. Enzo, breathing hard, looked at this broad-shouldered stranger and said in broken English: <em>"You saved my future. Come with me. I need hands like yours."</em> And just like that, a Ukrainian who spoke no Italian and an Italian who spoke not a word of Ukrainian boarded the ship together. Ahead lay Australia.
+                        Post-war Naples was a madhouse. Taras, stranded in Italy, was working the docks. Enzo was pushing towards the gangway of a ship bound for Sydney when a thief lunged for his suitcase. Taras didn't think — he moved. A shoulder, a scuffle, and the suitcase was back. Enzo, breathing hard, said in broken English: <em>"You saved my future. Come with me. I need hands like yours."</em> A Ukrainian who spoke no Italian and an Italian who spoke no Ukrainian boarded the ship together. Ahead lay Australia.
                     </p>
                 </div>
                 <div class="lang-ru lang-hidden">
                     <span class="year-badge">1946 · Порт Неаполя</span>
                     <h2>Рукопожатие, изменившее всё</h2>
                     <p>
-                        Послевоенный Неаполь кипел хаосом. Тарас, застрявший в Италии из-за войны, подрабатывал в доках, всё ещё мечтая о клочке земли. Энцо пробивался к трапу корабля, идущего в Сидней, когда какой-то воришка попытался выхватить его чемодан — тот самый, с драгоценными черенками. Тарас, не раздумывая, бросился наперерез. Удар плечом, короткая схватка — и чемодан возвращён хозяину. Энцо, тяжело дыша, посмотрел на этого широкоплечего чужака и сказал на ломаном английском: «Ты спас моё будущее. Поехали со мной — мне нужны такие руки». Так украинец, не знавший итальянского, и итальянец, не знавший ни слова по-украински, поднялись на борт. Впереди была Австралия.
+                        Послевоенный Неаполь кипел. Тарас работал в доках. Энцо пробивался к трапу корабля до Сиднея, когда вор схватил его чемодан с черенками. Тарас бросился наперерез — удар, схватка, чемодан возвращён. «Ты спас моё будущее. Поехали со мной». Украинец без итальянского и итальянец без украинского поднялись на борт. Впереди была Австралия.
                     </p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- ================================================================ -->
-    <!-- БЛОК 4: ДОЛИНА ХАНТЕР -->
+    <!-- БЛОК 4 -->
     <!-- ================================================================ -->
-    <div class="story-block" id="block4">
+    <section class="story-block" id="block4">
         <div class="story-bg" style="background-image: url('images/hunter-valley-1948.jpeg');"></div>
         <div class="text-track">
             <div class="text-slide">
@@ -705,24 +674,24 @@
                     <span class="year-badge">1947–1950 · Hunter Valley, NSW</span>
                     <h2>Two madmen on a bare paddock</h2>
                     <p>
-                        The block Enzo found in the Hunter Valley was modest — five acres of stony, clay-sand soil, a dilapidated shed, and no promises. But Enzo's instinct told him this was the spot. Poor soil stresses the vine, and a stressed vine makes bloody good wine. Taras just rolled up his sleeves. He cleared scrub, hauled rocks, scrubbed barrels until they gleamed, working from sunrise to sunset with the same quiet fury his ancestors had poured into the black earth of Ukraine. The locals called them <em>"the two madmen"</em> — the Italian who talked to his vines and the Ukrainian who worked harder than three men put together. But the madmen just kept going. They believed.
+                        The block Enzo found was modest — five acres of stony soil and a dilapidated shed. But poor soil stresses the vine, and a stressed vine makes bloody good wine. Taras rolled up his sleeves. He cleared scrub, hauled rocks, scrubbed barrels until they gleamed. The locals called them <em>"the two madmen"</em> — the Italian who talked to his vines and the Ukrainian who worked harder than three men. They just kept going. They believed.
                     </p>
                 </div>
                 <div class="lang-ru lang-hidden">
                     <span class="year-badge">1947–1950 · Долина Хантер</span>
                     <h2>Двое безумцев на голой земле</h2>
                     <p>
-                        Участок, который Энцо присмотрел в долине Хантер, был скромным — каменистая почва, старый сарай, пять акров несбывшихся надежд. Но Энцо чутьём винодела понял: именно здесь, на бедных глинисто-песчаных землях, лоза будет страдать — а значит, родит великое вино. Тарас же просто закатал рукава. Он корчевал пни, таскал камни, чистил бочки до хруста, работая от рассвета до заката с той же молчаливой яростью, с какой его предки обрабатывали украинский чернозём. Местные называли их «The Two Madmen» — двое безумцев: итальянец разговаривал с лозой, а украинец вкалывал за троих. А они просто верили.
+                        Участок — пять акров камней и старый сарай. Но бедная почва даст великое вино. Тарас закатал рукава — корчевал, таскал камни, чистил бочки. Местные назвали их «двое безумцев»: итальянец говорит с лозой, украинец пашет за троих. Они просто верили.
                     </p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- ================================================================ -->
-    <!-- БЛОК 5: ПЕРВЫЙ ТОСТ -->
+    <!-- БЛОК 5 -->
     <!-- ================================================================ -->
-    <div class="story-block" id="block5">
+    <section class="story-block" id="block5">
         <div class="story-bg" style="background-image: url('images/first-toast-1954.jpeg');"></div>
         <div class="text-track">
             <div class="text-slide">
@@ -730,33 +699,51 @@
                     <span class="year-badge">1954 · The first vintage</span>
                     <h2>Semko + Vicci = Semko Vicci</h2>
                     <p>
-                        The 1954 harvest was the one. The fruit hit that elusive balance — Sangiovese, grafted onto Australian rootstock, yielded grapes of astonishing depth. Enzo worked his alchemy in the cellar; Taras guarded every barrel like a watchdog. And then, one spring evening after the crush, they cracked open a trial bottle. The wine was bold, powerful, with a Tuscan heart and a Hunter Valley body. It deserved a name. Enzo wanted to call it <em>Vicci</em>. Taras wanted something Slavic. They argued late into the night, until Enzo laughed and said: <em>"We're both nobody here. But together we made this. Let the label carry both names."</em> And so <strong>Semko Vicci</strong> was born — not just a brand, but a pact sealed over a handshake and a glass.
+                        The 1954 harvest was the one. Sangiovese on Australian rootstock yielded grapes of astonishing depth. Enzo worked his alchemy; Taras guarded every barrel. One spring evening they cracked a trial bottle — bold, powerful, a Tuscan heart in a Hunter Valley body. Enzo wanted <em>Vicci</em>. Taras wanted something Slavic. They argued until Enzo laughed: <em>"We're both nobody here. Together we made this. Let the label carry both names."</em> And so <strong>Semko Vicci</strong> was born.
                     </p>
                 </div>
                 <div class="lang-ru lang-hidden">
                     <span class="year-badge">1954 · Первый урожай</span>
                     <h2>Семко + Виччи = Semko Vicci</h2>
                     <p>
-                        Урожай 1954 года стал легендарным. Виноград выдал идеальный баланс — Санджовезе, привитое на австралийский подвой, дало ягоду невиданной глубины. Энцо колдовал в погребе, Тарас стерёг каждую бочку. И вот, одной австралийской весной после сбора, они открыли пробную бутылку. Вино было дерзким, мощным, с сердцем Тосканы и телом Хантер Вэлли. Оно заслуживало имени. Энцо хотел назвать его «Vicci», Тарас — что-то славянское. Они спорили, пока не рассмеялись: «Мы оба здесь никто. Но вместе мы создали это. Пусть на этикетке стоят оба имени». Так родилось «Semko Vicci» — не просто марка, а обещание, скреплённое рукопожатием навсегда.
+                        Урожай 1954 — тот самый. Санджовезе на австралийском подвое. Энцо колдовал, Тарас стерёг бочки. Весной открыли пробную бутылку — мощное, с сердцем Тосканы и телом Хантер. Энцо хотел «Vicci», Тарас — славянское. Спорили, пока Энцо не засмеялся: «Мы здесь никто. Но вместе создали это. Пусть на этикетке будут оба имени». Так родился <strong>Semko Vicci</strong>.
                     </p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- ================================================================ -->
-    <!-- БЛОК 6: БУТЫЛКА 2026 + АНИМАЦИЯ ЭТИКЕТКИ + ДАННЫЕ О ВИНЕ -->
+    <!-- БЛОК 6 — БУТЫЛКА 2026 -->
     <!-- ================================================================ -->
-    <div class="story-block" id="block6">
+    <section class="story-block" id="block6">
         <div class="story-bg" style="background-image: url('images/bottle-2026.jpeg'); background-position: center 30%;"></div>
         <div class="text-track">
             <div class="text-slide bottle-slide" id="bottleSlide">
-                <!-- EN -->
                 <div class="lang-en">
                     <span class="year-badge">Present day</span>
                     <h2>The story lives in every glass</h2>
                     <p>
-                        Seven decades on, two names are still burned into our barrels. The cellar is still spotless — just the way Taras kept it. The vines are still treated with the reverence Enzo taught us. Every bottle of Semko Vicci carries the same truth: great wine happens when two strong cultures, two different fates, and two pairs of working hands come together under the Australian sun.
+                        Seven decades on, two names are still burned into our barrels. Every bottle of Semko Vicci carries the same truth: great wine happens when two strong cultures, two different fates, and two pairs of working hands come together under the Australian sun.
+                    </p>
+                    <div class="label-animation" id="labelAnim">
+                        <div class="label-wine-name label-line">Semko Vicci · Shiraz-Sangiovese</div>
+                        <div class="label-rule label-line"></div>
+                        <div class="label-vintage label-line">2026</div>
+                    </div>
+                    <div class="wine-data-card">
+                        <div><div class="data-label">Blend</div><div class="data-value">60% Shiraz, 40% Sangiovese</div></div>
+                        <div><div class="data-label">Oak</div><div class="data-value">14 months, French oak</div></div>
+                        <div><div class="data-label">Alcohol</div><div class="data-value">14.2% vol</div></div>
+                        <div><div class="data-label">Production</div><div class="data-value">Limited — 600 bottles</div></div>
+                        <div class="wine-notes"><div class="data-label">Tasting notes</div><div class="data-value">Blackberry, tobacco, white pepper, leather, long mineral finish.</div></div>
+                    </div>
+                </div>
+                <div class="lang-ru lang-hidden">
+                    <span class="year-badge">Наши дни</span>
+                    <h2>История в каждом бокале</h2>
+                    <p>
+                        Семь десятилетий спустя два имени всё ещё выжжены на бочках. Каждая бутылка Semko Vicci — напоминание: великое вино рождается, когда встречаются две культуры, две судьбы и две пары рабочих рук под австралийским солнцем.
                     </p>
                     <div class="label-animation">
                         <div class="label-wine-name label-line">Semko Vicci · Shiraz-Sangiovese</div>
@@ -764,28 +751,71 @@
                         <div class="label-vintage label-line">2026</div>
                     </div>
                     <div class="wine-data-card">
-                        <div>
-                            <div class="data-label">Blend</div>
-                            <div class="data-value">60% Shiraz, 40% Sangiovese</div>
-                        </div>
-                        <div>
-                            <div class="data-label">Oak</div>
-                            <div class="data-value">14 months, French oak</div>
-                        </div>
-                        <div>
-                            <div class="data-label">Alcohol</div>
-                            <div class="data-value">14.2% vol</div>
-                        </div>
-                        <div>
-                            <div class="data-label">Production</div>
-                            <div class="data-value">Limited — 600 bottles</div>
-                        </div>
-                        <div class="wine-notes">
-                            <div class="data-label">Tasting notes</div>
-                            <div class="data-value">Blackberry, tobacco, white pepper, leather, with a long mineral finish.</div>
-                        </div>
+                        <div><div class="data-label">Состав</div><div class="data-value">60% Shiraz, 40% Sangiovese</div></div>
+                        <div><div class="data-label">Выдержка</div><div class="data-value">14 мес., франц. дуб</div></div>
+                        <div><div class="data-label">Алкоголь</div><div class="data-value">14.2% об.</div></div>
+                        <div><div class="data-label">Тираж</div><div class="data-value">Лимит — 600 бут.</div></div>
+                        <div class="wine-notes"><div class="data-label">Дегустационные заметки</div><div class="data-value">Ежевика, табак, белый перец, кожа, долгое минеральное послевкусие.</div></div>
                     </div>
                 </div>
-                <!-- RU -->
-                <div class="lang-ru lang-hidden">
-                    <
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- CTA + FOOTER -->
+    <!-- ================================================================ -->
+    <section class="cta-section" id="cta">
+        <div class="cta-container">
+            <div class="lang-en">
+                <h2>Be the first to know</h2>
+                <p class="cta-subtitle">The first vintage is in the making. Sign up and we'll let you know when the bottles are ready.</p>
+            </div>
+            <div class="lang-ru lang-hidden">
+                <h2>Узнайте первыми</h2>
+                <p class="cta-subtitle">Первый винтаж в процессе. Оставьте почту — сообщим, когда бутылки будут готовы.</p>
+            </div>
+            <form class="cta-form" id="ctaForm">
+                <input type="email" id="ctaEmail" placeholder="your@email.com" required>
+                <button type="submit">Subscribe</button>
+            </form>
+            <div class="cta-success" id="ctaSuccess">
+                <span class="lang-en">Thank you. We'll be in touch.</span>
+                <span class="lang-ru lang-hidden">Спасибо. Мы свяжемся с вами.</span>
+            </div>
+            <!-- Карта путешествия -->
+            <div class="journey-map">
+                <div class="journey-point"><div class="dot"></div>Ukraine</div>
+                <div class="journey-dash"></div>
+                <div class="journey-point"><div class="dot"></div>Italy</div>
+                <div class="journey-dash"></div>
+                <div class="journey-point"><div class="dot"></div>Australia</div>
+            </div>
+            <div class="footer-bottom">Semko Vicci</div>
+        </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- SCRIPTS -->
+    <!-- ================================================================ -->
+    <script>
+        // ===== 1. LANGUAGE SWITCHER =====
+        const btnEn = document.getElementById('btnEn');
+        const btnRu = document.getElementById('btnRu');
+        const allEn = document.querySelectorAll('.lang-en');
+        const allRu = document.querySelectorAll('.lang-ru');
+
+        btnEn.addEventListener('click', function() {
+            btnEn.classList.add('active');
+            btnRu.classList.remove('active');
+            allEn.forEach(el => el.classList.remove('lang-hidden'));
+            allRu.forEach(el => el.classList.add('lang-hidden'));
+            document.documentElement.lang = 'en-AU';
+        });
+
+        btnRu.addEventListener('click', function() {
+            btnRu.classList.add('active');
+            btnEn.classList.remove('active');
+            allRu.forEach(el => el.classList.remove('lang-hidden'));
+            allEn.forEach(el => el.classList.add('lang-hidden'));
+           
