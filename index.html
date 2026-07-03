@@ -382,7 +382,6 @@
             text-transform: uppercase;
         }
 
-        /* Задержки появления строк тех-карточки */
         .tech-line-1 { transition-delay: 0.8s; }
         .tech-line-2 { transition-delay: 1.05s; }
         .tech-line-3 { transition-delay: 1.3s; }
@@ -390,7 +389,7 @@
         .tech-line-5 { transition-delay: 1.8s; }
 
         /* ================================================================ */
-        /* JOURNEY MAP (встроена в CTA) */
+        /* JOURNEY MAP */
         /* ================================================================ */
         .journey-map {
             display: flex;
@@ -585,17 +584,11 @@
 </head>
 <body>
 
-    <!-- ================================================================ -->
-    <!-- LANGUAGE SWITCHER -->
-    <!-- ================================================================ -->
     <div class="lang-switcher">
         <button id="btnEn" class="active">EN</button>
         <button id="btnRu">RU</button>
     </div>
 
-    <!-- ================================================================ -->
-    <!-- TIMELINE NAVIGATION -->
-    <!-- ================================================================ -->
     <nav class="timeline-nav" id="timelineNav">
         <div class="timeline-dot active" data-label="1939" data-target="block1"></div>
         <div class="timeline-dot" data-label="1943" data-target="block2"></div>
@@ -605,9 +598,6 @@
         <div class="timeline-dot" data-label="2026" data-target="block6"></div>
     </nav>
 
-    <!-- ================================================================ -->
-    <!-- HERO -->
-    <!-- ================================================================ -->
     <div class="hero-section" id="hero">
         <div class="hero-content">
             <div class="lang-en">
@@ -623,9 +613,6 @@
         </div>
     </div>
 
-    <!-- ================================================================ -->
-    <!-- БЛОК 1: ТАРАС -->
-    <!-- ================================================================ -->
     <div class="story-block" id="block1">
         <div class="story-bg" style="background-image: url('images/taras-leaving-1939.jpeg');"></div>
         <div class="text-track">
@@ -648,9 +635,6 @@
         </div>
     </div>
 
-    <!-- ================================================================ -->
-    <!-- БЛОК 2: ЭНЦО -->
-    <!-- ================================================================ -->
     <div class="story-block" id="block2">
         <div class="story-bg" style="background-image: url('images/enzo-tuscany-1943.jpeg');"></div>
         <div class="text-track">
@@ -673,9 +657,6 @@
         </div>
     </div>
 
-    <!-- ================================================================ -->
-    <!-- БЛОК 3: ПОРТ НЕАПОЛЯ -->
-    <!-- ================================================================ -->
     <div class="story-block" id="block3">
         <div class="story-bg" style="background-image: url('images/naples-port-1946.jpeg');"></div>
         <div class="text-track">
@@ -698,9 +679,6 @@
         </div>
     </div>
 
-    <!-- ================================================================ -->
-    <!-- БЛОК 4: ДОЛИНА ХАНТЕР -->
-    <!-- ================================================================ -->
     <div class="story-block" id="block4">
         <div class="story-bg" style="background-image: url('images/hunter-valley-1948.jpeg');"></div>
         <div class="text-track">
@@ -723,9 +701,6 @@
         </div>
     </div>
 
-    <!-- ================================================================ -->
-    <!-- БЛОК 5: ПЕРВЫЙ ТОСТ -->
-    <!-- ================================================================ -->
     <div class="story-block" id="block5">
         <div class="story-bg" style="background-image: url('images/first-toast-1954.jpeg');"></div>
         <div class="text-track">
@@ -748,22 +723,16 @@
         </div>
     </div>
 
-    <!-- ================================================================ -->
-    <!-- БЛОК 6: БУТЫЛКА 2026 -->
-    <!-- ================================================================ -->
     <div class="story-block" id="block6">
         <div class="story-bg" style="background-image: url('images/bottle-2026.jpeg'); background-position: center 30%;"></div>
         <div class="text-track">
             <div class="text-slide bottle-slide" id="bottleSlide">
-                <!-- EN -->
                 <div class="lang-en">
                     <span class="year-badge">Present day</span>
                     <h2>The story lives in every glass</h2>
                     <p>
                         Seven decades on, two names are still burned into our barrels. The cellar is still spotless — just the way Taras kept it. The vines are still treated with the reverence Enzo taught us. Every bottle of Semko Vicci carries the same truth: great wine happens when two strong cultures, two different fates, and two pairs of working hands come together under the Australian sun.
                     </p>
-
-                    <!-- Техническая карточка вина -->
                     <div class="wine-tech-card">
                         <div class="tech-line tech-line-1"><span class="tech-label">Composition</span> 60% Shiraz, 40% Sangiovese</div>
                         <div class="tech-line tech-line-2"><span class="tech-label">Maturation</span> 14 months in French oak</div>
@@ -771,24 +740,19 @@
                         <div class="tech-line tech-line-4"><span class="tech-label">Production</span> Limited — 600 bottles</div>
                         <div class="tech-line tech-line-5"><span class="tech-label">Tasting notes</span> Blackberry, tobacco, white pepper, leather</div>
                     </div>
-
-                    <div class="label-anim" id="labelAnimEn">
+                    <div class="label-anim">
                         <div class="label-line-1">Semko Vicci</div>
                         <div class="label-line-2">2026</div>
                         <div class="label-line-3"></div>
                         <div class="label-line-4">Shiraz-Sangiovese</div>
                     </div>
                 </div>
-
-                <!-- RU -->
                 <div class="lang-ru lang-hidden">
                     <span class="year-badge">Наши дни</span>
                     <h2>История продолжается в каждом бокале</h2>
                     <p>
                         Семь десятилетий спустя на наших бочках всё так же выжжены два имени. В погребе до сих пор чисто так, как умел делать только Тарас, и так же трепетно мы относимся к лозе, как Энцо. Каждая бутылка Semko Vicci — это напоминание: настоящее вино получается, когда встречаются две сильные культуры, две разные судьбы и две пары рук, не боящихся работы.
                     </p>
-
-                    <!-- Техническая карточка вина (RU) -->
                     <div class="wine-tech-card">
                         <div class="tech-line tech-line-1"><span class="tech-label">Состав</span> 60% Shiraz, 40% Sangiovese</div>
                         <div class="tech-line tech-line-2"><span class="tech-label">Выдержка</span> 14 месяцев во французском дубе</div>
@@ -796,8 +760,7 @@
                         <div class="tech-line tech-line-4"><span class="tech-label">Тираж</span> Лимитированный — 600 бутылок</div>
                         <div class="tech-line tech-line-5"><span class="tech-label">Дегустационные заметки</span> Ежевика, табак, белый перец, кожа</div>
                     </div>
-
-                    <div class="label-anim" id="labelAnimRu">
+                    <div class="label-anim">
                         <div class="label-line-1">Semko Vicci</div>
                         <div class="label-line-2">2026</div>
                         <div class="label-line-3"></div>
@@ -808,12 +771,8 @@
         </div>
     </div>
 
-    <!-- ================================================================ -->
-    <!-- CTA / FOOTER -->
-    <!-- ================================================================ -->
     <div class="cta-section" id="cta">
         <div class="cta-content">
-            <!-- Карта путешествия -->
             <div class="journey-map">
                 <div class="journey-point">
                     <div class="journey-dot-icon"></div>
@@ -833,23 +792,18 @@
                     <span class="journey-label lang-ru lang-hidden">Австралия</span>
                 </div>
             </div>
-
-            <!-- EN -->
             <div class="lang-en">
                 <h2 class="cta-title">Be the first to know</h2>
                 <p class="cta-subtitle">
                     Our story began in 1954. The next chapter is being written right now in the Hunter Valley. Sign up and we'll let you know when the next vintage is ready.
                 </p>
             </div>
-            <!-- RU -->
             <div class="lang-ru lang-hidden">
                 <h2 class="cta-title">Узнайте первыми</h2>
                 <p class="cta-subtitle">
                     Наша история началась в 1954 году. Следующая глава пишется прямо сейчас в долине Хантер. Подпишитесь, и мы сообщим, когда следующий винтаж будет готов.
                 </p>
             </div>
-
-            <!-- Форма -->
             <form class="cta-form" id="subscribeForm">
                 <input type="email" id="emailInput" placeholder="your@email.com" required>
                 <button type="submit">
@@ -861,20 +815,18 @@
                     <span class="lang-ru lang-hidden">Никакого спама. Только хорошие новости.</span>
                 </p>
             </form>
-
             <div class="cta-signature">Semko Vicci</div>
         </div>
     </div>
 
-    <!-- ================================================================ -->
-    <!-- SCRIPTS -->
-    <!-- ================================================================ -->
     <script>
         // ===== LANGUAGE SWITCHER =====
         const btnEn = document.getElementById('btnEn');
         const btnRu = document.getElementById('btnRu');
+        let currentLang = 'en';
 
         function switchLang(lang) {
+            currentLang = lang;
             btnEn.classList.remove('active');
             btnRu.classList.remove('active');
 
@@ -889,6 +841,8 @@
                 document.querySelectorAll('.lang-en').forEach(el => el.classList.add('lang-hidden'));
                 document.documentElement.lang = 'ru';
             }
+
+            animateBottleBlock();
         }
 
         btnEn.addEventListener('click', () => switchLang('en'));
@@ -911,7 +865,6 @@
 
         function updateActiveDot() {
             let activeBlockId = null;
-
             const heroRect = hero.getBoundingClientRect();
             if (heroRect.bottom > window.innerHeight * 0.4) {
                 activeBlockId = 'block1';
@@ -923,7 +876,6 @@
                     }
                 });
             }
-
             dots.forEach(dot => {
                 const target = dot.getAttribute('data-target');
                 if (target === activeBlockId) {
@@ -937,15 +889,12 @@
         window.addEventListener('scroll', updateActiveDot);
         updateActiveDot();
 
-        // ===== ЗАТЕМНЕНИЕ ФОНА ПРИ ПРОЛЁТЕ ТЕКСТА =====
+        // ===== ЗАТЕМНЕНИЕ ФОНА =====
         const storyBlocks = document.querySelectorAll('.story-block');
-
         storyBlocks.forEach(block => {
             const bg = block.querySelector('.story-bg');
             const slide = block.querySelector('.text-slide');
-
             if (!bg || !slide) return;
-
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -955,55 +904,55 @@
                     }
                 });
             }, { threshold: 0.2 });
-
             observer.observe(slide);
-
             const styleEl = document.createElement('style');
-            styleEl.textContent = `
-                #${block.id} .story-bg::after {
-                    background: var(--dim-bg, rgba(0,0,0,0));
-                    transition: background 0.5s ease;
-                }
-            `;
+            styleEl.textContent = `#${block.id} .story-bg::after { background: var(--dim-bg, rgba(0,0,0,0)); transition: background 0.5s ease; }`;
             document.head.appendChild(styleEl);
         });
 
         // ===== АНИМАЦИЯ ЭТИКЕТКИ + ТЕХ-КАРТОЧКИ =====
         const bottleSlide = document.getElementById('bottleSlide');
 
+        function animateBottleBlock() {
+            if (!bottleSlide) return;
+
+            // Сбрасываем всё
+            bottleSlide.querySelectorAll('.label-line-1, .label-line-2, .label-line-3, .label-line-4, .tech-line').forEach(el => {
+                el.classList.remove('visible');
+            });
+
+            // Ждём кадр, чтобы сброс применился
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    // Находим видимый сейчас контейнер
+                    const visibleContainer = bottleSlide.querySelector('.lang-en:not(.lang-hidden)') || bottleSlide.querySelector('.lang-ru:not(.lang-hidden)');
+                    if (!visibleContainer) return;
+
+                    // Запускаем анимацию этикетки
+                    visibleContainer.querySelectorAll('.label-line-1, .label-line-2, .label-line-3, .label-line-4').forEach(el => {
+                        el.classList.add('visible');
+                    });
+
+                    // Запускаем анимацию тех-карточки
+                    visibleContainer.querySelectorAll('.tech-line').forEach(el => {
+                        el.classList.add('visible');
+                    });
+                });
+            });
+        }
+
         if (bottleSlide) {
             const labelObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Этикетка
-                        const visibleLabelAnim = bottleSlide.querySelector('.label-anim:not(.lang-hidden)');
-                        if (visibleLabelAnim) {
-                            const lines = visibleLabelAnim.querySelectorAll(
-                                '.label-line-1, .label-line-2, .label-line-3, .label-line-4'
-                            );
-                            lines.forEach(line => line.classList.add('visible'));
-                        }
-
-                        // Тех-карточка
-                        const visibleTechCard = bottleSlide.querySelector('.wine-tech-card:not(.lang-hidden)');
-                        if (visibleTechCard) {
-                            const techLines = visibleTechCard.querySelectorAll('.tech-line');
-                            techLines.forEach(line => line.classList.add('visible'));
-                        }
+                        animateBottleBlock();
                     } else {
-                        // Сброс этикетки
-                        const allLabelLines = bottleSlide.querySelectorAll(
-                            '.label-line-1, .label-line-2, .label-line-3, .label-line-4'
-                        );
-                        allLabelLines.forEach(line => line.classList.remove('visible'));
-
-                        // Сброс тех-карточки
-                        const allTechLines = bottleSlide.querySelectorAll('.tech-line');
-                        allTechLines.forEach(line => line.classList.remove('visible'));
+                        bottleSlide.querySelectorAll('.label-line-1, .label-line-2, .label-line-3, .label-line-4, .tech-line').forEach(el => {
+                            el.classList.remove('visible');
+                        });
                     }
                 });
             }, { threshold: 0.4 });
-
             labelObserver.observe(bottleSlide);
         }
 
@@ -1016,7 +965,6 @@
                 const subs = JSON.parse(localStorage.getItem('semko_subscribers') || '[]');
                 subs.push({ email, date: new Date().toISOString() });
                 localStorage.setItem('semko_subscribers', JSON.stringify(subs));
-
                 const btn = form.querySelector('button');
                 const originalHTML = btn.innerHTML;
                 btn.textContent = '✓ Done!';
