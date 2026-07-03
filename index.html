@@ -4,12 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semko Vicci — A Wine Born of Two Journeys | Hunter Valley</title>
-
-    <!-- Google Fonts: Playfair Display для заголовков -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
-
     <style>
         /* === RESET & BASE === */
         * {
@@ -23,6 +17,7 @@
             background-color: #0d0d0d;
             color: #f0ede8;
             line-height: 1.8;
+            transition: opacity 0.3s ease;
         }
 
         /* === LANGUAGE SWITCHER === */
@@ -33,6 +28,7 @@
             z-index: 1000;
             display: flex;
             gap: 8px;
+            font-family: 'Georgia', serif;
         }
 
         .lang-switcher button {
@@ -60,65 +56,105 @@
             color: #0d0d0d;
         }
 
-        /* ================================================================ */
-        /* HERO — ПЕРВЫЙ ЭКРАН */
-        /* ================================================================ */
-        .hero-section {
+        /* === STORY CONTAINER === */
+        .story-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* === PARALLAX SECTION === */
+        .story-section {
             position: relative;
-            width: 100%;
-            height: 100vh;
-            background-image: url('images/hero-vineyard.jpeg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 1;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            padding: 60px 0;
         }
 
-        .hero-section::after {
+        .story-section::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.45);
+            background: rgba(0, 0, 0, 0.65);
+            z-index: 1;
+        }
+
+        /* === TEXT BLOCK === */
+        .story-text {
+            position: relative;
             z-index: 2;
+            max-width: 650px;
+            padding: 40px;
+            background: rgba(10, 10, 10, 0.75);
+            border-left: 3px solid #c49b4c;
+            backdrop-filter: blur(4px);
+        }
+
+        .story-text h2 {
+            font-size: 2rem;
+            font-weight: normal;
+            color: #c49b4c;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .story-text p {
+            font-size: 1.15rem;
+            margin-bottom: 0;
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        .story-text .year-badge {
+            display: inline-block;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            color: #a0845c;
+            border: 1px solid #a0845c;
+            padding: 4px 12px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        /* === HERO === */
+        .hero-section {
+            background-image: url('images/hero-vineyard.jpeg');
         }
 
         .hero-content {
             position: relative;
-            z-index: 3;
+            z-index: 2;
             text-align: center;
         }
 
         .hero-content h1 {
-            font-family: 'Playfair Display', 'Georgia', serif;
-            font-size: 4.5rem;
-            font-weight: 600;
+            font-size: 3.5rem;
+            font-weight: normal;
             color: #c49b4c;
-            letter-spacing: 5px;
+            letter-spacing: 4px;
             margin-bottom: 16px;
-            font-style: italic;
         }
 
         .hero-content .subtitle {
-            font-family: 'Playfair Display', 'Georgia', serif;
-            font-size: 1.4rem;
-            color: #ddd;
+            font-size: 1.3rem;
+            color: #ccc;
             font-style: italic;
-            letter-spacing: 1px;
         }
 
         .hero-content .scroll-hint {
-            margin-top: 50px;
-            font-size: 0.85rem;
-            color: #999;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #888;
             letter-spacing: 2px;
-            font-family: 'Georgia', serif;
-            font-style: normal;
             animation: fadeInOut 2.5s infinite;
         }
 
@@ -127,178 +163,89 @@
             50% { opacity: 1; }
         }
 
-        /* ================================================================ */
-        /* STORY BLOCK — КАРТИНКА STICKY + ТЕКСТ ПОВЕРХ */
-        /* ================================================================ */
-        .story-block {
-            position: relative;
-            /* Высота: 100vh (картинка) + 120vh (пространство для скролла текста) */
-            height: 220vh;
+        /* === BOTTLE SECTION === */
+        .bottle-section {
+            background-image: url('images/bottle-2026.jpeg');
+            background-position: center 30%;
         }
 
-        .story-sticky-bg {
-            position: sticky;
-            top: 0;
-            width: 100%;
-            height: 100vh;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            z-index: 1;
-        }
-
-        /* === ТЕКСТОВЫЙ СЛОЙ === */
-        .story-text-layer {
-            position: absolute;
-            top: 100vh;
-            width: 100%;
-            height: 120vh;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            padding-top: 8vh;
-            z-index: 3;
-            pointer-events: none;
-        }
-
-        .story-text-card {
-            max-width: 700px;
-            width: 75%;
-            padding: 40px 48px;
-            background: rgba(10, 10, 10, 0.85);
-            border-left: 3px solid #c49b4c;
-            backdrop-filter: blur(10px);
-            opacity: 0;
-            transform: translateY(60px);
-            transition: opacity 0.9s ease, transform 0.9s ease;
-            pointer-events: auto;
-        }
-
-        .story-text-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .story-text-card h2 {
-            font-family: 'Playfair Display', 'Georgia', serif;
-            font-size: 2rem;
-            font-weight: 600;
-            font-style: italic;
-            color: #c49b4c;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-        }
-
-        .story-text-card p {
-            font-size: 1.1rem;
-            margin-bottom: 0;
-            text-align: justify;
-            hyphens: auto;
-            font-family: 'Georgia', serif;
-        }
-
-        .story-text-card .year-badge {
-            display: inline-block;
-            font-size: 0.8rem;
-            letter-spacing: 3px;
-            color: #a0845c;
-            border: 1px solid #a0845c;
-            padding: 4px 12px;
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            font-family: 'Georgia', serif;
-            font-style: normal;
-        }
-
-        /* ================================================================ */
-        /* БУТЫЛКА 2026 */
-        /* ================================================================ */
-        .bottle-text-card {
+        .bottle-label {
             text-align: center;
         }
 
-        .bottle-text-card .vintage {
-            font-family: 'Playfair Display', 'Georgia', serif;
+        .bottle-label .vintage {
             font-size: 4rem;
-            font-weight: 600;
-            font-style: italic;
             color: #c49b4c;
             letter-spacing: 6px;
             line-height: 1;
         }
 
-        .bottle-text-card .wine-name {
-            font-family: 'Playfair Display', 'Georgia', serif;
-            font-size: 1.5rem;
+        .bottle-label .wine-name {
+            font-size: 1.6rem;
             font-style: italic;
             margin-top: 10px;
         }
 
-        /* ================================================================ */
-        /* FOOTER */
-        /* ================================================================ */
+        /* === FOOTER === */
         .footer-section {
-            position: relative;
-            width: 100%;
-            height: 100vh;
+            min-height: auto;
+            padding: 80px 20px;
             background: #0a0a0a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1;
+            text-align: center;
+        }
+
+        .footer-section::before {
+            display: none;
         }
 
         .footer-content {
-            text-align: center;
-            z-index: 3;
+            position: relative;
+            z-index: 2;
         }
 
         .footer-content p {
             color: #888;
             font-size: 1rem;
-            font-family: 'Georgia', serif;
         }
 
         .footer-content .signature {
             margin-top: 30px;
-            font-family: 'Playfair Display', 'Georgia', serif;
-            font-size: 2.2rem;
-            font-weight: 600;
-            font-style: italic;
+            font-size: 2rem;
             color: #c49b4c;
             letter-spacing: 3px;
         }
 
-        /* === LANGUAGE HIDDEN === */
+        /* === LANGUAGE HIDDEN CLASS === */
         .lang-hidden {
             display: none !important;
         }
 
         /* === RESPONSIVE === */
         @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.4rem;
-                letter-spacing: 2px;
+            .story-section {
+                background-attachment: scroll;
+                min-height: auto;
+                padding: 50px 20px;
             }
 
-            .hero-content .subtitle {
+            .story-text {
+                padding: 24px;
+            }
+
+            .story-text h2 {
+                font-size: 1.5rem;
+            }
+
+            .story-text p {
                 font-size: 1rem;
             }
 
-            .story-text-card {
-                width: 90%;
-                padding: 24px 20px;
+            .hero-content h1 {
+                font-size: 2.2rem;
+                letter-spacing: 2px;
             }
 
-            .story-text-card h2 {
-                font-size: 1.4rem;
-            }
-
-            .story-text-card p {
-                font-size: 0.95rem;
-            }
-
-            .bottle-text-card .vintage {
+            .bottle-label .vintage {
                 font-size: 2.5rem;
             }
 
@@ -317,31 +264,30 @@
         <button id="btnRu">RU</button>
     </div>
 
-    <!-- ================================================================ -->
-    <!-- HERO -->
-    <!-- ================================================================ -->
-    <div class="hero-section">
-        <div class="hero-content">
-            <div class="lang-en">
-                <h1>Semko Vicci</h1>
-                <p class="subtitle">A wine born of two journeys</p>
-                <p class="scroll-hint">▼  Scroll down to uncover the story  ▼</p>
-            </div>
-            <div class="lang-ru lang-hidden">
-                <h1>Semko Vicci</h1>
-                <p class="subtitle">Вино, рожденное из двух странствий</p>
-                <p class="scroll-hint">▼  Скрольте вниз, чтобы узнать историю  ▼</p>
-            </div>
-        </div>
-    </div>
+    <div class="story-container">
 
-    <!-- ================================================================ -->
-    <!-- БЛОК 1: ТАРАС ПОКИДАЕТ УКРАИНУ -->
-    <!-- ================================================================ -->
-    <div class="story-block">
-        <div class="story-sticky-bg" style="background-image: url('images/taras-leaving-1939.jpeg');"></div>
-        <div class="story-text-layer">
-            <div class="story-text-card" id="card1">
+        <!-- ===== HERO ===== -->
+        <section class="story-section hero-section">
+            <div class="hero-content">
+                <!-- EN -->
+                <div class="lang-en">
+                    <h1>SEMKO VICCI</h1>
+                    <p class="subtitle">A wine born of two journeys</p>
+                    <p class="scroll-hint">▼  Scroll down to uncover the story  ▼</p>
+                </div>
+                <!-- RU -->
+                <div class="lang-ru lang-hidden">
+                    <h1>SEMKO VICCI</h1>
+                    <p class="subtitle">Вино, рожденное из двух странствий</p>
+                    <p class="scroll-hint">▼  Скрольте вниз, чтобы узнать историю  ▼</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 1: TARAS LEAVES UKRAINE ===== -->
+        <section class="story-section" style="background-image: url('images/taras-leaving-1939.jpeg');">
+            <div class="story-text">
+                <!-- EN -->
                 <div class="lang-en">
                     <span class="year-badge">1939 · Western Ukraine</span>
                     <h2>The land he had to leave behind</h2>
@@ -349,6 +295,7 @@
                         Taras Semko knew his land the way a man knows his mother's face. Every furrow on his small farm near Ternopil had been shaped by his hands. But history doesn't knock before it enters. After Western Ukraine was annexed by the Soviet Union, Taras was branded a <em>kulak</em> — his hard work suddenly a mark against him. With no future in the collective farms and the threat of arrest looming, he made the hardest decision of his life: to walk away. Not from the soil — soil stays in a man's blood — but from a place where that soil was no longer his. Through Kraków, through strange cities, through the chaos of war, he drifted south. Somewhere warm, he'd heard. Somewhere a man could start again.
                     </p>
                 </div>
+                <!-- RU -->
                 <div class="lang-ru lang-hidden">
                     <span class="year-badge">1939 · Западная Украина</span>
                     <h2>Земля, которую пришлось оставить</h2>
@@ -357,16 +304,12 @@
                     </p>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- ================================================================ -->
-    <!-- БЛОК 2: ЭНЦО ТЕРЯЕТ ВСЁ -->
-    <!-- ================================================================ -->
-    <div class="story-block">
-        <div class="story-sticky-bg" style="background-image: url('images/enzo-tuscany-1943.jpeg');"></div>
-        <div class="story-text-layer">
-            <div class="story-text-card" id="card2">
+        <!-- ===== 2: ENZO LOSES EVERYTHING ===== -->
+        <section class="story-section" style="background-image: url('images/enzo-tuscany-1943.jpeg');">
+            <div class="story-text">
+                <!-- EN -->
                 <div class="lang-en">
                     <span class="year-badge">1943 · Tuscany, Italy</span>
                     <h2>Ashes of the family vine</h2>
@@ -374,6 +317,7 @@
                         Enzo Vicci was born with the smell of fermenting must in his cradle. His family had made wine in the Chianti hills for six generations — long enough that the vines practically knew their names. But war doesn't spare the vine. His father and elder brother were killed. The century-old vineyards were trampled, the family home requisitioned. Enzo was left with nothing except the memory in his hands and one treasure: a handful of Sangiovese cuttings, wrapped in damp cloth, pressed against his chest. He told himself: <em>the Vicci name doesn't end here.</em> At the port of Genoa he wasn't just looking for a ship. He was looking for a new Tuscany, somewhere across the ocean. Word had reached him about the fertile valleys of Australia. It sounded like a promise.
                     </p>
                 </div>
+                <!-- RU -->
                 <div class="lang-ru lang-hidden">
                     <span class="year-badge">1943 · Тоскана, Италия</span>
                     <h2>Пепел фамильных лоз</h2>
@@ -382,16 +326,12 @@
                     </p>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- ================================================================ -->
-    <!-- БЛОК 3: ВСТРЕЧА В ПОРТУ НЕАПОЛЯ -->
-    <!-- ================================================================ -->
-    <div class="story-block">
-        <div class="story-sticky-bg" style="background-image: url('images/naples-port-1946.jpeg');"></div>
-        <div class="story-text-layer">
-            <div class="story-text-card" id="card3">
+        <!-- ===== 3: MEETING AT NAPLES PORT ===== -->
+        <section class="story-section" style="background-image: url('images/naples-port-1946.jpeg');">
+            <div class="story-text">
+                <!-- EN -->
                 <div class="lang-en">
                     <span class="year-badge">1946 · Port of Naples</span>
                     <h2>A handshake that changed everything</h2>
@@ -399,6 +339,7 @@
                         Post-war Naples was a madhouse. Taras, stranded in Italy by the conflict, was working the docks, still dreaming of a patch of land to call his own. Enzo was pushing towards the gangway of a ship bound for Sydney when a thief lunged for his suitcase — the one carrying the precious cuttings. Taras didn't think. He just moved. A shoulder to the ribs, a brief scuffle, and the suitcase was back in its owner's hands. Enzo, breathing hard, looked at this broad-shouldered stranger and said in broken English: <em>"You saved my future. Come with me. I need hands like yours."</em> And just like that, a Ukrainian who spoke no Italian and an Italian who spoke not a word of Ukrainian boarded the ship together. Ahead lay Australia.
                     </p>
                 </div>
+                <!-- RU -->
                 <div class="lang-ru lang-hidden">
                     <span class="year-badge">1946 · Порт Неаполя</span>
                     <h2>Рукопожатие, изменившее всё</h2>
@@ -407,16 +348,12 @@
                     </p>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- ================================================================ -->
-    <!-- БЛОК 4: ДОЛИНА ХАНТЕР -->
-    <!-- ================================================================ -->
-    <div class="story-block">
-        <div class="story-sticky-bg" style="background-image: url('images/hunter-valley-1948.jpeg');"></div>
-        <div class="story-text-layer">
-            <div class="story-text-card" id="card4">
+        <!-- ===== 4: HUNTER VALLEY ===== -->
+        <section class="story-section" style="background-image: url('images/hunter-valley-1948.jpeg');">
+            <div class="story-text">
+                <!-- EN -->
                 <div class="lang-en">
                     <span class="year-badge">1947–1950 · Hunter Valley, NSW</span>
                     <h2>Two madmen on a bare paddock</h2>
@@ -424,6 +361,7 @@
                         The block Enzo found in the Hunter Valley was modest — five acres of stony, clay-sand soil, a dilapidated shed, and no promises. But Enzo's instinct told him this was the spot. Poor soil stresses the vine, and a stressed vine makes bloody good wine. Taras just rolled up his sleeves. He cleared scrub, hauled rocks, scrubbed barrels until they gleamed, working from sunrise to sunset with the same quiet fury his ancestors had poured into the black earth of Ukraine. The locals called them <em>"the two madmen"</em> — the Italian who talked to his vines and the Ukrainian who worked harder than three men put together. But the madmen just kept going. They believed.
                     </p>
                 </div>
+                <!-- RU -->
                 <div class="lang-ru lang-hidden">
                     <span class="year-badge">1947–1950 · Долина Хантер</span>
                     <h2>Двое безумцев на голой земле</h2>
@@ -432,16 +370,12 @@
                     </p>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- ================================================================ -->
-    <!-- БЛОК 5: ПЕРВЫЙ ТОСТ -->
-    <!-- ================================================================ -->
-    <div class="story-block">
-        <div class="story-sticky-bg" style="background-image: url('images/first-toast-1954.jpeg');"></div>
-        <div class="story-text-layer">
-            <div class="story-text-card" id="card5">
+        <!-- ===== 5: FIRST WINE ===== -->
+        <section class="story-section" style="background-image: url('images/first-toast-1954.jpeg');">
+            <div class="story-text">
+                <!-- EN -->
                 <div class="lang-en">
                     <span class="year-badge">1954 · The first vintage</span>
                     <h2>Semko + Vicci = Semko Vicci</h2>
@@ -449,6 +383,7 @@
                         The 1954 harvest was the one. The fruit hit that elusive balance — Sangiovese, grafted onto Australian rootstock, yielded grapes of astonishing depth. Enzo worked his alchemy in the cellar; Taras guarded every barrel like a watchdog. And then, one spring evening after the crush, they cracked open a trial bottle. The wine was bold, powerful, with a Tuscan heart and a Hunter Valley body. It deserved a name. Enzo wanted to call it <em>Vicci</em>. Taras wanted something Slavic. They argued late into the night, until Enzo laughed and said: <em>"We're both nobody here. But together we made this. Let the label carry both names."</em> And so <strong>Semko Vicci</strong> was born — not just a brand, but a pact sealed over a handshake and a glass.
                     </p>
                 </div>
+                <!-- RU -->
                 <div class="lang-ru lang-hidden">
                     <span class="year-badge">1954 · Первый урожай</span>
                     <h2>Семко + Виччи = Semko Vicci</h2>
@@ -457,16 +392,12 @@
                     </p>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- ================================================================ -->
-    <!-- БЛОК 6: БУТЫЛКА 2026 -->
-    <!-- ================================================================ -->
-    <div class="story-block">
-        <div class="story-sticky-bg" style="background-image: url('images/bottle-2026.jpeg'); background-position: center 30%;"></div>
-        <div class="story-text-layer">
-            <div class="story-text-card bottle-text-card" id="card6">
+        <!-- ===== 6: TODAY — 2026 BOTTLE ===== -->
+        <section class="story-section bottle-section">
+            <div class="story-text bottle-label">
+                <!-- EN -->
                 <div class="lang-en">
                     <span class="year-badge">Present day</span>
                     <h2>The story lives in every glass</h2>
@@ -476,6 +407,7 @@
                     <div class="vintage">2026</div>
                     <div class="wine-name">Semko Vicci · Shiraz-Sangiovese</div>
                 </div>
+                <!-- RU -->
                 <div class="lang-ru lang-hidden">
                     <span class="year-badge">Наши дни</span>
                     <h2>История продолжается в каждом бокале</h2>
@@ -486,39 +418,39 @@
                     <div class="wine-name">Semko Vicci · Shiraz-Sangiovese</div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <section class="story-section footer-section">
+            <div class="footer-content">
+                <!-- EN -->
+                <div class="lang-en">
+                    <p>This project is in development.</p>
+                    <p>Stay tuned for the first release.</p>
+                    <p style="margin-top: 16px; font-style: italic; color: #c49b4c;">
+                        One pair of hands held a plough on the plains of Ternopil.<br>
+                        The other held secateurs on the hills of Tuscany.<br>
+                        Today, they're holding a glass for you.
+                    </p>
+                </div>
+                <!-- RU -->
+                <div class="lang-ru lang-hidden">
+                    <p>Проект находится в развитии.</p>
+                    <p>Следите за появлением первых бутылок.</p>
+                    <p style="margin-top: 16px; font-style: italic; color: #c49b4c;">
+                        Одна рука держала плуг на равнинах Тернополя.<br>
+                        Вторая — секатор на холмах Тосканы.<br>
+                        Сегодня они держат бокал для вас.
+                    </p>
+                </div>
+                <div class="signature">Semko Vicci</div>
+            </div>
+        </section>
+
     </div>
 
-    <!-- ================================================================ -->
-    <!-- FOOTER -->
-    <!-- ================================================================ -->
-    <div class="footer-section">
-        <div class="footer-content">
-            <div class="lang-en">
-                <p>This project is in development.</p>
-                <p>Stay tuned for the first release.</p>
-                <p style="margin-top: 16px; font-style: italic; color: #c49b4c;">
-                    One pair of hands held a plough on the plains of Ternopil.<br>
-                    The other held secateurs on the hills of Tuscany.<br>
-                    Today, they're holding a glass for you.
-                </p>
-            </div>
-            <div class="lang-ru lang-hidden">
-                <p>Проект находится в развитии.</p>
-                <p>Следите за появлением первых бутылок.</p>
-                <p style="margin-top: 16px; font-style: italic; color: #c49b4c;">
-                    Одна рука держала плуг на равнинах Тернополя.<br>
-                    Вторая — секатор на холмах Тосканы.<br>
-                    Сегодня они держат бокал для вас.
-                </p>
-            </div>
-            <div class="signature">Semko Vicci</div>
-        </div>
-    </div>
-
-    <!-- ===== INTERSECTION OBSERVER + LANGUAGE SWITCH ===== -->
+    <!-- ===== LANGUAGE SWITCH SCRIPT ===== -->
     <script>
-        // ===== LANGUAGE SWITCHER =====
         const btnEn = document.getElementById('btnEn');
         const btnRu = document.getElementById('btnRu');
 
@@ -541,23 +473,6 @@
 
         btnEn.addEventListener('click', () => switchLang('en'));
         btnRu.addEventListener('click', () => switchLang('ru'));
-
-        // ===== TEXT CARD REVEAL ON SCROLL =====
-        const allCards = document.querySelectorAll('.story-text-card');
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                } else {
-                    entry.target.classList.remove('visible');
-                }
-            });
-        }, {
-            threshold: 0.25
-        });
-
-        allCards.forEach(card => observer.observe(card));
     </script>
 
 </body>
