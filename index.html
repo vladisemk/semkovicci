@@ -291,7 +291,6 @@
             overflow: hidden;
         }
 
-        /* Общий контейнер этикетки */
         .label-animation {
             display: flex;
             flex-direction: column;
@@ -300,7 +299,7 @@
             margin-top: 10px;
         }
 
-        /* Каждый элемент этикетки стартует скрытым и сжатым */
+        /* Каждый элемент стартует скрытым */
         .label-line {
             opacity: 0;
             transform: scaleX(0);
@@ -308,7 +307,6 @@
             transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        /* Название вина */
         .label-wine-name {
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
@@ -317,7 +315,6 @@
             letter-spacing: 2px;
         }
 
-        /* Декоративная линия */
         .label-rule {
             width: 120px;
             height: 1px;
@@ -325,7 +322,6 @@
             margin: 4px 0;
         }
 
-        /* Винтаж */
         .label-vintage {
             font-family: 'Playfair Display', serif;
             font-size: 4rem;
@@ -336,7 +332,7 @@
             line-height: 1;
         }
 
-        /* Когда блок в зоне видимости — этикетка "наклеивается" */
+        /* Когда класс label-visible добавлен — этикетка "наклеивается" */
         .bottle-slide.label-visible .label-wine-name {
             opacity: 1;
             transform: scaleX(1);
@@ -356,7 +352,7 @@
         }
 
         /* ================================================================ */
-        /* WINE DATA CARD — ТЕХНИЧЕСКАЯ КАРТОЧКА ВИНА */
+        /* WINE DATA CARD */
         /* ================================================================ */
         .wine-data-card {
             margin-top: 30px;
@@ -749,12 +745,13 @@
     </div>
 
     <!-- ================================================================ -->
-    <!-- БЛОК 6: БУТЫЛКА 2026 + ЭТИКЕТКА + ДАННЫЕ О ВИНЕ -->
+    <!-- БЛОК 6: БУТЫЛКА 2026 + АНИМАЦИЯ ЭТИКЕТКИ + ДАННЫЕ О ВИНЕ -->
     <!-- ================================================================ -->
     <div class="story-block" id="block6">
         <div class="story-bg" style="background-image: url('images/bottle-2026.jpeg'); background-position: center 30%;"></div>
         <div class="text-track">
             <div class="text-slide bottle-slide" id="bottleSlide">
+                <!-- EN -->
                 <div class="lang-en">
                     <span class="year-badge">Present day</span>
                     <h2>The story lives in every glass</h2>
@@ -773,4 +770,22 @@
                         </div>
                         <div>
                             <div class="data-label">Oak</div>
-                            <div class="data-value">14 months, French
+                            <div class="data-value">14 months, French oak</div>
+                        </div>
+                        <div>
+                            <div class="data-label">Alcohol</div>
+                            <div class="data-value">14.2% vol</div>
+                        </div>
+                        <div>
+                            <div class="data-label">Production</div>
+                            <div class="data-value">Limited — 600 bottles</div>
+                        </div>
+                        <div class="wine-notes">
+                            <div class="data-label">Tasting notes</div>
+                            <div class="data-value">Blackberry, tobacco, white pepper, leather, with a long mineral finish.</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- RU -->
+                <div class="lang-ru lang-hidden">
+                    <
