@@ -5,15 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semko Vicci — A Wine Born of Two Journeys | Hunter Valley</title>
 
+    <!-- META TAGS -->
+    <meta name="description" content="The story of a Ukrainian farmer and an Italian winemaker who met in a Naples port and built a vineyard in Hunter Valley, Australia.">
+    <meta property="og:title" content="Semko Vicci — A Wine Born of Two Journeys">
+    <meta property="og:description" content="A Ukrainian farmer. An Italian winemaker. A handshake in Naples. A vineyard in Australia.">
+    <meta property="og:image" content="images/hero-vineyard.jpeg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 
     <style>
+        /* === RESET & BASE === */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -55,6 +72,73 @@
 
         .lang-hidden {
             display: none !important;
+        }
+
+        /* ================================================================ */
+        /* TIMELINE NAVIGATION */
+        /* ================================================================ */
+        .timeline-nav {
+            position: fixed;
+            right: 28px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: rgba(196, 155, 76, 0.25);
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+
+        .timeline-dot {
+            position: relative;
+            z-index: 1;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(196, 155, 76, 0.35);
+            border: 1px solid rgba(196, 155, 76, 0.5);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            flex-shrink: 0;
+        }
+
+        .timeline-dot.active {
+            background: #c49b4c;
+            border-color: #c49b4c;
+            box-shadow: 0 0 10px rgba(196, 155, 76, 0.6);
+            width: 12px;
+            height: 12px;
+        }
+
+        .timeline-label {
+            position: absolute;
+            right: 22px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            color: #a0845c;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            font-family: 'Georgia', serif;
+        }
+
+        .timeline-dot:hover .timeline-label,
+        .timeline-dot.active .timeline-label {
+            opacity: 1;
         }
 
         /* ================================================================ */
@@ -120,14 +204,11 @@
         }
 
         /* ================================================================ */
-        /* STORY BLOCK: sticky-фото (100vh) живёт внутри контейнера 200vh */
-        /* 0–100vh: чистое фото висит */
-        /* 100–200vh: текст проезжает снизу вверх */
+        /* STORY BLOCK */
         /* ================================================================ */
         .story-block {
             position: relative;
             height: 200vh;
-            /* 200vh = 100vh фото + 100vh для пролёта текста */
         }
 
         .story-bg {
@@ -140,7 +221,6 @@
             z-index: 1;
         }
 
-        /* Затемнение — показываем только когда текст в кадре */
         .story-bg::after {
             content: '';
             position: absolute;
@@ -151,7 +231,6 @@
             pointer-events: none;
         }
 
-        /* === ТЕКСТОВЫЙ ТРЕК === */
         .text-track {
             position: absolute;
             top: 0;
@@ -164,7 +243,6 @@
 
         .text-slide {
             position: absolute;
-            /* Плашка стартует ниже экрана (top: 105vh) и едет до top: -5vh (над экраном) */
             top: 105vh;
             left: 50%;
             transform: translateX(-50%);
@@ -205,12 +283,50 @@
             font-style: normal;
         }
 
-        /* БУТЫЛКА */
+        /* ================================================================ */
+        /* BOTTLE BLOCK — АНИМАЦИЯ ЭТИКЕТКИ */
+        /* ================================================================ */
         .bottle-slide {
             text-align: center;
+            overflow: hidden;
         }
 
-        .bottle-slide .vintage {
+        /* Общий контейнер этикетки */
+        .label-animation {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+        /* Каждый элемент этикетки стартует скрытым и сжатым */
+        .label-line {
+            opacity: 0;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Название вина */
+        .label-wine-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #f0ede8;
+            letter-spacing: 2px;
+        }
+
+        /* Декоративная линия */
+        .label-rule {
+            width: 120px;
+            height: 1px;
+            background: #c49b4c;
+            margin: 4px 0;
+        }
+
+        /* Винтаж */
+        .label-vintage {
             font-family: 'Playfair Display', serif;
             font-size: 4rem;
             font-weight: 600;
@@ -220,47 +336,194 @@
             line-height: 1;
         }
 
-        .bottle-slide .wine-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-style: italic;
-            margin-top: 10px;
+        /* Когда блок в зоне видимости — этикетка "наклеивается" */
+        .bottle-slide.label-visible .label-wine-name {
+            opacity: 1;
+            transform: scaleX(1);
+            transition-delay: 0.2s;
+        }
+
+        .bottle-slide.label-visible .label-rule {
+            opacity: 1;
+            transform: scaleX(1);
+            transition-delay: 0.5s;
+        }
+
+        .bottle-slide.label-visible .label-vintage {
+            opacity: 1;
+            transform: scaleX(1);
+            transition-delay: 0.8s;
         }
 
         /* ================================================================ */
-        /* FOOTER */
+        /* WINE DATA CARD — ТЕХНИЧЕСКАЯ КАРТОЧКА ВИНА */
         /* ================================================================ */
-        .footer-section {
+        .wine-data-card {
+            margin-top: 30px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(196, 155, 76, 0.3);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px 30px;
+            text-align: left;
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+
+        .wine-data-card .data-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #a0845c;
+        }
+
+        .wine-data-card .data-value {
+            font-family: 'Georgia', serif;
+            color: #ddd;
+        }
+
+        .wine-notes {
+            grid-column: 1 / -1;
+            margin-top: 6px;
+        }
+
+        .wine-notes .data-label {
+            margin-bottom: 4px;
+        }
+
+        /* ================================================================ */
+        /* CTA + FOOTER */
+        /* ================================================================ */
+        .cta-section {
             position: relative;
             width: 100%;
-            height: 100vh;
+            min-height: 100vh;
             background: #0a0a0a;
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 1;
+            padding: 60px 20px;
         }
 
-        .footer-content {
+        .cta-container {
+            max-width: 600px;
+            width: 100%;
             text-align: center;
         }
 
-        .footer-content p {
-            color: #888;
-            font-size: 1rem;
-        }
-
-        .footer-content .signature {
-            margin-top: 30px;
+        .cta-container h2 {
             font-family: 'Playfair Display', serif;
             font-size: 2.2rem;
+            font-weight: 600;
+            font-style: italic;
+            color: #c49b4c;
+            margin-bottom: 12px;
+        }
+
+        .cta-container .cta-subtitle {
+            color: #888;
+            font-size: 1rem;
+            margin-bottom: 32px;
+        }
+
+        .cta-form {
+            display: flex;
+            gap: 10px;
+            max-width: 440px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-form input {
+            flex: 1;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(196, 155, 76, 0.3);
+            color: #f0ede8;
+            font-family: 'Georgia', serif;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .cta-form input:focus {
+            border-color: #c49b4c;
+        }
+
+        .cta-form button {
+            padding: 14px 28px;
+            background: #c49b4c;
+            color: #0d0d0d;
+            border: none;
+            font-family: 'Georgia', serif;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-transform: uppercase;
+        }
+
+        .cta-form button:hover {
+            background: #d4a85c;
+        }
+
+        .cta-success {
+            display: none;
+            color: #c49b4c;
+            font-style: italic;
+            margin-bottom: 40px;
+        }
+
+        .cta-success.show {
+            display: block;
+        }
+
+        /* Карта путешествия */
+        .journey-map {
+            margin-top: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            flex-wrap: wrap;
+        }
+
+        .journey-point {
+            text-align: center;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            color: #888;
+        }
+
+        .journey-point .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #c49b4c;
+            margin: 0 auto 6px;
+        }
+
+        .journey-dash {
+            width: 50px;
+            height: 1px;
+            background: rgba(196, 155, 76, 0.4);
+            margin: 0 8px;
+            margin-bottom: 18px;
+        }
+
+        .footer-bottom {
+            margin-top: 50px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
             font-weight: 600;
             font-style: italic;
             color: #c49b4c;
             letter-spacing: 3px;
         }
 
-        /* === RESPONSIVE === */
+        /* ================================================================ */
+        /* RESPONSIVE */
+        /* ================================================================ */
         @media (max-width: 768px) {
             .hero-content h1 {
                 font-size: 2.4rem;
@@ -280,28 +543,72 @@
                 font-size: 0.95rem;
             }
 
-            .bottle-slide .vintage {
+            .label-vintage {
                 font-size: 2.5rem;
+            }
+
+            .timeline-nav {
+                right: 8px;
+                gap: 14px;
+            }
+
+            .timeline-dot {
+                width: 8px;
+                height: 8px;
+            }
+
+            .timeline-dot.active {
+                width: 10px;
+                height: 10px;
+            }
+
+            .timeline-label {
+                display: none;
+            }
+
+            .wine-data-card {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .cta-form {
+                flex-direction: column;
             }
 
             .lang-switcher {
                 top: 12px;
                 right: 12px;
             }
+
+            .journey-dash {
+                width: 30px;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- ===== LANGUAGE SWITCHER ===== -->
     <div class="lang-switcher">
         <button id="btnEn" class="active">EN</button>
         <button id="btnRu">RU</button>
     </div>
 
+    <!-- ===== TIMELINE NAVIGATION ===== -->
+    <nav class="timeline-nav" id="timelineNav">
+        <div class="timeline-line"></div>
+        <div class="timeline-dot" data-target="block1"><span class="timeline-label">1939</span></div>
+        <div class="timeline-dot" data-target="block2"><span class="timeline-label">1943</span></div>
+        <div class="timeline-dot" data-target="block3"><span class="timeline-label">1946</span></div>
+        <div class="timeline-dot" data-target="block4"><span class="timeline-label">1947</span></div>
+        <div class="timeline-dot" data-target="block5"><span class="timeline-label">1954</span></div>
+        <div class="timeline-dot" data-target="block6"><span class="timeline-label">2026</span></div>
+    </nav>
+
     <!-- ================================================================ -->
     <!-- HERO -->
     <!-- ================================================================ -->
-    <div class="hero-section">
+    <div class="hero-section" id="hero">
         <div class="hero-content">
             <div class="lang-en">
                 <h1>Semko Vicci</h1>
@@ -317,7 +624,7 @@
     </div>
 
     <!-- ================================================================ -->
-    <!-- БЛОК 1: ТАРАС -->
+    <!-- БЛОК 1: ТАРАС ПОКИДАЕТ УКРАИНУ -->
     <!-- ================================================================ -->
     <div class="story-block" id="block1">
         <div class="story-bg" style="background-image: url('images/taras-leaving-1939.jpeg');"></div>
@@ -342,7 +649,7 @@
     </div>
 
     <!-- ================================================================ -->
-    <!-- БЛОК 2: ЭНЦО -->
+    <!-- БЛОК 2: ЭНЦО ТЕРЯЕТ ВСЁ -->
     <!-- ================================================================ -->
     <div class="story-block" id="block2">
         <div class="story-bg" style="background-image: url('images/enzo-tuscany-1943.jpeg');"></div>
@@ -367,7 +674,7 @@
     </div>
 
     <!-- ================================================================ -->
-    <!-- БЛОК 3: ПОРТ НЕАПОЛЯ -->
+    <!-- БЛОК 3: ВСТРЕЧА В ПОРТУ НЕАПОЛЯ -->
     <!-- ================================================================ -->
     <div class="story-block" id="block3">
         <div class="story-bg" style="background-image: url('images/naples-port-1946.jpeg');"></div>
@@ -442,124 +749,28 @@
     </div>
 
     <!-- ================================================================ -->
-    <!-- БЛОК 6: БУТЫЛКА 2026 -->
+    <!-- БЛОК 6: БУТЫЛКА 2026 + ЭТИКЕТКА + ДАННЫЕ О ВИНЕ -->
     <!-- ================================================================ -->
     <div class="story-block" id="block6">
         <div class="story-bg" style="background-image: url('images/bottle-2026.jpeg'); background-position: center 30%;"></div>
         <div class="text-track">
-            <div class="text-slide bottle-slide">
+            <div class="text-slide bottle-slide" id="bottleSlide">
                 <div class="lang-en">
                     <span class="year-badge">Present day</span>
                     <h2>The story lives in every glass</h2>
                     <p>
                         Seven decades on, two names are still burned into our barrels. The cellar is still spotless — just the way Taras kept it. The vines are still treated with the reverence Enzo taught us. Every bottle of Semko Vicci carries the same truth: great wine happens when two strong cultures, two different fates, and two pairs of working hands come together under the Australian sun.
                     </p>
-                    <div class="vintage">2026</div>
-                    <div class="wine-name">Semko Vicci · Shiraz-Sangiovese</div>
-                </div>
-                <div class="lang-ru lang-hidden">
-                    <span class="year-badge">Наши дни</span>
-                    <h2>История продолжается в каждом бокале</h2>
-                    <p>
-                        Семь десятилетий спустя на наших бочках всё так же выжжены два имени. В погребе до сих пор чисто так, как умел делать только Тарас, и так же трепетно мы относимся к лозе, как Энцо. Каждая бутылка Semko Vicci — это напоминание: настоящее вино получается, когда встречаются две сильные культуры, две разные судьбы и две пары рук, не боящихся работы.
-                    </p>
-                    <div class="vintage">2026</div>
-                    <div class="wine-name">Semko Vicci · Shiraz-Sangiovese</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ================================================================ -->
-    <!-- FOOTER -->
-    <!-- ================================================================ -->
-    <div class="footer-section">
-        <div class="footer-content">
-            <div class="lang-en">
-                <p>This project is in development.</p>
-                <p>Stay tuned for the first release.</p>
-                <p style="margin-top: 16px; font-style: italic; color: #c49b4c;">
-                    One pair of hands held a plough on the plains of Ternopil.<br>
-                    The other held secateurs on the hills of Tuscany.<br>
-                    Today, they're holding a glass for you.
-                </p>
-            </div>
-            <div class="lang-ru lang-hidden">
-                <p>Проект находится в развитии.</p>
-                <p>Следите за появлением первых бутылок.</p>
-                <p style="margin-top: 16px; font-style: italic; color: #c49b4c;">
-                    Одна рука держала плуг на равнинах Тернополя.<br>
-                    Вторая — секатор на холмах Тосканы.<br>
-                    Сегодня они держат бокал для вас.
-                </p>
-            </div>
-            <div class="signature">Semko Vicci</div>
-        </div>
-    </div>
-
-    <!-- ===== SCRIPTS ===== -->
-    <script>
-        // ===== LANGUAGE SWITCHER =====
-        const btnEn = document.getElementById('btnEn');
-        const btnRu = document.getElementById('btnRu');
-
-        function switchLang(lang) {
-            btnEn.classList.remove('active');
-            btnRu.classList.remove('active');
-
-            if (lang === 'en') {
-                btnEn.classList.add('active');
-                document.querySelectorAll('.lang-en').forEach(el => el.classList.remove('lang-hidden'));
-                document.querySelectorAll('.lang-ru').forEach(el => el.classList.add('lang-hidden'));
-                document.documentElement.lang = 'en-AU';
-            } else {
-                btnRu.classList.add('active');
-                document.querySelectorAll('.lang-ru').forEach(el => el.classList.remove('lang-hidden'));
-                document.querySelectorAll('.lang-en').forEach(el => el.classList.add('lang-hidden'));
-                document.documentElement.lang = 'ru';
-            }
-        }
-
-        btnEn.addEventListener('click', () => switchLang('en'));
-        btnRu.addEventListener('click', () => switchLang('ru'));
-
-        // ===== ЗАТЕМНЕНИЕ ФОНА ПРИ ПРОЛЁТЕ ТЕКСТА =====
-        const storyBlocks = document.querySelectorAll('.story-block');
-
-        storyBlocks.forEach(block => {
-            const bg = block.querySelector('.story-bg');
-            const slide = block.querySelector('.text-slide');
-
-            if (!bg || !slide) return;
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Текст в зоне видимости — затемняем фон
-                        bg.style.setProperty('--dim-opacity', '0.6');
-                        bg.style.setProperty('--dim-bg', `rgba(0,0,0,0.6)`);
-                    } else {
-                        bg.style.setProperty('--dim-opacity', '0');
-                        bg.style.setProperty('--dim-bg', `rgba(0,0,0,0)`);
-                    }
-                });
-            }, {
-                threshold: 0.2
-            });
-
-            observer.observe(slide);
-
-            // Применяем затемнение через кастомные свойства
-            const styleEl = document.createElement('style');
-            styleEl.textContent = `
-                #${block.id} .story-bg::after {
-                    background: var(--dim-bg, rgba(0,0,0,0));
-                    transition: background 0.5s ease;
-                }
-            `;
-            document.head.appendChild(styleEl);
-        });
-    </script>
-
-</body>
-</html>
+                    <div class="label-animation">
+                        <div class="label-wine-name label-line">Semko Vicci · Shiraz-Sangiovese</div>
+                        <div class="label-rule label-line"></div>
+                        <div class="label-vintage label-line">2026</div>
+                    </div>
+                    <div class="wine-data-card">
+                        <div>
+                            <div class="data-label">Blend</div>
+                            <div class="data-value">60% Shiraz, 40% Sangiovese</div>
+                        </div>
+                        <div>
+                            <div class="data-label">Oak</div>
+                            <div class="data-value">14 months, French
