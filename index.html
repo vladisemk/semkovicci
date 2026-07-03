@@ -5,18 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semko Vicci — A Wine Born of Two Journeys | Hunter Valley</title>
 
-    <!-- META TAGS -->
-    <meta name="description" content="The story of a Ukrainian farmer and an Italian winemaker who met in a Naples port and built a vineyard in Hunter Valley, Australia.">
-    <meta property="og:title" content="Semko Vicci — A Wine Born of Two Journeys">
-    <meta property="og:description" content="A Ukrainian farmer. An Italian winemaker. A handshake in Naples. A vineyard in Australia.">
-    <meta property="og:image" content="images/hero-vineyard.jpeg">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-
-    <!-- FAVICON -->
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/favicon.png">
 
-    <!-- GOOGLE FONTS -->
+    <!-- Open Graph -->
+    <meta property="og:title" content="Semko Vicci — A Wine Born of Two Journeys">
+    <meta property="og:description" content="The story of a Ukrainian farmer and an Italian winemaker who met in a Naples port and built a vineyard in Hunter Valley.">
+    <meta property="og:image" content="images/hero-vineyard.jpeg">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Semko Vicci">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
@@ -28,10 +27,6 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: 'Georgia', 'Times New Roman', serif;
             background-color: #0d0d0d;
@@ -39,12 +34,14 @@
             line-height: 1.8;
         }
 
-        /* === LANGUAGE SWITCHER === */
+        /* ================================================================ */
+        /* LANGUAGE SWITCHER */
+        /* ================================================================ */
         .lang-switcher {
             position: fixed;
             top: 24px;
             right: 28px;
-            z-index: 1000;
+            z-index: 1001;
             display: flex;
             gap: 8px;
         }
@@ -73,7 +70,9 @@
             display: none !important;
         }
 
-        /* === TIMELINE NAVIGATION === */
+        /* ================================================================ */
+        /* TIMELINE NAVIGATION */
+        /* ================================================================ */
         .timeline-nav {
             position: fixed;
             right: 28px;
@@ -83,62 +82,55 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 18px;
-        }
-
-        .timeline-line {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: rgba(196, 155, 76, 0.25);
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 0;
+            gap: 20px;
         }
 
         .timeline-dot {
             position: relative;
-            z-index: 1;
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
-            background: rgba(196, 155, 76, 0.35);
-            border: 1px solid rgba(196, 155, 76, 0.5);
+            background: #555;
             cursor: pointer;
             transition: all 0.4s ease;
-            flex-shrink: 0;
+            border: 2px solid transparent;
+        }
+
+        .timeline-dot::after {
+            content: attr(data-label);
+            position: absolute;
+            right: 22px;
+            top: 50%;
+            transform: translateY(-50%);
+            white-space: nowrap;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: #888;
+            font-family: 'Georgia', serif;
+            opacity: 0;
+            transition: opacity 0.3s ease, color 0.3s ease;
+            pointer-events: none;
+        }
+
+        .timeline-dot:hover::after {
+            opacity: 1;
+            color: #c49b4c;
         }
 
         .timeline-dot.active {
             background: #c49b4c;
             border-color: #c49b4c;
-            box-shadow: 0 0 10px rgba(196, 155, 76, 0.6);
-            width: 12px;
-            height: 12px;
+            box-shadow: 0 0 12px rgba(196, 155, 76, 0.6);
         }
 
-        .timeline-label {
-            position: absolute;
-            right: 22px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 0.7rem;
-            letter-spacing: 1px;
-            color: #a0845c;
-            white-space: nowrap;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-            font-family: 'Georgia', serif;
-        }
-
-        .timeline-dot:hover .timeline-label,
-        .timeline-dot.active .timeline-label {
+        .timeline-dot.active::after {
             opacity: 1;
+            color: #c49b4c;
         }
 
-        /* === HERO === */
+        /* ================================================================ */
+        /* HERO */
+        /* ================================================================ */
         .hero-section {
             position: relative;
             width: 100%;
@@ -198,7 +190,9 @@
             50% { opacity: 1; }
         }
 
-        /* === STORY BLOCK === */
+        /* ================================================================ */
+        /* STORY BLOCK */
+        /* ================================================================ */
         .story-block {
             position: relative;
             height: 200vh;
@@ -276,105 +270,168 @@
             font-style: normal;
         }
 
-        /* === BOTTLE BLOCK — АНИМАЦИЯ ЭТИКЕТКИ === */
+        /* ================================================================ */
+        /* BOTTLE LABEL ANIMATION */
+        /* ================================================================ */
         .bottle-slide {
             text-align: center;
         }
 
-        .label-animation {
+        .label-anim {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 6px;
-            margin-top: 10px;
+            gap: 4px;
+            margin-top: 20px;
         }
 
-        .label-line {
+        .label-line-1,
+        .label-line-2,
+        .label-line-3,
+        .label-line-4 {
             opacity: 0;
-            transform: scaleX(0);
-            transform-origin: center;
-            transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: translateY(16px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
         }
 
-        .label-wine-name {
+        .label-line-1.visible,
+        .label-line-2.visible,
+        .label-line-3.visible,
+        .label-line-4.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .label-line-1 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-style: italic;
-            color: #f0ede8;
-            letter-spacing: 2px;
+            color: #c49b4c;
+            letter-spacing: 3px;
+            transition-delay: 0.1s;
         }
 
-        .label-rule {
-            width: 120px;
-            height: 1px;
-            background: #c49b4c;
-            margin: 4px 0;
-        }
-
-        .label-vintage {
+        .label-line-2 {
             font-family: 'Playfair Display', serif;
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 600;
             font-style: italic;
             color: #c49b4c;
             letter-spacing: 6px;
             line-height: 1;
+            transition-delay: 0.35s;
         }
 
-        /* Класс, запускающий анимацию */
-        .label-visible .label-wine-name {
-            opacity: 1;
-            transform: scaleX(1);
-            transition-delay: 0.2s;
+        .label-line-3 {
+            width: 60px;
+            height: 1px;
+            background: #c49b4c;
+            transition-delay: 0.55s;
         }
 
-        .label-visible .label-rule {
-            opacity: 1;
-            transform: scaleX(1);
-            transition-delay: 0.5s;
+        .label-line-4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #ddd;
+            letter-spacing: 2px;
+            transition-delay: 0.7s;
         }
 
-        .label-visible .label-vintage {
-            opacity: 1;
-            transform: scaleX(1);
-            transition-delay: 0.8s;
-        }
-
-        /* === WINE DATA CARD === */
-        .wine-data-card {
-            margin-top: 30px;
-            padding-top: 24px;
-            border-top: 1px solid rgba(196, 155, 76, 0.3);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px 30px;
+        /* ================================================================ */
+        /* WINE TECH CARD */
+        /* ================================================================ */
+        .wine-tech-card {
+            margin-top: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
             text-align: left;
-            font-size: 0.9rem;
-            color: #bbb;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .wine-data-card .data-label {
-            font-size: 0.7rem;
+        .tech-line {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+            font-size: 0.9rem;
+            color: #ccc;
+            font-family: 'Georgia', serif;
+            letter-spacing: 0.3px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding-bottom: 6px;
+        }
+
+        .tech-line.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .tech-line .tech-label {
+            display: inline-block;
+            min-width: 145px;
+            color: #c49b4c;
+            font-size: 0.78rem;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
+        }
+
+        /* Задержки появления строк тех-карточки */
+        .tech-line-1 { transition-delay: 0.8s; }
+        .tech-line-2 { transition-delay: 1.05s; }
+        .tech-line-3 { transition-delay: 1.3s; }
+        .tech-line-4 { transition-delay: 1.55s; }
+        .tech-line-5 { transition-delay: 1.8s; }
+
+        /* ================================================================ */
+        /* JOURNEY MAP (встроена в CTA) */
+        /* ================================================================ */
+        .journey-map {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            margin-bottom: 40px;
+        }
+
+        .journey-point {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .journey-dot-icon {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #c49b4c;
+        }
+
+        .journey-label {
+            font-size: 0.8rem;
             letter-spacing: 2px;
             color: #a0845c;
-        }
-
-        .wine-data-card .data-value {
             font-family: 'Georgia', serif;
-            color: #ddd;
+            text-transform: uppercase;
         }
 
-        .wine-notes {
-            grid-column: 1 / -1;
-            margin-top: 6px;
+        .journey-line {
+            width: 60px;
+            height: 1px;
+            background: #444;
+            margin: 0 8px 24px 8px;
         }
 
-        .wine-notes .data-label {
-            margin-bottom: 4px;
-        }
-
-        /* === CTA + FOOTER === */
+        /* ================================================================ */
+        /* CTA / FOOTER */
+        /* ================================================================ */
         .cta-section {
             position: relative;
             width: 100%;
@@ -387,13 +444,13 @@
             padding: 60px 20px;
         }
 
-        .cta-container {
-            max-width: 600px;
-            width: 100%;
+        .cta-content {
             text-align: center;
+            max-width: 520px;
+            width: 100%;
         }
 
-        .cta-container h2 {
+        .cta-content .cta-title {
             font-family: 'Playfair Display', serif;
             font-size: 2.2rem;
             font-weight: 600;
@@ -402,178 +459,156 @@
             margin-bottom: 12px;
         }
 
-        .cta-container .cta-subtitle {
-            color: #888;
-            font-size: 1rem;
+        .cta-content .cta-subtitle {
+            font-size: 1.05rem;
+            color: #aaa;
             margin-bottom: 32px;
+            line-height: 1.6;
         }
 
         .cta-form {
             display: flex;
-            gap: 10px;
-            max-width: 440px;
-            margin: 0 auto 40px;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
         }
 
-        .cta-form input {
-            flex: 1;
+        .cta-form input[type="email"] {
+            width: 100%;
+            max-width: 380px;
             padding: 14px 18px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(196, 155, 76, 0.3);
+            background: transparent;
+            border: 1px solid #555;
             color: #f0ede8;
             font-family: 'Georgia', serif;
             font-size: 1rem;
+            letter-spacing: 0.5px;
             outline: none;
             transition: border-color 0.3s;
         }
 
-        .cta-form input:focus {
+        .cta-form input[type="email"]:focus {
             border-color: #c49b4c;
         }
 
         .cta-form button {
-            padding: 14px 28px;
+            width: 100%;
+            max-width: 380px;
+            padding: 14px 0;
             background: #c49b4c;
             color: #0d0d0d;
             border: none;
             font-family: 'Georgia', serif;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             cursor: pointer;
             transition: background 0.3s;
-            text-transform: uppercase;
         }
 
         .cta-form button:hover {
-            background: #d4a85c;
+            background: #d4ae5c;
         }
 
-        .cta-success {
-            display: none;
-            color: #c49b4c;
-            font-style: italic;
-            margin-bottom: 40px;
-        }
-
-        .cta-success.show {
-            display: block;
-        }
-
-        /* Карта путешествия */
-        .journey-map {
-            margin-top: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .journey-point {
-            text-align: center;
+        .cta-form .form-note {
             font-size: 0.75rem;
-            letter-spacing: 1px;
-            color: #888;
+            color: #666;
+            margin-top: 8px;
         }
 
-        .journey-point .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #c49b4c;
-            margin: 0 auto 6px;
-        }
-
-        .journey-dash {
-            width: 50px;
-            height: 1px;
-            background: rgba(196, 155, 76, 0.4);
-            margin: 0 8px 18px;
-        }
-
-        .footer-bottom {
-            margin-top: 50px;
+        .cta-signature {
+            margin-top: 48px;
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 600;
             font-style: italic;
             color: #c49b4c;
             letter-spacing: 3px;
         }
 
-        /* === RESPONSIVE === */
+        /* ================================================================ */
+        /* RESPONSIVE */
+        /* ================================================================ */
         @media (max-width: 768px) {
             .hero-content h1 {
                 font-size: 2.4rem;
                 letter-spacing: 2px;
             }
+
             .text-slide {
                 width: 90%;
                 padding: 24px 20px;
             }
+
             .text-slide h2 {
                 font-size: 1.4rem;
             }
+
             .text-slide p {
                 font-size: 0.95rem;
             }
-            .label-vintage {
+
+            .label-line-2 {
                 font-size: 2.5rem;
             }
+
+            .tech-line {
+                font-size: 0.8rem;
+            }
+
+            .tech-line .tech-label {
+                min-width: 120px;
+                font-size: 0.7rem;
+            }
+
             .timeline-nav {
-                right: 8px;
+                right: 10px;
                 gap: 14px;
             }
+
             .timeline-dot {
-                width: 8px;
-                height: 8px;
-            }
-            .timeline-dot.active {
                 width: 10px;
                 height: 10px;
             }
-            .timeline-label {
+
+            .timeline-dot::after {
                 display: none;
             }
-            .wine-data-card {
-                grid-template-columns: 1fr;
-                gap: 8px;
-            }
-            .cta-form {
-                flex-direction: column;
-            }
+
             .lang-switcher {
                 top: 12px;
                 right: 12px;
-            }
-            .journey-dash {
-                width: 30px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== LANGUAGE SWITCHER ===== -->
+    <!-- ================================================================ -->
+    <!-- LANGUAGE SWITCHER -->
+    <!-- ================================================================ -->
     <div class="lang-switcher">
         <button id="btnEn" class="active">EN</button>
         <button id="btnRu">RU</button>
     </div>
 
-    <!-- ===== TIMELINE NAVIGATION ===== -->
+    <!-- ================================================================ -->
+    <!-- TIMELINE NAVIGATION -->
+    <!-- ================================================================ -->
     <nav class="timeline-nav" id="timelineNav">
-        <div class="timeline-line"></div>
-        <div class="timeline-dot" data-target="block1"><span class="timeline-label">1939</span></div>
-        <div class="timeline-dot" data-target="block2"><span class="timeline-label">1943</span></div>
-        <div class="timeline-dot" data-target="block3"><span class="timeline-label">1946</span></div>
-        <div class="timeline-dot" data-target="block4"><span class="timeline-label">1947</span></div>
-        <div class="timeline-dot" data-target="block5"><span class="timeline-label">1954</span></div>
-        <div class="timeline-dot" data-target="block6"><span class="timeline-label">2026</span></div>
+        <div class="timeline-dot active" data-label="1939" data-target="block1"></div>
+        <div class="timeline-dot" data-label="1943" data-target="block2"></div>
+        <div class="timeline-dot" data-label="1946" data-target="block3"></div>
+        <div class="timeline-dot" data-label="1947" data-target="block4"></div>
+        <div class="timeline-dot" data-label="1954" data-target="block5"></div>
+        <div class="timeline-dot" data-label="2026" data-target="block6"></div>
     </nav>
 
     <!-- ================================================================ -->
     <!-- HERO -->
     <!-- ================================================================ -->
-    <section class="hero-section" id="hero">
+    <div class="hero-section" id="hero">
         <div class="hero-content">
             <div class="lang-en">
                 <h1>Semko Vicci</h1>
@@ -586,12 +621,12 @@
                 <p class="scroll-hint">▼  Скрольте вниз, чтобы узнать историю  ▼</p>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- ================================================================ -->
-    <!-- БЛОК 1 -->
+    <!-- БЛОК 1: ТАРАС -->
     <!-- ================================================================ -->
-    <section class="story-block" id="block1">
+    <div class="story-block" id="block1">
         <div class="story-bg" style="background-image: url('images/taras-leaving-1939.jpeg');"></div>
         <div class="text-track">
             <div class="text-slide">
@@ -599,24 +634,24 @@
                     <span class="year-badge">1939 · Western Ukraine</span>
                     <h2>The land he had to leave behind</h2>
                     <p>
-                        Taras Semko knew his land the way a man knows his mother's face. Every furrow on his small farm near Ternopil had been shaped by his hands. But history doesn't knock before it enters. After Western Ukraine was annexed by the Soviet Union, Taras was branded a <em>kulak</em> — his hard work suddenly a mark against him. With no future in the collective farms and the threat of arrest looming, he made the hardest decision of his life: to walk away. Not from the soil — soil stays in a man's blood — but from a place where that soil was no longer his. Through Kraków, through strange cities, through the chaos of war, he drifted south.
+                        Taras Semko knew his land the way a man knows his mother's face. Every furrow on his small farm near Ternopil had been shaped by his hands. But history doesn't knock before it enters. After Western Ukraine was annexed by the Soviet Union, Taras was branded a <em>kulak</em> — his hard work suddenly a mark against him. With no future in the collective farms and the threat of arrest looming, he made the hardest decision of his life: to walk away. Not from the soil — soil stays in a man's blood — but from a place where that soil was no longer his. Through Kraków, through strange cities, through the chaos of war, he drifted south. Somewhere warm, he'd heard. Somewhere a man could start again.
                     </p>
                 </div>
                 <div class="lang-ru lang-hidden">
                     <span class="year-badge">1939 · Западная Украина</span>
                     <h2>Земля, которую пришлось оставить</h2>
                     <p>
-                        Тарас Семко знал свою землю, как знают лицо матери. Каждая борозда на его хуторе под Тернополем была пройдена его руками. Но большая политика ворвалась без стука. После присоединения Западной Украины к СССР его объявили «кулаком». Не видя будущего в колхозе и опасаясь ареста, он принял решение уйти. Не от земли — земля всегда с ним. Уйти оттуда, где эта земля перестала быть своей. Через Краков, чужие города, войну — он двинулся на юг.
+                        Тарас Семко знал свою землю, как знают лицо матери. Каждая борозда на его хуторе под Тернополем была пройдена его руками. Но большая политика ворвалась в эту тихую жизнь без стука. После присоединения Западной Украины к СССР его объявили «кулаком» — тем, чьё трудолюбие стало клеймом. Не видя будущего в колхозе и опасаясь ареста, он принял решение, которое далось ему тяжелее всего: уйти. Не от земли — земля всегда с ним. Уйти оттуда, где эта земля перестала быть своей. Через Краков, через чужие города, через войну — он двинулся на юг, туда, где, как говорили, ещё можно начать всё заново.
                     </p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- ================================================================ -->
-    <!-- БЛОК 2 -->
+    <!-- БЛОК 2: ЭНЦО -->
     <!-- ================================================================ -->
-    <section class="story-block" id="block2">
+    <div class="story-block" id="block2">
         <div class="story-bg" style="background-image: url('images/enzo-tuscany-1943.jpeg');"></div>
         <div class="text-track">
             <div class="text-slide">
@@ -624,24 +659,24 @@
                     <span class="year-badge">1943 · Tuscany, Italy</span>
                     <h2>Ashes of the family vine</h2>
                     <p>
-                        Enzo Vicci was born with the smell of fermenting must in his cradle. His family had made wine in the Chianti hills for six generations. But war doesn't spare the vine. His father and elder brother were killed. The century-old vineyards were trampled. Enzo was left with nothing except the memory in his hands and one treasure: a handful of Sangiovese cuttings, wrapped in damp cloth. He told himself: <em>the Vicci name doesn't end here.</em> At the port of Genoa he was looking for a new Tuscany, somewhere across the ocean.
+                        Enzo Vicci was born with the smell of fermenting must in his cradle. His family had made wine in the Chianti hills for six generations — long enough that the vines practically knew their names. But war doesn't spare the vine. His father and elder brother were killed. The century-old vineyards were trampled, the family home requisitioned. Enzo was left with nothing except the memory in his hands and one treasure: a handful of Sangiovese cuttings, wrapped in damp cloth, pressed against his chest. He told himself: <em>the Vicci name doesn't end here.</em> At the port of Genoa he wasn't just looking for a ship. He was looking for a new Tuscany, somewhere across the ocean. Word had reached him about the fertile valleys of Australia. It sounded like a promise.
                     </p>
                 </div>
                 <div class="lang-ru lang-hidden">
                     <span class="year-badge">1943 · Тоскана, Италия</span>
                     <h2>Пепел фамильных лоз</h2>
                     <p>
-                        Энцо Виччи родился с запахом виноградного сусла в колыбели. Их семья делала вино в Кьянти шесть поколений. Но война не щадит лозу. Отец и брат погибли. Вековые виноградники вытоптаны. У Энцо осталась лишь память рук и сокровище: горсть черенков Санджовезе в холстине. «Виччи не заканчиваются здесь». В порту Генуи он искал новую Тоскану за океаном.
+                        Энцо Виччи родился с запахом виноградного сусла в колыбели. Их семья делала вино в Кьянти на протяжении шести поколений. Но война не щадит даже лозу. Отец и старший брат погибли. Вековые виноградники вытоптаны, дом реквизирован. У Энцо не осталось ничего, кроме памяти рук и одного сокровища: горсти черенков фамильного Санджовезе, бережно завёрнутых во влажную холстину. Он сказал себе: «Виччи не заканчиваются здесь». В порту Генуи он искал не просто корабль — он искал новую Тоскану за океаном. Слухи о плодородных долинах Австралии звучали как обещание.
                     </p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- ================================================================ -->
-    <!-- БЛОК 3 -->
+    <!-- БЛОК 3: ПОРТ НЕАПОЛЯ -->
     <!-- ================================================================ -->
-    <section class="story-block" id="block3">
+    <div class="story-block" id="block3">
         <div class="story-bg" style="background-image: url('images/naples-port-1946.jpeg');"></div>
         <div class="text-track">
             <div class="text-slide">
@@ -649,24 +684,24 @@
                     <span class="year-badge">1946 · Port of Naples</span>
                     <h2>A handshake that changed everything</h2>
                     <p>
-                        Post-war Naples was a madhouse. Taras, stranded in Italy, was working the docks. Enzo was pushing towards the gangway of a ship bound for Sydney when a thief lunged for his suitcase. Taras didn't think — he moved. A shoulder, a scuffle, and the suitcase was back. Enzo, breathing hard, said in broken English: <em>"You saved my future. Come with me. I need hands like yours."</em> A Ukrainian who spoke no Italian and an Italian who spoke no Ukrainian boarded the ship together. Ahead lay Australia.
+                        Post-war Naples was a madhouse. Taras, stranded in Italy by the conflict, was working the docks, still dreaming of a patch of land to call his own. Enzo was pushing towards the gangway of a ship bound for Sydney when a thief lunged for his suitcase — the one carrying the precious cuttings. Taras didn't think. He just moved. A shoulder to the ribs, a brief scuffle, and the suitcase was back in its owner's hands. Enzo, breathing hard, looked at this broad-shouldered stranger and said in broken English: <em>"You saved my future. Come with me. I need hands like yours."</em> And just like that, a Ukrainian who spoke no Italian and an Italian who spoke not a word of Ukrainian boarded the ship together. Ahead lay Australia.
                     </p>
                 </div>
                 <div class="lang-ru lang-hidden">
                     <span class="year-badge">1946 · Порт Неаполя</span>
                     <h2>Рукопожатие, изменившее всё</h2>
                     <p>
-                        Послевоенный Неаполь кипел. Тарас работал в доках. Энцо пробивался к трапу корабля до Сиднея, когда вор схватил его чемодан с черенками. Тарас бросился наперерез — удар, схватка, чемодан возвращён. «Ты спас моё будущее. Поехали со мной». Украинец без итальянского и итальянец без украинского поднялись на борт. Впереди была Австралия.
+                        Послевоенный Неаполь кипел хаосом. Тарас, застрявший в Италии из-за войны, подрабатывал в доках, всё ещё мечтая о клочке земли. Энцо пробивался к трапу корабля, идущего в Сидней, когда какой-то воришка попытался выхватить его чемодан — тот самый, с драгоценными черенками. Тарас, не раздумывая, бросился наперерез. Удар плечом, короткая схватка — и чемодан возвращён хозяину. Энцо, тяжело дыша, посмотрел на этого широкоплечего чужака и сказал на ломаном английском: «Ты спас моё будущее. Поехали со мной — мне нужны такие руки». Так украинец, не знавший итальянского, и итальянец, не знавший ни слова по-украински, поднялись на борт. Впереди была Австралия.
                     </p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- ================================================================ -->
-    <!-- БЛОК 4 -->
+    <!-- БЛОК 4: ДОЛИНА ХАНТЕР -->
     <!-- ================================================================ -->
-    <section class="story-block" id="block4">
+    <div class="story-block" id="block4">
         <div class="story-bg" style="background-image: url('images/hunter-valley-1948.jpeg');"></div>
         <div class="text-track">
             <div class="text-slide">
@@ -674,24 +709,24 @@
                     <span class="year-badge">1947–1950 · Hunter Valley, NSW</span>
                     <h2>Two madmen on a bare paddock</h2>
                     <p>
-                        The block Enzo found was modest — five acres of stony soil and a dilapidated shed. But poor soil stresses the vine, and a stressed vine makes bloody good wine. Taras rolled up his sleeves. He cleared scrub, hauled rocks, scrubbed barrels until they gleamed. The locals called them <em>"the two madmen"</em> — the Italian who talked to his vines and the Ukrainian who worked harder than three men. They just kept going. They believed.
+                        The block Enzo found in the Hunter Valley was modest — five acres of stony, clay-sand soil, a dilapidated shed, and no promises. But Enzo's instinct told him this was the spot. Poor soil stresses the vine, and a stressed vine makes bloody good wine. Taras just rolled up his sleeves. He cleared scrub, hauled rocks, scrubbed barrels until they gleamed, working from sunrise to sunset with the same quiet fury his ancestors had poured into the black earth of Ukraine. The locals called them <em>"the two madmen"</em> — the Italian who talked to his vines and the Ukrainian who worked harder than three men put together. But the madmen just kept going. They believed.
                     </p>
                 </div>
                 <div class="lang-ru lang-hidden">
                     <span class="year-badge">1947–1950 · Долина Хантер</span>
                     <h2>Двое безумцев на голой земле</h2>
                     <p>
-                        Участок — пять акров камней и старый сарай. Но бедная почва даст великое вино. Тарас закатал рукава — корчевал, таскал камни, чистил бочки. Местные назвали их «двое безумцев»: итальянец говорит с лозой, украинец пашет за троих. Они просто верили.
+                        Участок, который Энцо присмотрел в долине Хантер, был скромным — каменистая почва, старый сарай, пять акров несбывшихся надежд. Но Энцо чутьём винодела понял: именно здесь, на бедных глинисто-песчаных землях, лоза будет страдать — а значит, родит великое вино. Тарас же просто закатал рукава. Он корчевал пни, таскал камни, чистил бочки до хруста, работая от рассвета до заката с той же молчаливой яростью, с какой его предки обрабатывали украинский чернозём. Местные называли их «The Two Madmen» — двое безумцев: итальянец разговаривал с лозой, а украинец вкалывал за троих. А они просто верили.
                     </p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- ================================================================ -->
-    <!-- БЛОК 5 -->
+    <!-- БЛОК 5: ПЕРВЫЙ ТОСТ -->
     <!-- ================================================================ -->
-    <section class="story-block" id="block5">
+    <div class="story-block" id="block5">
         <div class="story-bg" style="background-image: url('images/first-toast-1954.jpeg');"></div>
         <div class="text-track">
             <div class="text-slide">
@@ -699,123 +734,301 @@
                     <span class="year-badge">1954 · The first vintage</span>
                     <h2>Semko + Vicci = Semko Vicci</h2>
                     <p>
-                        The 1954 harvest was the one. Sangiovese on Australian rootstock yielded grapes of astonishing depth. Enzo worked his alchemy; Taras guarded every barrel. One spring evening they cracked a trial bottle — bold, powerful, a Tuscan heart in a Hunter Valley body. Enzo wanted <em>Vicci</em>. Taras wanted something Slavic. They argued until Enzo laughed: <em>"We're both nobody here. Together we made this. Let the label carry both names."</em> And so <strong>Semko Vicci</strong> was born.
+                        The 1954 harvest was the one. The fruit hit that elusive balance — Sangiovese, grafted onto Australian rootstock, yielded grapes of astonishing depth. Enzo worked his alchemy in the cellar; Taras guarded every barrel like a watchdog. And then, one spring evening after the crush, they cracked open a trial bottle. The wine was bold, powerful, with a Tuscan heart and a Hunter Valley body. It deserved a name. Enzo wanted to call it <em>Vicci</em>. Taras wanted something Slavic. They argued late into the night, until Enzo laughed and said: <em>"We're both nobody here. But together we made this. Let the label carry both names."</em> And so <strong>Semko Vicci</strong> was born — not just a brand, but a pact sealed over a handshake and a glass.
                     </p>
                 </div>
                 <div class="lang-ru lang-hidden">
                     <span class="year-badge">1954 · Первый урожай</span>
                     <h2>Семко + Виччи = Semko Vicci</h2>
                     <p>
-                        Урожай 1954 — тот самый. Санджовезе на австралийском подвое. Энцо колдовал, Тарас стерёг бочки. Весной открыли пробную бутылку — мощное, с сердцем Тосканы и телом Хантер. Энцо хотел «Vicci», Тарас — славянское. Спорили, пока Энцо не засмеялся: «Мы здесь никто. Но вместе создали это. Пусть на этикетке будут оба имени». Так родился <strong>Semko Vicci</strong>.
+                        Урожай 1954 года стал легендарным. Виноград выдал идеальный баланс — Санджовезе, привитое на австралийский подвой, дало ягоду невиданной глубины. Энцо колдовал в погребе, Тарас стерёг каждую бочку. И вот, одной австралийской весной после сбора, они открыли пробную бутылку. Вино было дерзким, мощным, с сердцем Тосканы и телом Хантер Вэлли. Оно заслуживало имени. Энцо хотел назвать его «Vicci», Тарас — что-то славянское. Они спорили, пока не рассмеялись: «Мы оба здесь никто. Но вместе мы создали это. Пусть на этикетке стоят оба имени». Так родилось «Semko Vicci» — не просто марка, а обещание, скреплённое рукопожатием навсегда.
                     </p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- ================================================================ -->
-    <!-- БЛОК 6 — БУТЫЛКА 2026 -->
+    <!-- БЛОК 6: БУТЫЛКА 2026 -->
     <!-- ================================================================ -->
-    <section class="story-block" id="block6">
+    <div class="story-block" id="block6">
         <div class="story-bg" style="background-image: url('images/bottle-2026.jpeg'); background-position: center 30%;"></div>
         <div class="text-track">
             <div class="text-slide bottle-slide" id="bottleSlide">
+                <!-- EN -->
                 <div class="lang-en">
                     <span class="year-badge">Present day</span>
                     <h2>The story lives in every glass</h2>
                     <p>
-                        Seven decades on, two names are still burned into our barrels. Every bottle of Semko Vicci carries the same truth: great wine happens when two strong cultures, two different fates, and two pairs of working hands come together under the Australian sun.
+                        Seven decades on, two names are still burned into our barrels. The cellar is still spotless — just the way Taras kept it. The vines are still treated with the reverence Enzo taught us. Every bottle of Semko Vicci carries the same truth: great wine happens when two strong cultures, two different fates, and two pairs of working hands come together under the Australian sun.
                     </p>
-                    <div class="label-animation" id="labelAnim">
-                        <div class="label-wine-name label-line">Semko Vicci · Shiraz-Sangiovese</div>
-                        <div class="label-rule label-line"></div>
-                        <div class="label-vintage label-line">2026</div>
+
+                    <!-- Техническая карточка вина -->
+                    <div class="wine-tech-card">
+                        <div class="tech-line tech-line-1"><span class="tech-label">Composition</span> 60% Shiraz, 40% Sangiovese</div>
+                        <div class="tech-line tech-line-2"><span class="tech-label">Maturation</span> 14 months in French oak</div>
+                        <div class="tech-line tech-line-3"><span class="tech-label">Alcohol</span> 14.2%</div>
+                        <div class="tech-line tech-line-4"><span class="tech-label">Production</span> Limited — 600 bottles</div>
+                        <div class="tech-line tech-line-5"><span class="tech-label">Tasting notes</span> Blackberry, tobacco, white pepper, leather</div>
                     </div>
-                    <div class="wine-data-card">
-                        <div><div class="data-label">Blend</div><div class="data-value">60% Shiraz, 40% Sangiovese</div></div>
-                        <div><div class="data-label">Oak</div><div class="data-value">14 months, French oak</div></div>
-                        <div><div class="data-label">Alcohol</div><div class="data-value">14.2% vol</div></div>
-                        <div><div class="data-label">Production</div><div class="data-value">Limited — 600 bottles</div></div>
-                        <div class="wine-notes"><div class="data-label">Tasting notes</div><div class="data-value">Blackberry, tobacco, white pepper, leather, long mineral finish.</div></div>
+
+                    <div class="label-anim" id="labelAnimEn">
+                        <div class="label-line-1">Semko Vicci</div>
+                        <div class="label-line-2">2026</div>
+                        <div class="label-line-3"></div>
+                        <div class="label-line-4">Shiraz-Sangiovese</div>
                     </div>
                 </div>
+
+                <!-- RU -->
                 <div class="lang-ru lang-hidden">
                     <span class="year-badge">Наши дни</span>
-                    <h2>История в каждом бокале</h2>
+                    <h2>История продолжается в каждом бокале</h2>
                     <p>
-                        Семь десятилетий спустя два имени всё ещё выжжены на бочках. Каждая бутылка Semko Vicci — напоминание: великое вино рождается, когда встречаются две культуры, две судьбы и две пары рабочих рук под австралийским солнцем.
+                        Семь десятилетий спустя на наших бочках всё так же выжжены два имени. В погребе до сих пор чисто так, как умел делать только Тарас, и так же трепетно мы относимся к лозе, как Энцо. Каждая бутылка Semko Vicci — это напоминание: настоящее вино получается, когда встречаются две сильные культуры, две разные судьбы и две пары рук, не боящихся работы.
                     </p>
-                    <div class="label-animation">
-                        <div class="label-wine-name label-line">Semko Vicci · Shiraz-Sangiovese</div>
-                        <div class="label-rule label-line"></div>
-                        <div class="label-vintage label-line">2026</div>
+
+                    <!-- Техническая карточка вина (RU) -->
+                    <div class="wine-tech-card">
+                        <div class="tech-line tech-line-1"><span class="tech-label">Состав</span> 60% Shiraz, 40% Sangiovese</div>
+                        <div class="tech-line tech-line-2"><span class="tech-label">Выдержка</span> 14 месяцев во французском дубе</div>
+                        <div class="tech-line tech-line-3"><span class="tech-label">Алкоголь</span> 14.2%</div>
+                        <div class="tech-line tech-line-4"><span class="tech-label">Тираж</span> Лимитированный — 600 бутылок</div>
+                        <div class="tech-line tech-line-5"><span class="tech-label">Дегустационные заметки</span> Ежевика, табак, белый перец, кожа</div>
                     </div>
-                    <div class="wine-data-card">
-                        <div><div class="data-label">Состав</div><div class="data-value">60% Shiraz, 40% Sangiovese</div></div>
-                        <div><div class="data-label">Выдержка</div><div class="data-value">14 мес., франц. дуб</div></div>
-                        <div><div class="data-label">Алкоголь</div><div class="data-value">14.2% об.</div></div>
-                        <div><div class="data-label">Тираж</div><div class="data-value">Лимит — 600 бут.</div></div>
-                        <div class="wine-notes"><div class="data-label">Дегустационные заметки</div><div class="data-value">Ежевика, табак, белый перец, кожа, долгое минеральное послевкусие.</div></div>
+
+                    <div class="label-anim" id="labelAnimRu">
+                        <div class="label-line-1">Semko Vicci</div>
+                        <div class="label-line-2">2026</div>
+                        <div class="label-line-3"></div>
+                        <div class="label-line-4">Shiraz-Sangiovese</div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- ================================================================ -->
-    <!-- CTA + FOOTER -->
+    <!-- CTA / FOOTER -->
     <!-- ================================================================ -->
-    <section class="cta-section" id="cta">
-        <div class="cta-container">
-            <div class="lang-en">
-                <h2>Be the first to know</h2>
-                <p class="cta-subtitle">The first vintage is in the making. Sign up and we'll let you know when the bottles are ready.</p>
-            </div>
-            <div class="lang-ru lang-hidden">
-                <h2>Узнайте первыми</h2>
-                <p class="cta-subtitle">Первый винтаж в процессе. Оставьте почту — сообщим, когда бутылки будут готовы.</p>
-            </div>
-            <form class="cta-form" id="ctaForm">
-                <input type="email" id="ctaEmail" placeholder="your@email.com" required>
-                <button type="submit">Subscribe</button>
-            </form>
-            <div class="cta-success" id="ctaSuccess">
-                <span class="lang-en">Thank you. We'll be in touch.</span>
-                <span class="lang-ru lang-hidden">Спасибо. Мы свяжемся с вами.</span>
-            </div>
+    <div class="cta-section" id="cta">
+        <div class="cta-content">
             <!-- Карта путешествия -->
             <div class="journey-map">
-                <div class="journey-point"><div class="dot"></div>Ukraine</div>
-                <div class="journey-dash"></div>
-                <div class="journey-point"><div class="dot"></div>Italy</div>
-                <div class="journey-dash"></div>
-                <div class="journey-point"><div class="dot"></div>Australia</div>
+                <div class="journey-point">
+                    <div class="journey-dot-icon"></div>
+                    <span class="journey-label lang-en">Ukraine</span>
+                    <span class="journey-label lang-ru lang-hidden">Украина</span>
+                </div>
+                <div class="journey-line"></div>
+                <div class="journey-point">
+                    <div class="journey-dot-icon"></div>
+                    <span class="journey-label lang-en">Italy</span>
+                    <span class="journey-label lang-ru lang-hidden">Италия</span>
+                </div>
+                <div class="journey-line"></div>
+                <div class="journey-point">
+                    <div class="journey-dot-icon"></div>
+                    <span class="journey-label lang-en">Australia</span>
+                    <span class="journey-label lang-ru lang-hidden">Австралия</span>
+                </div>
             </div>
-            <div class="footer-bottom">Semko Vicci</div>
+
+            <!-- EN -->
+            <div class="lang-en">
+                <h2 class="cta-title">Be the first to know</h2>
+                <p class="cta-subtitle">
+                    Our story began in 1954. The next chapter is being written right now in the Hunter Valley. Sign up and we'll let you know when the next vintage is ready.
+                </p>
+            </div>
+            <!-- RU -->
+            <div class="lang-ru lang-hidden">
+                <h2 class="cta-title">Узнайте первыми</h2>
+                <p class="cta-subtitle">
+                    Наша история началась в 1954 году. Следующая глава пишется прямо сейчас в долине Хантер. Подпишитесь, и мы сообщим, когда следующий винтаж будет готов.
+                </p>
+            </div>
+
+            <!-- Форма -->
+            <form class="cta-form" id="subscribeForm">
+                <input type="email" id="emailInput" placeholder="your@email.com" required>
+                <button type="submit">
+                    <span class="lang-en">Sign Up</span>
+                    <span class="lang-ru lang-hidden">Подписаться</span>
+                </button>
+                <p class="form-note">
+                    <span class="lang-en">We respect your inbox. No spam, just the good stuff.</span>
+                    <span class="lang-ru lang-hidden">Никакого спама. Только хорошие новости.</span>
+                </p>
+            </form>
+
+            <div class="cta-signature">Semko Vicci</div>
         </div>
-    </section>
+    </div>
 
     <!-- ================================================================ -->
     <!-- SCRIPTS -->
     <!-- ================================================================ -->
     <script>
-        // ===== 1. LANGUAGE SWITCHER =====
+        // ===== LANGUAGE SWITCHER =====
         const btnEn = document.getElementById('btnEn');
         const btnRu = document.getElementById('btnRu');
-        const allEn = document.querySelectorAll('.lang-en');
-        const allRu = document.querySelectorAll('.lang-ru');
 
-        btnEn.addEventListener('click', function() {
-            btnEn.classList.add('active');
+        function switchLang(lang) {
+            btnEn.classList.remove('active');
             btnRu.classList.remove('active');
-            allEn.forEach(el => el.classList.remove('lang-hidden'));
-            allRu.forEach(el => el.classList.add('lang-hidden'));
-            document.documentElement.lang = 'en-AU';
+
+            if (lang === 'en') {
+                btnEn.classList.add('active');
+                document.querySelectorAll('.lang-en').forEach(el => el.classList.remove('lang-hidden'));
+                document.querySelectorAll('.lang-ru').forEach(el => el.classList.add('lang-hidden'));
+                document.documentElement.lang = 'en-AU';
+            } else {
+                btnRu.classList.add('active');
+                document.querySelectorAll('.lang-ru').forEach(el => el.classList.remove('lang-hidden'));
+                document.querySelectorAll('.lang-en').forEach(el => el.classList.add('lang-hidden'));
+                document.documentElement.lang = 'ru';
+            }
+        }
+
+        btnEn.addEventListener('click', () => switchLang('en'));
+        btnRu.addEventListener('click', () => switchLang('ru'));
+
+        // ===== TIMELINE NAVIGATION =====
+        const dots = document.querySelectorAll('.timeline-dot');
+        const blocks = document.querySelectorAll('.story-block');
+        const hero = document.getElementById('hero');
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const targetId = dot.getAttribute('data-target');
+                const target = document.getElementById(targetId);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
         });
 
-        btnRu.addEventListener('click', function() {
-            btnRu.classList.add('active');
-            btnEn.classList.remove('active');
-            allRu.forEach(el => el.classList.remove('lang-hidden'));
-            allEn.forEach(el => el.classList.add('lang-hidden'));
-           
+        function updateActiveDot() {
+            let activeBlockId = null;
+
+            const heroRect = hero.getBoundingClientRect();
+            if (heroRect.bottom > window.innerHeight * 0.4) {
+                activeBlockId = 'block1';
+            } else {
+                blocks.forEach(block => {
+                    const rect = block.getBoundingClientRect();
+                    if (rect.top < window.innerHeight * 0.55 && rect.bottom > window.innerHeight * 0.3) {
+                        activeBlockId = block.id;
+                    }
+                });
+            }
+
+            dots.forEach(dot => {
+                const target = dot.getAttribute('data-target');
+                if (target === activeBlockId) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveDot);
+        updateActiveDot();
+
+        // ===== ЗАТЕМНЕНИЕ ФОНА ПРИ ПРОЛЁТЕ ТЕКСТА =====
+        const storyBlocks = document.querySelectorAll('.story-block');
+
+        storyBlocks.forEach(block => {
+            const bg = block.querySelector('.story-bg');
+            const slide = block.querySelector('.text-slide');
+
+            if (!bg || !slide) return;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        bg.style.setProperty('--dim-bg', 'rgba(0,0,0,0.6)');
+                    } else {
+                        bg.style.setProperty('--dim-bg', 'rgba(0,0,0,0)');
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            observer.observe(slide);
+
+            const styleEl = document.createElement('style');
+            styleEl.textContent = `
+                #${block.id} .story-bg::after {
+                    background: var(--dim-bg, rgba(0,0,0,0));
+                    transition: background 0.5s ease;
+                }
+            `;
+            document.head.appendChild(styleEl);
+        });
+
+        // ===== АНИМАЦИЯ ЭТИКЕТКИ + ТЕХ-КАРТОЧКИ =====
+        const bottleSlide = document.getElementById('bottleSlide');
+
+        if (bottleSlide) {
+            const labelObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Этикетка
+                        const visibleLabelAnim = bottleSlide.querySelector('.label-anim:not(.lang-hidden)');
+                        if (visibleLabelAnim) {
+                            const lines = visibleLabelAnim.querySelectorAll(
+                                '.label-line-1, .label-line-2, .label-line-3, .label-line-4'
+                            );
+                            lines.forEach(line => line.classList.add('visible'));
+                        }
+
+                        // Тех-карточка
+                        const visibleTechCard = bottleSlide.querySelector('.wine-tech-card:not(.lang-hidden)');
+                        if (visibleTechCard) {
+                            const techLines = visibleTechCard.querySelectorAll('.tech-line');
+                            techLines.forEach(line => line.classList.add('visible'));
+                        }
+                    } else {
+                        // Сброс этикетки
+                        const allLabelLines = bottleSlide.querySelectorAll(
+                            '.label-line-1, .label-line-2, .label-line-3, .label-line-4'
+                        );
+                        allLabelLines.forEach(line => line.classList.remove('visible'));
+
+                        // Сброс тех-карточки
+                        const allTechLines = bottleSlide.querySelectorAll('.tech-line');
+                        allTechLines.forEach(line => line.classList.remove('visible'));
+                    }
+                });
+            }, { threshold: 0.4 });
+
+            labelObserver.observe(bottleSlide);
+        }
+
+        // ===== ФОРМА ПОДПИСКИ =====
+        const form = document.getElementById('subscribeForm');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value.trim();
+            if (email) {
+                const subs = JSON.parse(localStorage.getItem('semko_subscribers') || '[]');
+                subs.push({ email, date: new Date().toISOString() });
+                localStorage.setItem('semko_subscribers', JSON.stringify(subs));
+
+                const btn = form.querySelector('button');
+                const originalHTML = btn.innerHTML;
+                btn.textContent = '✓ Done!';
+                btn.style.background = '#2e7d32';
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.style.background = '#c49b4c';
+                }, 2500);
+                form.reset();
+            }
+        });
+    </script>
+
+</body>
+</html>
