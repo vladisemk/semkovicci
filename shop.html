@@ -17,22 +17,17 @@
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             font-family: 'Georgia', 'Times New Roman', serif;
-            background-color: #0d0d0d;
-            color: #f0ede8;
-            line-height: 1.8;
-            min-height: 100vh;
+            background-color: #0d0d0d; color: #f0ede8;
+            line-height: 1.8; min-height: 100vh;
         }
-
         .top-bar {
             position: fixed; top: 24px; left: 0; right: 0; z-index: 1001;
             display: flex; justify-content: space-between; align-items: center;
             padding: 0 28px; pointer-events: none;
         }
         .top-bar > * { pointer-events: auto; }
-
         .btn-back {
             background: rgba(10,10,10,0.7); color: #a0845c;
             border: 1px solid #a0845c; padding: 6px 14px;
@@ -42,7 +37,6 @@
             text-decoration: none; display: inline-block;
         }
         .btn-back:hover { background: #c49b4c; color: #0d0d0d; border-color: #c49b4c; }
-
         .lang-switcher { display: flex; gap: 8px; }
         .lang-switcher button {
             background: rgba(10,10,10,0.7); color: #a0845c;
@@ -55,7 +49,7 @@
         .lang-hidden { display: none !important; }
 
         .shop-page { padding: 120px 20px 80px; max-width: 1100px; margin: 0 auto; }
-        .shop-title { text-align: center; margin-bottom: 60px; }
+        .shop-title { text-align: center; margin-bottom: 20px; }
         .shop-title h1 {
             font-family: 'Playfair Display', serif; font-size: 2.8rem;
             font-weight: 600; font-style: italic; color: #c49b4c;
@@ -66,19 +60,34 @@
             font-style: italic; color: #888; letter-spacing: 1px;
         }
 
+        /* ===== EXPERT QUOTE ===== */
+        .expert-quote {
+            text-align: center; max-width: 600px; margin: 0 auto 50px auto;
+            padding: 0 20px;
+        }
+        .expert-quote blockquote {
+            font-family: 'Playfair Display', serif; font-size: 1.15rem;
+            font-style: italic; color: #bbb; line-height: 1.7;
+            border: none; padding: 0;
+        }
+        .expert-quote blockquote::before { content: '« '; color: #c49b4c; }
+        .expert-quote blockquote::after { content: ' »'; color: #c49b4c; }
+        .expert-quote .expert-name {
+            font-size: 0.8rem; color: #a0845c; letter-spacing: 1.5px;
+            margin-top: 12px; font-style: normal; font-family: 'Georgia', serif;
+        }
+
         .wine-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
         }
-
         .wine-card {
             background: rgba(20,20,20,0.8); border: 1px solid #222;
             padding: 0; display: flex; flex-direction: column;
             transition: border-color 0.3s; overflow: hidden;
         }
         .wine-card:hover { border-color: #c49b4c; }
-
         .card-image {
             width: 100%; height: 480px; display: flex;
             justify-content: center; align-items: center;
@@ -120,9 +129,11 @@
         }
         .lightbox-close:hover { background: rgba(196,155,76,0.3); }
 
-        .card-body {
-            padding: 28px 24px 32px; display: flex;
-            flex-direction: column; flex-grow: 1;
+        .card-body { padding: 28px 24px 32px; display: flex; flex-direction: column; flex-grow: 1; }
+        .wine-card .card-chapter {
+            font-family: 'Playfair Display', serif; font-size: 0.85rem;
+            font-style: italic; color: #a0845c; letter-spacing: 2px;
+            margin-bottom: 8px;
         }
         .wine-card .card-status {
             font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
@@ -184,6 +195,7 @@
         @media (max-width: 768px) {
             .top-bar { padding: 0 12px; top: 12px; }
             .shop-title h1 { font-size: 2rem; }
+            .expert-quote blockquote { font-size: 1rem; }
             .wine-grid { grid-template-columns: 1fr; }
             .card-image { height: 380px; padding: 10px 12px; }
             .card-body { padding: 20px 18px 24px; }
@@ -222,6 +234,18 @@
             </div>
         </div>
 
+        <!-- Экспертная цитата -->
+        <div class="expert-quote">
+            <div class="lang-en">
+                <blockquote>A tiny Hunter Valley secret. Only a few hundred bottles, but every vintage sells out before it hits the shelf. One to watch.</blockquote>
+                <p class="expert-name">— Mark Williamson, wine judge, Sydney Royal Wine Show</p>
+            </div>
+            <div class="lang-it lang-hidden">
+                <blockquote>Un piccolo segreto della Hunter Valley. Solo poche centinaia di bottiglie, ma ogni annata si esaurisce prima di arrivare sugli scaffali. Da tenere d'occhio.</blockquote>
+                <p class="expert-name">— Mark Williamson, giudice enologico, Sydney Royal Wine Show</p>
+            </div>
+        </div>
+
         <div class="wine-grid">
 
             <!-- 2026 -->
@@ -230,6 +254,10 @@
                     <img src="images/bottle2026.jpeg" alt="Semko Vicci 2026">
                 </div>
                 <div class="card-body">
+                    <div class="card-chapter">
+                        <span class="lang-en">Chapter II · New Soil</span>
+                        <span class="lang-it lang-hidden">Capitolo II · Terra Nuova</span>
+                    </div>
                     <div class="card-status status-available">
                         <span class="lang-en">Available soon</span>
                         <span class="lang-it lang-hidden">Disponibile a breve</span>
@@ -260,6 +288,10 @@
                     <img src="images/bottle2025.jpeg" alt="Semko Vicci 2025" class="sold-out-img">
                 </div>
                 <div class="card-body">
+                    <div class="card-chapter">
+                        <span class="lang-en">Chapter I · The Reunion</span>
+                        <span class="lang-it lang-hidden">Capitolo I · La Riunione</span>
+                    </div>
                     <div class="card-status status-sold">
                         <span class="lang-en">Sold Out</span>
                         <span class="lang-it lang-hidden">Esaurito</span>
@@ -290,6 +322,10 @@
                     <img src="images/bottlelimited.jpeg" alt="Semko Vicci Limited Reserve">
                 </div>
                 <div class="card-body">
+                    <div class="card-chapter">
+                        <span class="lang-en">Chapter III · The Pact</span>
+                        <span class="lang-it lang-hidden">Capitolo III · Il Patto</span>
+                    </div>
                     <div class="card-status status-available">
                         <span class="lang-en">Available soon</span>
                         <span class="lang-it lang-hidden">Disponibile a breve</span>
@@ -330,9 +366,7 @@
         const btnIt = document.getElementById('btnIt');
 
         function switchLang(lang) {
-            btnEn.classList.remove('active');
-            btnIt.classList.remove('active');
-
+            btnEn.classList.remove('active'); btnIt.classList.remove('active');
             if (lang === 'en') {
                 btnEn.classList.add('active');
                 document.querySelectorAll('.lang-en').forEach(el => el.classList.remove('lang-hidden'));
@@ -345,63 +379,40 @@
                 document.documentElement.lang = 'it';
             }
         }
-
         btnEn.addEventListener('click', () => switchLang('en'));
         btnIt.addEventListener('click', () => switchLang('it'));
 
-        // Lightbox
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightboxImg');
         const lightboxClose = document.getElementById('lightboxClose');
-
         document.querySelectorAll('.card-image').forEach(cardImage => {
             cardImage.addEventListener('click', () => {
                 const fullSrc = cardImage.getAttribute('data-full');
-                if (fullSrc) {
-                    lightboxImg.src = fullSrc;
-                    lightbox.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                }
+                if (fullSrc) { lightboxImg.src = fullSrc; lightbox.classList.add('active'); document.body.style.overflow = 'hidden'; }
             });
         });
-
-        function closeLightbox() {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = '';
-            setTimeout(() => { lightboxImg.src = ''; }, 300);
-        }
-
+        function closeLightbox() { lightbox.classList.remove('active'); document.body.style.overflow = ''; setTimeout(() => { lightboxImg.src = ''; }, 300); }
         lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
         lightboxClose.addEventListener('click', closeLightbox);
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox(); });
 
-        // Notify Me
         document.querySelectorAll('.btn-notify').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const wine = btn.getAttribute('data-wine');
                 const isEn = document.querySelector('.lang-en:not(.lang-hidden)');
-                const email = prompt(
-                    isEn
-                        ? 'Enter your email to be notified when ' + wine + ' is available:'
-                        : 'Inserisci la tua email per essere avvisato quando ' + wine + ' sarà disponibile:'
-                );
+                const email = prompt(isEn ? 'Enter your email to be notified when ' + wine + ' is available:' : 'Inserisci la tua email per essere avvisato quando ' + wine + ' sarà disponibile:');
                 if (email && email.trim()) {
                     const subs = JSON.parse(localStorage.getItem('semko_notify') || '[]');
                     subs.push({ wine, email: email.trim(), date: new Date().toISOString() });
                     localStorage.setItem('semko_notify', JSON.stringify(subs));
-
                     const originalText = btn.innerHTML;
                     btn.innerHTML = '<span class="lang-en">✓ You\'re on the list</span><span class="lang-it lang-hidden">✓ Sei nella lista</span>';
                     btn.style.background = '#2e7d32';
-                    setTimeout(() => {
-                        btn.innerHTML = originalText;
-                        btn.style.background = '#c49b4c';
-                    }, 2500);
+                    setTimeout(() => { btn.innerHTML = originalText; btn.style.background = '#c49b4c'; }, 2500);
                 }
             });
         });
     </script>
-
 </body>
 </html>
