@@ -9,7 +9,7 @@
 
     <meta property="og:title" content="Semko Vicci — Our Wines">
     <meta property="og:description" content="Discover our limited-production biodynamic wines from Hunter Valley.">
-    <meta property="og:image" content="images/bottle-2026.jpeg">
+    <meta property="og:image" content="images/bottle2026.jpeg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -145,21 +145,154 @@
         .wine-card {
             background: rgba(20, 20, 20, 0.8);
             border: 1px solid #222;
-            padding: 36px 28px;
+            padding: 0;
             display: flex;
             flex-direction: column;
             transition: border-color 0.3s;
+            overflow: hidden;
         }
 
         .wine-card:hover {
             border-color: #c49b4c;
         }
 
+        /* ================================================================ */
+        /* WINE CARD IMAGES */
+        /* ================================================================ */
+        .card-image {
+            width: 100%;
+            height: 480px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(12, 12, 12, 0.8);
+            padding: 12px 16px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .card-image::after {
+            content: '⊕';
+            position: absolute;
+            bottom: 12px;
+            right: 16px;
+            font-size: 1.2rem;
+            color: rgba(196, 155, 76, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .card-image:hover::after {
+            opacity: 1;
+        }
+
+        .card-image img {
+            max-height: 100%;
+            max-width: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.4s ease, filter 0.4s ease;
+        }
+
+        .wine-card:hover .card-image img {
+            transform: scale(1.03);
+        }
+
+        /* SOLD OUT — чёрно-белое */
+        .sold-out-img {
+            filter: grayscale(100%) brightness(0.65);
+        }
+
+        .sold-out-card:hover .sold-out-img {
+            filter: grayscale(100%) brightness(0.75);
+        }
+
+        .sold-out-card {
+            opacity: 0.82;
+        }
+
+        /* ================================================================ */
+        /* LIGHTBOX */
+        /* ================================================================ */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 85vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            cursor: default;
+            animation: lightboxIn 0.3s ease;
+        }
+
+        @keyframes lightboxIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 28px;
+            right: 28px;
+            font-size: 2rem;
+            color: #c49b4c;
+            cursor: pointer;
+            z-index: 10000;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(196, 155, 76, 0.3);
+        }
+
+        /* ================================================================ */
+        /* CARD BODY */
+        /* ================================================================ */
+        .card-body {
+            padding: 28px 24px 32px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
         .wine-card .card-status {
             font-size: 0.7rem;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             font-family: 'Georgia', serif;
         }
 
@@ -173,33 +306,34 @@
 
         .wine-card .card-name {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             font-weight: 600;
             font-style: italic;
             color: #f0ede8;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
+            line-height: 1.2;
         }
 
         .wine-card .card-vintage {
             font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-style: italic;
             color: #c49b4c;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .wine-card .card-desc {
-            font-size: 0.95rem;
+            font-size: 0.93rem;
             color: #aaa;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             flex-grow: 1;
             line-height: 1.7;
         }
 
         .wine-card .card-specs {
-            font-size: 0.85rem;
+            font-size: 0.83rem;
             color: #888;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             display: flex;
             flex-direction: column;
             gap: 4px;
@@ -221,7 +355,7 @@
 
         .wine-card .card-price {
             font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-style: italic;
             color: #c49b4c;
             margin-bottom: 16px;
@@ -239,6 +373,7 @@
             text-transform: uppercase;
             cursor: pointer;
             transition: background 0.3s;
+            margin-top: auto;
         }
 
         .wine-card .btn-notify:hover {
@@ -256,6 +391,7 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             cursor: not-allowed;
+            margin-top: auto;
         }
 
         /* ================================================================ */
@@ -294,6 +430,27 @@
             .wine-grid {
                 grid-template-columns: 1fr;
             }
+
+            .card-image {
+                height: 380px;
+                padding: 10px 12px;
+            }
+
+            .card-body {
+                padding: 20px 18px 24px;
+            }
+
+            .lightbox img {
+                max-height: 75vh;
+            }
+
+            .lightbox-close {
+                top: 16px;
+                right: 16px;
+                font-size: 1.5rem;
+                width: 36px;
+                height: 36px;
+            }
         }
     </style>
 </head>
@@ -314,11 +471,18 @@
     </div>
 
     <!-- ================================================================ -->
+    <!-- LIGHTBOX -->
+    <!-- ================================================================ -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <img src="" alt="" id="lightboxImg">
+    </div>
+
+    <!-- ================================================================ -->
     <!-- SHOP CONTENT -->
     <!-- ================================================================ -->
     <div class="shop-page">
 
-        <!-- Заголовок -->
         <div class="shop-title">
             <div class="lang-en">
                 <h1>Our Wines</h1>
@@ -330,95 +494,109 @@
             </div>
         </div>
 
-        <!-- Сетка карточек -->
         <div class="wine-grid">
 
             <!-- ===== КАРТОЧКА 1: 2026 ===== -->
             <div class="wine-card">
-                <div class="card-status status-available">
-                    <span class="lang-en">Available soon</span>
-                    <span class="lang-ru lang-hidden">Скоро в продаже</span>
+                <div class="card-image" data-full="images/bottle2026.jpeg">
+                    <img src="images/bottle2026.jpeg" alt="Semko Vicci 2026">
                 </div>
-                <div class="card-name">Semko Vicci</div>
-                <div class="card-vintage">2026</div>
-                <div class="card-desc">
-                    <span class="lang-en">
-                        The one you've been reading about. Our flagship Shiraz-Sangiovese blend — bold, structured, with a Tuscan heart and a Hunter Valley body. The first vintage released to the public.
-                    </span>
-                    <span class="lang-ru lang-hidden">
-                        То самое вино, о котором вы читали. Наш флагманский бленд Шираз-Санджовезе — мощный, структурный, с сердцем Тосканы и телом долины Хантер. Первый винтаж, открытый для широкой публики.
-                    </span>
+                <div class="card-body">
+                    <div class="card-status status-available">
+                        <span class="lang-en">Available soon</span>
+                        <span class="lang-ru lang-hidden">Скоро в продаже</span>
+                    </div>
+                    <div class="card-name">Semko Vicci</div>
+                    <div class="card-vintage">2026</div>
+                    <div class="card-desc">
+                        <span class="lang-en">
+                            The one you've been reading about. Our flagship Shiraz-Sangiovese blend — bold, structured, with a Tuscan heart and a Hunter Valley body.
+                        </span>
+                        <span class="lang-ru lang-hidden">
+                            То самое вино, о котором вы читали. Наш флагманский бленд Шираз-Санджовезе — мощный, структурный, с сердцем Тосканы и телом долины Хантер.
+                        </span>
+                    </div>
+                    <div class="card-specs">
+                        <span><span class="spec-label lang-en">Composition</span><span class="spec-label lang-ru lang-hidden">Состав</span> 60% Shiraz, 40% Sangiovese</span>
+                        <span><span class="spec-label lang-en">Maturation</span><span class="spec-label lang-ru lang-hidden">Выдержка</span> 14 months French oak</span>
+                        <span><span class="spec-label lang-en">Alcohol</span><span class="spec-label lang-ru lang-hidden">Алкоголь</span> 14.2%</span>
+                        <span><span class="spec-label lang-en">Production</span><span class="spec-label lang-ru lang-hidden">Тираж</span> 600 bottles</span>
+                    </div>
+                    <div class="card-price">AUD 95</div>
+                    <button class="btn-notify" data-wine="Semko Vicci 2026">
+                        <span class="lang-en">Notify Me</span>
+                        <span class="lang-ru lang-hidden">Уведомить</span>
+                    </button>
                 </div>
-                <div class="card-specs">
-                    <span><span class="spec-label lang-en">Composition</span><span class="spec-label lang-ru lang-hidden">Состав</span> 60% Shiraz, 40% Sangiovese</span>
-                    <span><span class="spec-label lang-en">Maturation</span><span class="spec-label lang-ru lang-hidden">Выдержка</span> 14 months French oak</span>
-                    <span><span class="spec-label lang-en">Alcohol</span><span class="spec-label lang-ru lang-hidden">Алкоголь</span> 14.2%</span>
-                    <span><span class="spec-label lang-en">Production</span><span class="spec-label lang-ru lang-hidden">Тираж</span> 600 bottles</span>
-                </div>
-                <div class="card-price">AUD 95</div>
-                <button class="btn-notify" data-wine="Semko Vicci 2026">
-                    <span class="lang-en">Notify Me</span>
-                    <span class="lang-ru lang-hidden">Уведомить</span>
-                </button>
             </div>
 
             <!-- ===== КАРТОЧКА 2: 2025 (SOLD OUT) ===== -->
-            <div class="wine-card">
-                <div class="card-status status-sold">
-                    <span class="lang-en">Sold Out</span>
-                    <span class="lang-ru lang-hidden">Распродано</span>
+            <div class="wine-card sold-out-card">
+                <div class="card-image" data-full="images/bottle2025.jpeg">
+                    <img src="images/bottle2025.jpeg" alt="Semko Vicci 2025" class="sold-out-img">
                 </div>
-                <div class="card-name">Semko Vicci</div>
-                <div class="card-vintage">2025</div>
-                <div class="card-desc">
-                    <span class="lang-en">
-                        The quiet one. A cooler year produced an elegant, restrained wine — less power, more finesse. Only 300 bottles were made. They didn't last long.
-                    </span>
-                    <span class="lang-ru lang-hidden">
-                        Тихий винтаж. Прохладный год дал элегантное, сдержанное вино — меньше мощи, больше утончённости. Всего 300 бутылок. Разошлись мгновенно.
-                    </span>
+                <div class="card-body">
+                    <div class="card-status status-sold">
+                        <span class="lang-en">Sold Out</span>
+                        <span class="lang-ru lang-hidden">Распродано</span>
+                    </div>
+                    <div class="card-name">Semko Vicci</div>
+                    <div class="card-vintage">2025</div>
+                    <div class="card-desc">
+                        <span class="lang-en">
+                            The quiet one. A cooler year produced an elegant, restrained wine — less power, more finesse. Only 300 bottles made.
+                        </span>
+                        <span class="lang-ru lang-hidden">
+                            Тихий винтаж. Прохладный год дал элегантное, сдержанное вино — меньше мощи, больше утончённости. Всего 300 бутылок.
+                        </span>
+                    </div>
+                    <div class="card-specs">
+                        <span><span class="spec-label lang-en">Composition</span><span class="spec-label lang-ru lang-hidden">Состав</span> 65% Shiraz, 35% Sangiovese</span>
+                        <span><span class="spec-label lang-en">Maturation</span><span class="spec-label lang-ru lang-hidden">Выдержка</span> 12 months French oak</span>
+                        <span><span class="spec-label lang-en">Alcohol</span><span class="spec-label lang-ru lang-hidden">Алкоголь</span> 13.8%</span>
+                        <span><span class="spec-label lang-en">Production</span><span class="spec-label lang-ru lang-hidden">Тираж</span> 300 bottles</span>
+                    </div>
+                    <div class="card-price">AUD 85</div>
+                    <button class="btn-sold" disabled>
+                        <span class="lang-en">Sold Out</span>
+                        <span class="lang-ru lang-hidden">Распродано</span>
+                    </button>
                 </div>
-                <div class="card-specs">
-                    <span><span class="spec-label lang-en">Composition</span><span class="spec-label lang-ru lang-hidden">Состав</span> 65% Shiraz, 35% Sangiovese</span>
-                    <span><span class="spec-label lang-en">Maturation</span><span class="spec-label lang-ru lang-hidden">Выдержка</span> 12 months French oak</span>
-                    <span><span class="spec-label lang-en">Alcohol</span><span class="spec-label lang-ru lang-hidden">Алкоголь</span> 13.8%</span>
-                    <span><span class="spec-label lang-en">Production</span><span class="spec-label lang-ru lang-hidden">Тираж</span> 300 bottles</span>
-                </div>
-                <div class="card-price">AUD 85</div>
-                <button class="btn-sold" disabled>
-                    <span class="lang-en">Sold Out</span>
-                    <span class="lang-ru lang-hidden">Распродано</span>
-                </button>
             </div>
 
             <!-- ===== КАРТОЧКА 3: LIMITED RESERVE ===== -->
             <div class="wine-card">
-                <div class="card-status status-available">
-                    <span class="lang-en">Available soon</span>
-                    <span class="lang-ru lang-hidden">Скоро в продаже</span>
+                <div class="card-image" data-full="images/bottlelimited.jpeg">
+                    <img src="images/bottlelimited.jpeg" alt="Semko Vicci Limited Reserve">
                 </div>
-                <div class="card-name">Semko Vicci</div>
-                <div class="card-vintage">Limited Reserve</div>
-                <div class="card-desc">
-                    <span class="lang-en">
-                        A tribute to the founders. Selected barrels from the best block on the estate — the one Taras cleared by hand and Enzo planted with the original Sangiovese cuttings. Extended ageing, unfiltered, unapologetic. Only 120 bottles.
-                    </span>
-                    <span class="lang-ru lang-hidden">
-                        Дань основателям. Отборные бочки с лучшего участка — того самого, который Тарас расчистил вручную, а Энцо засадил оригинальными черенками Санджовезе. Долгая выдержка, без фильтрации, без компромиссов. Всего 120 бутылок.
-                    </span>
+                <div class="card-body">
+                    <div class="card-status status-available">
+                        <span class="lang-en">Available soon</span>
+                        <span class="lang-ru lang-hidden">Скоро в продаже</span>
+                    </div>
+                    <div class="card-name">Semko Vicci</div>
+                    <div class="card-vintage">Limited Reserve</div>
+                    <div class="card-desc">
+                        <span class="lang-en">
+                            A tribute to the founders. Selected barrels from the original 1948 block. Extended ageing, unfiltered, unapologetic. Only 120 bottles.
+                        </span>
+                        <span class="lang-ru lang-hidden">
+                            Дань основателям. Отборные бочки с оригинального участка 1948 года. Долгая выдержка, без фильтрации, без компромиссов. Всего 120 бутылок.
+                        </span>
+                    </div>
+                    <div class="card-specs">
+                        <span><span class="spec-label lang-en">Composition</span><span class="spec-label lang-ru lang-hidden">Состав</span> 50% Shiraz, 50% Sangiovese</span>
+                        <span><span class="spec-label lang-en">Vines planted</span><span class="spec-label lang-ru lang-hidden">Лозы посажены</span> 1948</span>
+                        <span><span class="spec-label lang-en">Maturation</span><span class="spec-label lang-ru lang-hidden">Выдержка</span> 24 months French oak</span>
+                        <span><span class="spec-label lang-en">Alcohol</span><span class="spec-label lang-ru lang-hidden">Алкоголь</span> 14.5%</span>
+                        <span><span class="spec-label lang-en">Production</span><span class="spec-label lang-ru lang-hidden">Тираж</span> 120 bottles</span>
+                    </div>
+                    <div class="card-price">AUD 195</div>
+                    <button class="btn-notify" data-wine="Semko Vicci Limited Reserve">
+                        <span class="lang-en">Notify Me</span>
+                        <span class="lang-ru lang-hidden">Уведомить</span>
+                    </button>
                 </div>
-                <div class="card-specs">
-                    <span><span class="spec-label lang-en">Composition</span><span class="spec-label lang-ru lang-hidden">Состав</span> 50% Shiraz, 50% Sangiovese</span>
-                    <span><span class="spec-label lang-en">Vines planted</span><span class="spec-label lang-ru lang-hidden">Лозы посажены</span> 1948</span>
-                    <span><span class="spec-label lang-en">Maturation</span><span class="spec-label lang-ru lang-hidden">Выдержка</span> 24 months French oak</span>
-                    <span><span class="spec-label lang-en">Alcohol</span><span class="spec-label lang-ru lang-hidden">Алкоголь</span> 14.5%</span>
-                    <span><span class="spec-label lang-en">Production</span><span class="spec-label lang-ru lang-hidden">Тираж</span> 120 bottles</span>
-                </div>
-                <div class="card-price">AUD 195</div>
-                <button class="btn-notify" data-wine="Semko Vicci Limited Reserve">
-                    <span class="lang-en">Notify Me</span>
-                    <span class="lang-ru lang-hidden">Уведомить</span>
-                </button>
             </div>
 
         </div>
@@ -462,12 +640,51 @@
         btnEn.addEventListener('click', () => switchLang('en'));
         btnRu.addEventListener('click', () => switchLang('ru'));
 
+        // ===== LIGHTBOX =====
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxClose = document.getElementById('lightboxClose');
+
+        document.querySelectorAll('.card-image').forEach(cardImage => {
+            cardImage.addEventListener('click', () => {
+                const fullSrc = cardImage.getAttribute('data-full');
+                if (fullSrc) {
+                    lightboxImg.src = fullSrc;
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                lightboxImg.src = '';
+            }, 300);
+        }
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        lightboxClose.addEventListener('click', closeLightbox);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+
         // ===== NOTIFY ME BUTTONS =====
         document.querySelectorAll('.btn-notify').forEach(btn => {
-            btn.addEventListener('click', () => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
                 const wine = btn.getAttribute('data-wine');
                 const email = prompt(
-                    btn.closest('.lang-en') || document.querySelector('.lang-en:not(.lang-hidden)')
+                    document.querySelector('.lang-en:not(.lang-hidden)')
                         ? 'Enter your email to be notified when ' + wine + ' is available:'
                         : 'Введите email, чтобы получить уведомление о поступлении ' + wine + ':'
                 );
