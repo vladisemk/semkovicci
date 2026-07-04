@@ -35,13 +35,48 @@
         }
 
         /* ================================================================ */
-        /* LANGUAGE SWITCHER */
+        /* TOP BAR */
         /* ================================================================ */
-        .lang-switcher {
+        .top-bar {
             position: fixed;
             top: 24px;
-            right: 28px;
+            left: 0;
+            right: 0;
             z-index: 1001;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 28px;
+            pointer-events: none;
+        }
+
+        .top-bar > * {
+            pointer-events: auto;
+        }
+
+        .btn-shop {
+            background: rgba(10, 10, 10, 0.7);
+            color: #a0845c;
+            border: 1px solid #a0845c;
+            padding: 6px 14px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Georgia', serif;
+            backdrop-filter: blur(6px);
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-shop:hover {
+            background: #c49b4c;
+            color: #0d0d0d;
+            border-color: #c49b4c;
+        }
+
+        .lang-switcher {
             display: flex;
             gap: 8px;
         }
@@ -158,10 +193,9 @@
             text-align: center;
         }
 
-        /* Логотип в Hero */
         .hero-logo {
             display: block;
-            width: 480px;
+            width: 320px;
             height: auto;
             margin: 0 auto 20px auto;
             filter: drop-shadow(0 0 18px rgba(196, 155, 76, 0.5));
@@ -200,6 +234,10 @@
         .story-block {
             position: relative;
             height: 200vh;
+        }
+
+        .story-block.epilogue-block {
+            height: 300vh;
         }
 
         .story-bg {
@@ -246,6 +284,10 @@
             pointer-events: auto;
         }
 
+        .text-slide-second {
+            top: 210vh;
+        }
+
         .text-slide h2 {
             font-family: 'Playfair Display', serif;
             font-size: 1.9rem;
@@ -277,9 +319,25 @@
         /* ================================================================ */
         /* BOTTLE LABEL ANIMATION */
         /* ================================================================ */
-        .bottle-slide {
-            text-align: center;
-        }
+       .bottle-slide {
+    text-align: left;
+}
+
+.bottle-slide .label-anim,
+.bottle-slide .wine-tech-card {
+    text-align: center;
+}
+
+.bottle-slide .label-anim {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bottle-slide .wine-tech-card {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
 
         .label-anim {
             display: flex;
@@ -393,91 +451,18 @@
         .tech-line-5 { transition-delay: 1.8s; }
 
         /* ================================================================ */
-        /* JOURNEY MAP */
+        /* CTA FORM (inside text-slide) */
         /* ================================================================ */
-        .journey-map {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0;
-            margin-bottom: 40px;
-        }
-
-        .journey-point {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .journey-dot-icon {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: #c49b4c;
-        }
-
-        .journey-label {
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            color: #a0845c;
-            font-family: 'Georgia', serif;
-            text-transform: uppercase;
-        }
-
-        .journey-line {
-            width: 60px;
-            height: 1px;
-            background: #444;
-            margin: 0 8px 24px 8px;
-        }
-
-        /* ================================================================ */
-        /* CTA / FOOTER */
-        /* ================================================================ */
-        .cta-section {
-            position: relative;
-            width: 100%;
-            min-height: 100vh;
-            background: #0a0a0a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1;
-            padding: 60px 20px;
-        }
-
-        .cta-content {
-            text-align: center;
-            max-width: 520px;
-            width: 100%;
-        }
-
-        .cta-content .cta-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            font-weight: 600;
-            font-style: italic;
-            color: #c49b4c;
-            margin-bottom: 12px;
-        }
-
-        .cta-content .cta-subtitle {
-            font-size: 1.05rem;
-            color: #aaa;
-            margin-bottom: 32px;
-            line-height: 1.6;
-        }
-
-        .cta-form {
+        .cta-form-inline {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 12px;
             width: 100%;
+            margin-top: 20px;
         }
 
-        .cta-form input[type="email"] {
+        .cta-form-inline input[type="email"] {
             width: 100%;
             max-width: 380px;
             padding: 14px 18px;
@@ -491,11 +476,11 @@
             transition: border-color 0.3s;
         }
 
-        .cta-form input[type="email"]:focus {
+        .cta-form-inline input[type="email"]:focus {
             border-color: #c49b4c;
         }
 
-        .cta-form button {
+        .cta-form-inline button {
             width: 100%;
             max-width: 380px;
             padding: 14px 0;
@@ -510,41 +495,62 @@
             transition: background 0.3s;
         }
 
-        .cta-form button:hover {
+        .cta-form-inline button:hover {
             background: #d4ae5c;
         }
 
-        .cta-form .form-note {
+        .cta-form-inline .form-note {
             font-size: 0.75rem;
             color: #666;
             margin-top: 8px;
         }
 
-        /* Логотип в футере */
-        .footer-logo {
-            display: block;
-            width: 200px;
-            height: auto;
-            margin: 48px auto 0 auto;
-            filter: drop-shadow(0 0 14px rgba(196, 155, 76, 0.4));
-            transition: filter 0.6s ease;
+        /* ================================================================ */
+        /* FOOTER */
+        /* ================================================================ */
+        .footer-section {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            background: #0a0a0a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
         }
 
-        .footer-logo:hover {
-            filter: drop-shadow(0 0 24px rgba(196, 155, 76, 0.7));
+        .footer-content {
+            text-align: center;
         }
+
+   .footer-logo {
+    display: block;
+    width: 360px;           /* было 200px */
+    height: auto;
+    margin: 0 auto;
+    filter: drop-shadow(0 0 20px rgba(196, 155, 76, 0.5));
+    transition: filter 0.6s ease;
+}
+
+.footer-logo:hover {
+    filter: drop-shadow(0 0 32px rgba(196, 155, 76, 0.8));
+}
 
         /* ================================================================ */
         /* RESPONSIVE */
         /* ================================================================ */
         @media (max-width: 768px) {
+            .top-bar {
+                padding: 0 12px;
+                top: 12px;
+            }
+
             .hero-logo {
-                width: 360px;
+                width: 240px;
             }
 
             .footer-logo {
-                width: 160px;
-                margin-top: 36px;
+                width: 260px;
             }
 
             .text-slide {
@@ -586,28 +592,33 @@
             .timeline-dot::after {
                 display: none;
             }
-
-            .lang-switcher {
-                top: 12px;
-                right: 12px;
-            }
         }
     </style>
 </head>
 <body>
 
-    <div class="lang-switcher">
-        <button id="btnEn" class="active">EN</button>
-        <button id="btnRu">RU</button>
+    <!-- ================================================================ -->
+    <!-- TOP BAR -->
+    <!-- ================================================================ -->
+    <div class="top-bar">
+        <a href="shop.html" class="btn-shop">Shop</a>
+        <div class="lang-switcher">
+            <button id="btnEn" class="active">EN</button>
+            <button id="btnRu">RU</button>
+        </div>
     </div>
 
+    <!-- ================================================================ -->
+    <!-- TIMELINE NAVIGATION -->
+    <!-- ================================================================ -->
     <nav class="timeline-nav" id="timelineNav">
         <div class="timeline-dot active" data-label="1939" data-target="block1"></div>
         <div class="timeline-dot" data-label="1943" data-target="block2"></div>
         <div class="timeline-dot" data-label="1946" data-target="block3"></div>
         <div class="timeline-dot" data-label="1947" data-target="block4"></div>
         <div class="timeline-dot" data-label="1954" data-target="block5"></div>
-        <div class="timeline-dot" data-label="2026" data-target="block6"></div>
+        <div class="timeline-dot" data-label="2025" data-target="block6"></div>
+        <div class="timeline-dot" data-label="Today" data-target="blockEpilogue"></div>
     </nav>
 
     <!-- ================================================================ -->
@@ -752,49 +763,58 @@
         </div>
     </div>
 
-    <!-- ================================================================ -->
-    <!-- БЛОК 6: БУТЫЛКА 2026 -->
+   <!-- ================================================================ -->
+    <!-- БЛОК 6: БУТЫЛКА 2025 -->
     <!-- ================================================================ -->
     <div class="story-block" id="block6">
         <div class="story-bg" style="background-image: url('images/bottle-2026.jpeg'); background-position: center 30%;"></div>
         <div class="text-track">
             <div class="text-slide bottle-slide" id="bottleSlide">
+                <!-- EN -->
                 <div class="lang-en">
-                    <span class="year-badge">Present day</span>
-                    <h2>The story lives in every glass</h2>
+                    <span class="year-badge">2025 · The legend reborn</span>
+                    <h2>The legend reborn</h2>
                     <p>
-                        Seven decades on, two names are still burned into our barrels. The cellar is still spotless — just the way Taras kept it. The vines are still treated with the reverence Enzo taught us. Every bottle of Semko Vicci carries the same truth: great wine happens when two strong cultures, two different fates, and two pairs of working hands come together under the Australian sun.
+                        Seven decades on, two names are still burned into our barrels. The cellar is still spotless — just the way Taras kept it. The vines are still treated with the reverence Enzo taught us. The 2025 vintage marks a return to the estate's roots — a cooler year, a quieter wine, but one that speaks with the same voice as that first bottle in 1954.
                     </p>
+
+                    <!-- Техническая карточка вина 2025 EN -->
                     <div class="wine-tech-card">
-                        <div class="tech-line tech-line-1"><span class="tech-label">Composition</span> 60% Shiraz, 40% Sangiovese</div>
-                        <div class="tech-line tech-line-2"><span class="tech-label">Maturation</span> 14 months in French oak</div>
-                        <div class="tech-line tech-line-3"><span class="tech-label">Alcohol</span> 14.2%</div>
-                        <div class="tech-line tech-line-4"><span class="tech-label">Production</span> Limited — 600 bottles</div>
-                        <div class="tech-line tech-line-5"><span class="tech-label">Tasting notes</span> Blackberry, tobacco, white pepper, leather</div>
+                        <div class="tech-line tech-line-1"><span class="tech-label">Composition</span> 65% Shiraz, 35% Sangiovese</div>
+                        <div class="tech-line tech-line-2"><span class="tech-label">Maturation</span> 12 months in French oak</div>
+                        <div class="tech-line tech-line-3"><span class="tech-label">Alcohol</span> 13.8%</div>
+                        <div class="tech-line tech-line-4"><span class="tech-label">Production</span> Limited — 300 bottles · SOLD OUT</div>
+                        <div class="tech-line tech-line-5"><span class="tech-label">Tasting notes</span> Red cherry, dried herbs, cedar, earth</div>
                     </div>
+
                     <div class="label-anim">
                         <div class="label-line-1">Semko Vicci</div>
-                        <div class="label-line-2">2026</div>
+                        <div class="label-line-2">2025</div>
                         <div class="label-line-3"></div>
                         <div class="label-line-4">Shiraz-Sangiovese</div>
                     </div>
                 </div>
+
+                <!-- RU -->
                 <div class="lang-ru lang-hidden">
-                    <span class="year-badge">Наши дни</span>
-                    <h2>История продолжается в каждом бокале</h2>
+                    <span class="year-badge">2025 · Возрождение легенды</span>
+                    <h2>Возрождение легенды</h2>
                     <p>
-                        Семь десятилетий спустя на наших бочках всё так же выжжены два имени. В погребе до сих пор чисто так, как умел делать только Тарас, и так же трепетно мы относимся к лозе, как Энцо. Каждая бутылка Semko Vicci — это напоминание: настоящее вино получается, когда встречаются две сильные культуры, две разные судьбы и две пары рук, не боящихся работы.
+                        Семь десятилетий спустя на наших бочках всё так же выжжены два имени. В погребе до сих пор чисто так, как умел делать только Тарас, и так же трепетно мы относимся к лозе, как Энцо. Винтаж 2025 года — возвращение к корням: прохладный год, более тихое вино, но с тем же голосом, что и самая первая бутылка 1954-го.
                     </p>
+
+                    <!-- Техническая карточка вина 2025 RU -->
                     <div class="wine-tech-card">
-                        <div class="tech-line tech-line-1"><span class="tech-label">Состав</span> 60% Shiraz, 40% Sangiovese</div>
-                        <div class="tech-line tech-line-2"><span class="tech-label">Выдержка</span> 14 месяцев во французском дубе</div>
-                        <div class="tech-line tech-line-3"><span class="tech-label">Алкоголь</span> 14.2%</div>
-                        <div class="tech-line tech-line-4"><span class="tech-label">Тираж</span> Лимитированный — 600 бутылок</div>
-                        <div class="tech-line tech-line-5"><span class="tech-label">Дегустационные заметки</span> Ежевика, табак, белый перец, кожа</div>
+                        <div class="tech-line tech-line-1"><span class="tech-label">Состав</span> 65% Shiraz, 35% Sangiovese</div>
+                        <div class="tech-line tech-line-2"><span class="tech-label">Выдержка</span> 12 месяцев во французском дубе</div>
+                        <div class="tech-line tech-line-3"><span class="tech-label">Алкоголь</span> 13.8%</div>
+                        <div class="tech-line tech-line-4"><span class="tech-label">Тираж</span> Лимитированный — 300 бутылок · РАСПРОДАНО</div>
+                        <div class="tech-line tech-line-5"><span class="tech-label">Дегустационные заметки</span> Красная вишня, сушёные травы, кедр, земля</div>
                     </div>
+
                     <div class="label-anim">
                         <div class="label-line-1">Semko Vicci</div>
-                        <div class="label-line-2">2026</div>
+                        <div class="label-line-2">2025</div>
                         <div class="label-line-3"></div>
                         <div class="label-line-4">Shiraz-Sangiovese</div>
                     </div>
@@ -804,56 +824,95 @@
     </div>
 
     <!-- ================================================================ -->
-    <!-- CTA / FOOTER -->
+    <!-- ЭПИЛОГ + CTA (ОДНО ФОТО, ДВЕ ПЛАШКИ) -->
     <!-- ================================================================ -->
-    <div class="cta-section" id="cta">
-        <div class="cta-content">
-            <div class="journey-map">
-                <div class="journey-point">
-                    <div class="journey-dot-icon"></div>
-                    <span class="journey-label lang-en">Ukraine</span>
-                    <span class="journey-label lang-ru lang-hidden">Украина</span>
+    <div class="story-block epilogue-block" id="blockEpilogue">
+        <div class="story-bg" style="background-image: url('images/winery-today.jpeg');"></div>
+        <div class="text-track">
+
+            <!-- Плашка 1: Эпилог -->
+            <div class="text-slide" id="epilogueSlide">
+                <div class="lang-en">
+                    <span class="year-badge">Today · Hunter Valley</span>
+                    <h2>Epilogue · The next generation</h2>
+                    <p>
+                        Taras and Enzo are long gone, but their pact holds. Today the vineyard is run by their grandchildren — two cousins who grew up among the barrels, one with a Ukrainian lullaby in her ear, the other with a Tuscan proverb on his lips.
+                    </p>
+                    <p>
+                        They made one change the old men would have approved of: the estate went fully biodynamic. No chemicals, no shortcuts. Native grasses grow between the rows. Sheep graze the vineyard in winter. Compost is prepared by the lunar calendar. The cellar is still spotless, the vines still dry-grown, the barrels still stacked the way Taras left them.
+                    </p>
+                    <p>
+                        Every vintage, before the first bottle is sealed, the family gathers in the old barrel room, raises a single glass, and says the same words Enzo said in 1954:
+                    </p>
+                    <p style="text-align: center; font-style: italic; color: #c49b4c;">
+                        «We're both nobody here. But together we made this.»
+                    </p>
+                    <p style="text-align: center;">
+                        That glass is now raised to you.
+                    </p>
                 </div>
-                <div class="journey-line"></div>
-                <div class="journey-point">
-                    <div class="journey-dot-icon"></div>
-                    <span class="journey-label lang-en">Italy</span>
-                    <span class="journey-label lang-ru lang-hidden">Италия</span>
-                </div>
-                <div class="journey-line"></div>
-                <div class="journey-point">
-                    <div class="journey-dot-icon"></div>
-                    <span class="journey-label lang-en">Australia</span>
-                    <span class="journey-label lang-ru lang-hidden">Австралия</span>
+                <div class="lang-ru lang-hidden">
+                    <span class="year-badge">Сегодня · Долина Хантер</span>
+                    <h2>Эпилог · Следующее поколение</h2>
+                    <p>
+                        Тараса и Энцо давно нет, но их уговор жив. Сегодня винодельней управляют их внуки — двое кузенов, выросших среди бочек: одна с украинской колыбельной в ушах, другой с тосканской пословицей на губах.
+                    </p>
+                    <p>
+                        Они сделали одно изменение, которое старики бы одобрили: хозяйство перешло на полную биодинамику. Никакой химии, никаких компромиссов. Между рядами растут дикие травы. Зимой виноградник выпасают овцы. Компост готовят по лунному календарю. В погребе по-прежнему чисто, лозы по-прежнему растут без полива, бочки сложены так, как их оставил Тарас.
+                    </p>
+                    <p>
+                        Каждый винтаж, прежде чем запечатать первую бутылку, семья собирается в старом бочарном зале, поднимает один бокал и произносит те же слова, что Энцо сказал в 1954-м:
+                    </p>
+                    <p style="text-align: center; font-style: italic; color: #c49b4c;">
+                        «Мы оба здесь никто. Но вместе мы создали это.»
+                    </p>
+                    <p style="text-align: center;">
+                        Теперь этот бокал поднимают за вас.
+                    </p>
                 </div>
             </div>
-            <div class="lang-en">
-                <h2 class="cta-title">Be the first to know</h2>
-                <p class="cta-subtitle">
-                    Our story began in 1954. The next chapter is being written right now in the Hunter Valley. Sign up and we'll let you know when the next vintage is ready.
-                </p>
+
+            <!-- Плашка 2: CTA -->
+            <div class="text-slide text-slide-second" id="ctaSlide">
+                <div class="lang-en">
+                    <h2>Be the first to know</h2>
+                    <p>
+                        Our story began in 1954. The next chapter is being written right now in the Hunter Valley. Sign up and we'll let you know when the next vintage is ready.
+                    </p>
+                    <form class="cta-form-inline" id="subscribeForm">
+                        <input type="email" id="emailInput" placeholder="your@email.com" required>
+                        <button type="submit">Sign Up</button>
+                        <p class="form-note">We respect your inbox. No spam, just the good stuff.</p>
+                    </form>
+                </div>
+                <div class="lang-ru lang-hidden">
+                    <h2>Узнайте первыми</h2>
+                    <p>
+                        Наша история началась в 1954 году. Следующая глава пишется прямо сейчас в долине Хантер. Подпишитесь, и мы сообщим, когда следующий винтаж будет готов.
+                    </p>
+                    <form class="cta-form-inline" id="subscribeFormRu">
+                        <input type="email" id="emailInputRu" placeholder="your@email.com" required>
+                        <button type="submit">Подписаться</button>
+                        <p class="form-note">Никакого спама. Только хорошие новости.</p>
+                    </form>
+                </div>
             </div>
-            <div class="lang-ru lang-hidden">
-                <h2 class="cta-title">Узнайте первыми</h2>
-                <p class="cta-subtitle">
-                    Наша история началась в 1954 году. Следующая глава пишется прямо сейчас в долине Хантер. Подпишитесь, и мы сообщим, когда следующий винтаж будет готов.
-                </p>
-            </div>
-            <form class="cta-form" id="subscribeForm">
-                <input type="email" id="emailInput" placeholder="your@email.com" required>
-                <button type="submit">
-                    <span class="lang-en">Sign Up</span>
-                    <span class="lang-ru lang-hidden">Подписаться</span>
-                </button>
-                <p class="form-note">
-                    <span class="lang-en">We respect your inbox. No spam, just the good stuff.</span>
-                    <span class="lang-ru lang-hidden">Никакого спама. Только хорошие новости.</span>
-                </p>
-            </form>
+
+        </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- FOOTER -->
+    <!-- ================================================================ -->
+    <div class="footer-section">
+        <div class="footer-content">
             <img src="images/logo.png" alt="Semko Vicci" class="footer-logo">
         </div>
     </div>
 
+    <!-- ================================================================ -->
+    <!-- SCRIPTS -->
+    <!-- ================================================================ -->
     <script>
         // ===== LANGUAGE SWITCHER =====
         const btnEn = document.getElementById('btnEn');
@@ -928,18 +987,29 @@
         const storyBlocks = document.querySelectorAll('.story-block');
         storyBlocks.forEach(block => {
             const bg = block.querySelector('.story-bg');
-            const slide = block.querySelector('.text-slide');
-            if (!bg || !slide) return;
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        bg.style.setProperty('--dim-bg', 'rgba(0,0,0,0.6)');
-                    } else {
-                        bg.style.setProperty('--dim-bg', 'rgba(0,0,0,0)');
-                    }
-                });
-            }, { threshold: 0.2 });
-            observer.observe(slide);
+            const slides = block.querySelectorAll('.text-slide');
+            if (!bg || slides.length === 0) return;
+
+            slides.forEach(slide => {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            bg.style.setProperty('--dim-bg', 'rgba(0,0,0,0.6)');
+                        } else {
+                            // Проверяем, не виден ли другой слайд этого же блока
+                            const anyVisible = Array.from(slides).some(s => {
+                                const r = s.getBoundingClientRect();
+                                return r.top < window.innerHeight * 0.8 && r.bottom > window.innerHeight * 0.2;
+                            });
+                            if (!anyVisible) {
+                                bg.style.setProperty('--dim-bg', 'rgba(0,0,0,0)');
+                            }
+                        }
+                    });
+                }, { threshold: 0.2 });
+                observer.observe(slide);
+            });
+
             const styleEl = document.createElement('style');
             styleEl.textContent = `#${block.id} .story-bg::after { background: var(--dim-bg, rgba(0,0,0,0)); transition: background 0.5s ease; }`;
             document.head.appendChild(styleEl);
@@ -986,26 +1056,36 @@
             labelObserver.observe(bottleSlide);
         }
 
-        // ===== ФОРМА ПОДПИСКИ =====
-        const form = document.getElementById('subscribeForm');
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = document.getElementById('emailInput').value.trim();
-            if (email) {
-                const subs = JSON.parse(localStorage.getItem('semko_subscribers') || '[]');
-                subs.push({ email, date: new Date().toISOString() });
-                localStorage.setItem('semko_subscribers', JSON.stringify(subs));
-                const btn = form.querySelector('button');
-                const originalHTML = btn.innerHTML;
-                btn.textContent = '✓ Done!';
-                btn.style.background = '#2e7d32';
-                setTimeout(() => {
-                    btn.innerHTML = originalHTML;
-                    btn.style.background = '#c49b4c';
-                }, 2500);
-                form.reset();
-            }
-        });
+        // ===== ФОРМА ПОДПИСКИ (обе версии) =====
+        function handleSubscribe(form, emailInput) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = emailInput.value.trim();
+                if (email) {
+                    const subs = JSON.parse(localStorage.getItem('semko_subscribers') || '[]');
+                    subs.push({ email, date: new Date().toISOString() });
+                    localStorage.setItem('semko_subscribers', JSON.stringify(subs));
+
+                    const btn = form.querySelector('button');
+                    const originalHTML = btn.innerHTML;
+                    btn.textContent = '✓ Done!';
+                    btn.style.background = '#2e7d32';
+                    setTimeout(() => {
+                        window.location.href = 'shop.html';
+                    }, 1500);
+                    setTimeout(() => {
+                        btn.innerHTML = originalHTML;
+                        btn.style.background = '#c49b4c';
+                    }, 3000);
+                    form.reset();
+                }
+            });
+        }
+
+        const formEn = document.getElementById('subscribeForm');
+        const formRu = document.getElementById('subscribeFormRu');
+        if (formEn) handleSubscribe(formEn, document.getElementById('emailInput'));
+        if (formRu) handleSubscribe(formRu, document.getElementById('emailInputRu'));
     </script>
 
 </body>
