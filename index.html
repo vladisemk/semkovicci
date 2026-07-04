@@ -158,14 +158,18 @@
             text-align: center;
         }
 
-        .hero-content h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4.5rem;
-            font-weight: 600;
-            font-style: italic;
-            color: #c49b4c;
-            letter-spacing: 5px;
-            margin-bottom: 16px;
+        /* Логотип в Hero */
+        .hero-logo {
+            display: block;
+            width: 160px;
+            height: auto;
+            margin: 0 auto 20px auto;
+            filter: drop-shadow(0 0 18px rgba(196, 155, 76, 0.5));
+            transition: filter 0.6s ease;
+        }
+
+        .hero-logo:hover {
+            filter: drop-shadow(0 0 30px rgba(196, 155, 76, 0.8));
         }
 
         .hero-content .subtitle {
@@ -516,23 +520,31 @@
             margin-top: 8px;
         }
 
-        .cta-signature {
-            margin-top: 48px;
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 600;
-            font-style: italic;
-            color: #c49b4c;
-            letter-spacing: 3px;
+        /* Логотип в футере */
+        .footer-logo {
+            display: block;
+            width: 100px;
+            height: auto;
+            margin: 48px auto 0 auto;
+            filter: drop-shadow(0 0 14px rgba(196, 155, 76, 0.4));
+            transition: filter 0.6s ease;
+        }
+
+        .footer-logo:hover {
+            filter: drop-shadow(0 0 24px rgba(196, 155, 76, 0.7));
         }
 
         /* ================================================================ */
         /* RESPONSIVE */
         /* ================================================================ */
         @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.4rem;
-                letter-spacing: 2px;
+            .hero-logo {
+                width: 120px;
+            }
+
+            .footer-logo {
+                width: 80px;
+                margin-top: 36px;
             }
 
             .text-slide {
@@ -598,21 +610,26 @@
         <div class="timeline-dot" data-label="2026" data-target="block6"></div>
     </nav>
 
+    <!-- ================================================================ -->
+    <!-- HERO -->
+    <!-- ================================================================ -->
     <div class="hero-section" id="hero">
         <div class="hero-content">
+            <img src="images/logo.png" alt="Semko Vicci" class="hero-logo">
             <div class="lang-en">
-                <h1>Semko Vicci</h1>
                 <p class="subtitle">A wine born of two journeys</p>
                 <p class="scroll-hint">▼  Scroll down to uncover the story  ▼</p>
             </div>
             <div class="lang-ru lang-hidden">
-                <h1>Semko Vicci</h1>
                 <p class="subtitle">Вино, рожденное из двух странствий</p>
                 <p class="scroll-hint">▼  Скрольте вниз, чтобы узнать историю  ▼</p>
             </div>
         </div>
     </div>
 
+    <!-- ================================================================ -->
+    <!-- БЛОК 1: ТАРАС -->
+    <!-- ================================================================ -->
     <div class="story-block" id="block1">
         <div class="story-bg" style="background-image: url('images/taras-leaving-1939.jpeg');"></div>
         <div class="text-track">
@@ -635,6 +652,9 @@
         </div>
     </div>
 
+    <!-- ================================================================ -->
+    <!-- БЛОК 2: ЭНЦО -->
+    <!-- ================================================================ -->
     <div class="story-block" id="block2">
         <div class="story-bg" style="background-image: url('images/enzo-tuscany-1943.jpeg');"></div>
         <div class="text-track">
@@ -657,6 +677,9 @@
         </div>
     </div>
 
+    <!-- ================================================================ -->
+    <!-- БЛОК 3: ПОРТ НЕАПОЛЯ -->
+    <!-- ================================================================ -->
     <div class="story-block" id="block3">
         <div class="story-bg" style="background-image: url('images/naples-port-1946.jpeg');"></div>
         <div class="text-track">
@@ -679,6 +702,9 @@
         </div>
     </div>
 
+    <!-- ================================================================ -->
+    <!-- БЛОК 4: ДОЛИНА ХАНТЕР -->
+    <!-- ================================================================ -->
     <div class="story-block" id="block4">
         <div class="story-bg" style="background-image: url('images/hunter-valley-1948.jpeg');"></div>
         <div class="text-track">
@@ -701,6 +727,9 @@
         </div>
     </div>
 
+    <!-- ================================================================ -->
+    <!-- БЛОК 5: ПЕРВЫЙ ТОСТ -->
+    <!-- ================================================================ -->
     <div class="story-block" id="block5">
         <div class="story-bg" style="background-image: url('images/first-toast-1954.jpeg');"></div>
         <div class="text-track">
@@ -723,6 +752,9 @@
         </div>
     </div>
 
+    <!-- ================================================================ -->
+    <!-- БЛОК 6: БУТЫЛКА 2026 -->
+    <!-- ================================================================ -->
     <div class="story-block" id="block6">
         <div class="story-bg" style="background-image: url('images/bottle-2026.jpeg'); background-position: center 30%;"></div>
         <div class="text-track">
@@ -771,6 +803,9 @@
         </div>
     </div>
 
+    <!-- ================================================================ -->
+    <!-- CTA / FOOTER -->
+    <!-- ================================================================ -->
     <div class="cta-section" id="cta">
         <div class="cta-content">
             <div class="journey-map">
@@ -815,7 +850,7 @@
                     <span class="lang-ru lang-hidden">Никакого спама. Только хорошие новости.</span>
                 </p>
             </form>
-            <div class="cta-signature">Semko Vicci</div>
+            <img src="images/logo.png" alt="Semko Vicci" class="footer-logo">
         </div>
     </div>
 
@@ -916,24 +951,19 @@
         function animateBottleBlock() {
             if (!bottleSlide) return;
 
-            // Сбрасываем всё
             bottleSlide.querySelectorAll('.label-line-1, .label-line-2, .label-line-3, .label-line-4, .tech-line').forEach(el => {
                 el.classList.remove('visible');
             });
 
-            // Ждём кадр, чтобы сброс применился
             requestAnimationFrame(() => {
                 requestAnimationFrame(() => {
-                    // Находим видимый сейчас контейнер
                     const visibleContainer = bottleSlide.querySelector('.lang-en:not(.lang-hidden)') || bottleSlide.querySelector('.lang-ru:not(.lang-hidden)');
                     if (!visibleContainer) return;
 
-                    // Запускаем анимацию этикетки
                     visibleContainer.querySelectorAll('.label-line-1, .label-line-2, .label-line-3, .label-line-4').forEach(el => {
                         el.classList.add('visible');
                     });
 
-                    // Запускаем анимацию тех-карточки
                     visibleContainer.querySelectorAll('.tech-line').forEach(el => {
                         el.classList.add('visible');
                     });
