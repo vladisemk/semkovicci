@@ -16,11 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Georgia', 'Times New Roman', serif;
@@ -30,112 +26,46 @@
             min-height: 100vh;
         }
 
-        /* ================================================================ */
-        /* TOP BAR */
-        /* ================================================================ */
         .top-bar {
-            position: fixed;
-            top: 24px;
-            left: 0;
-            right: 0;
-            z-index: 1001;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 28px;
-            pointer-events: none;
+            position: fixed; top: 24px; left: 0; right: 0; z-index: 1001;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 28px; pointer-events: none;
         }
-
-        .top-bar > * {
-            pointer-events: auto;
-        }
+        .top-bar > * { pointer-events: auto; }
 
         .btn-back {
-            background: rgba(10, 10, 10, 0.7);
-            color: #a0845c;
-            border: 1px solid #a0845c;
-            padding: 6px 14px;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-family: 'Georgia', serif;
-            backdrop-filter: blur(6px);
-            text-transform: uppercase;
-            text-decoration: none;
-            display: inline-block;
+            background: rgba(10,10,10,0.7); color: #a0845c;
+            border: 1px solid #a0845c; padding: 6px 14px;
+            font-size: 0.8rem; letter-spacing: 1px; cursor: pointer;
+            transition: all 0.3s; font-family: 'Georgia', serif;
+            backdrop-filter: blur(6px); text-transform: uppercase;
+            text-decoration: none; display: inline-block;
         }
+        .btn-back:hover { background: #c49b4c; color: #0d0d0d; border-color: #c49b4c; }
 
-        .btn-back:hover {
-            background: #c49b4c;
-            color: #0d0d0d;
-            border-color: #c49b4c;
-        }
-
-        .lang-switcher {
-            display: flex;
-            gap: 8px;
-        }
-
+        .lang-switcher { display: flex; gap: 8px; }
         .lang-switcher button {
-            background: rgba(10, 10, 10, 0.7);
-            color: #a0845c;
-            border: 1px solid #a0845c;
-            padding: 6px 14px;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-family: 'Georgia', serif;
-            backdrop-filter: blur(6px);
-            text-transform: uppercase;
+            background: rgba(10,10,10,0.7); color: #a0845c;
+            border: 1px solid #a0845c; padding: 6px 14px;
+            font-size: 0.8rem; letter-spacing: 1px; cursor: pointer;
+            transition: all 0.3s; font-family: 'Georgia', serif;
+            backdrop-filter: blur(6px); text-transform: uppercase;
         }
+        .lang-switcher button.active { background: #c49b4c; color: #0d0d0d; border-color: #c49b4c; }
+        .lang-hidden { display: none !important; }
 
-        .lang-switcher button.active {
-            background: #c49b4c;
-            color: #0d0d0d;
-            border-color: #c49b4c;
-        }
-
-        .lang-hidden {
-            display: none !important;
-        }
-
-        /* ================================================================ */
-        /* PAGE LAYOUT */
-        /* ================================================================ */
-        .shop-page {
-            padding: 120px 20px 80px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .shop-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
+        .shop-page { padding: 120px 20px 80px; max-width: 1100px; margin: 0 auto; }
+        .shop-title { text-align: center; margin-bottom: 60px; }
         .shop-title h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            font-weight: 600;
-            font-style: italic;
-            color: #c49b4c;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
+            font-family: 'Playfair Display', serif; font-size: 2.8rem;
+            font-weight: 600; font-style: italic; color: #c49b4c;
+            letter-spacing: 2px; margin-bottom: 8px;
         }
-
         .shop-title .shop-subtitle {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            font-style: italic;
-            color: #888;
-            letter-spacing: 1px;
+            font-family: 'Playfair Display', serif; font-size: 1.1rem;
+            font-style: italic; color: #888; letter-spacing: 1px;
         }
 
-        /* ================================================================ */
-        /* WINE CARDS */
-        /* ================================================================ */
         .wine-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -143,360 +73,158 @@
         }
 
         .wine-card {
-            background: rgba(20, 20, 20, 0.8);
-            border: 1px solid #222;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            transition: border-color 0.3s;
-            overflow: hidden;
+            background: rgba(20,20,20,0.8); border: 1px solid #222;
+            padding: 0; display: flex; flex-direction: column;
+            transition: border-color 0.3s; overflow: hidden;
         }
+        .wine-card:hover { border-color: #c49b4c; }
 
-        .wine-card:hover {
-            border-color: #c49b4c;
-        }
-
-        /* ================================================================ */
-        /* WINE CARD IMAGES */
-        /* ================================================================ */
         .card-image {
-            width: 100%;
-            height: 480px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: rgba(12, 12, 12, 0.8);
-            padding: 12px 16px;
-            overflow: hidden;
-            cursor: pointer;
-            position: relative;
+            width: 100%; height: 480px; display: flex;
+            justify-content: center; align-items: center;
+            background: rgba(12,12,12,0.8); padding: 12px 16px;
+            overflow: hidden; cursor: pointer; position: relative;
         }
-
         .card-image::after {
-            content: '⊕';
-            position: absolute;
-            bottom: 12px;
-            right: 16px;
-            font-size: 1.2rem;
-            color: rgba(196, 155, 76, 0.5);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
+            content: '⊕'; position: absolute; bottom: 12px; right: 16px;
+            font-size: 1.2rem; color: rgba(196,155,76,0.5);
+            opacity: 0; transition: opacity 0.3s ease; pointer-events: none;
         }
-
-        .card-image:hover::after {
-            opacity: 1;
-        }
-
+        .card-image:hover::after { opacity: 1; }
         .card-image img {
-            max-height: 100%;
-            max-width: 100%;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            transition: transform 0.4s ease, filter 0.4s ease;
+            max-height: 100%; max-width: 100%; width: auto; height: auto;
+            object-fit: contain; transition: transform 0.4s ease, filter 0.4s ease;
         }
+        .wine-card:hover .card-image img { transform: scale(1.03); }
+        .sold-out-img { filter: grayscale(100%) brightness(0.65); }
+        .sold-out-card:hover .sold-out-img { filter: grayscale(100%) brightness(0.75); }
+        .sold-out-card { opacity: 0.82; }
 
-        .wine-card:hover .card-image img {
-            transform: scale(1.03);
-        }
-
-        /* SOLD OUT — чёрно-белое */
-        .sold-out-img {
-            filter: grayscale(100%) brightness(0.65);
-        }
-
-        .sold-out-card:hover .sold-out-img {
-            filter: grayscale(100%) brightness(0.75);
-        }
-
-        .sold-out-card {
-            opacity: 0.82;
-        }
-
-        /* ================================================================ */
-        /* LIGHTBOX */
-        /* ================================================================ */
         .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.92);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
+            display: none; position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%; background: rgba(0,0,0,0.92);
+            z-index: 9999; justify-content: center; align-items: center; cursor: pointer;
         }
-
-        .lightbox.active {
-            display: flex;
-        }
-
+        .lightbox.active { display: flex; }
         .lightbox img {
-            max-width: 90vw;
-            max-height: 85vh;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            cursor: default;
-            animation: lightboxIn 0.3s ease;
+            max-width: 90vw; max-height: 85vh; width: auto; height: auto;
+            object-fit: contain; cursor: default; animation: lightboxIn 0.3s ease;
         }
-
-        @keyframes lightboxIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
+        @keyframes lightboxIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
         .lightbox-close {
-            position: absolute;
-            top: 28px;
-            right: 28px;
-            font-size: 2rem;
-            color: #c49b4c;
-            cursor: pointer;
-            z-index: 10000;
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0,0,0,0.5);
-            border-radius: 50%;
-            transition: background 0.3s;
+            position: absolute; top: 28px; right: 28px; font-size: 2rem;
+            color: #c49b4c; cursor: pointer; z-index: 10000;
+            width: 44px; height: 44px; display: flex; align-items: center;
+            justify-content: center; background: rgba(0,0,0,0.5);
+            border-radius: 50%; transition: background 0.3s;
         }
+        .lightbox-close:hover { background: rgba(196,155,76,0.3); }
 
-        .lightbox-close:hover {
-            background: rgba(196, 155, 76, 0.3);
-        }
-
-        /* ================================================================ */
-        /* CARD BODY */
-        /* ================================================================ */
         .card-body {
-            padding: 28px 24px 32px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
+            padding: 28px 24px 32px; display: flex;
+            flex-direction: column; flex-grow: 1;
         }
-
         .wine-card .card-status {
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-            font-family: 'Georgia', serif;
+            font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
+            margin-bottom: 12px; font-family: 'Georgia', serif;
         }
-
-        .status-available {
-            color: #c49b4c;
-        }
-
-        .status-sold {
-            color: #8b3a3a;
-        }
-
+        .status-available { color: #c49b4c; }
+        .status-sold { color: #8b3a3a; }
         .wine-card .card-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.7rem;
-            font-weight: 600;
-            font-style: italic;
-            color: #f0ede8;
-            margin-bottom: 2px;
-            line-height: 1.2;
+            font-family: 'Playfair Display', serif; font-size: 1.7rem;
+            font-weight: 600; font-style: italic; color: #f0ede8;
+            margin-bottom: 2px; line-height: 1.2;
         }
-
         .wine-card .card-vintage {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            font-style: italic;
-            color: #c49b4c;
-            margin-bottom: 14px;
+            font-family: 'Playfair Display', serif; font-size: 1.3rem;
+            font-style: italic; color: #c49b4c; margin-bottom: 14px;
         }
-
         .wine-card .card-desc {
-            font-size: 0.93rem;
-            color: #aaa;
-            margin-bottom: 18px;
-            flex-grow: 1;
-            line-height: 1.7;
+            font-size: 0.93rem; color: #aaa; margin-bottom: 18px;
+            flex-grow: 1; line-height: 1.7;
         }
-
         .wine-card .card-specs {
-            font-size: 0.83rem;
-            color: #888;
-            margin-bottom: 18px;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
+            font-size: 0.83rem; color: #888; margin-bottom: 18px;
+            display: flex; flex-direction: column; gap: 4px;
         }
-
         .wine-card .card-specs span {
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            padding-bottom: 4px;
+            display: flex; justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4px;
         }
-
         .wine-card .card-specs .spec-label {
-            color: #a0845c;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.7rem;
+            color: #a0845c; text-transform: uppercase;
+            letter-spacing: 1px; font-size: 0.7rem;
         }
-
         .wine-card .card-price {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-style: italic;
-            color: #c49b4c;
-            margin-bottom: 16px;
+            font-family: 'Playfair Display', serif; font-size: 1.5rem;
+            font-style: italic; color: #c49b4c; margin-bottom: 16px;
         }
-
         .wine-card .btn-notify {
-            width: 100%;
-            padding: 14px 0;
-            background: #c49b4c;
-            color: #0d0d0d;
-            border: none;
-            font-family: 'Georgia', serif;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: background 0.3s;
-            margin-top: auto;
+            width: 100%; padding: 14px 0; background: #c49b4c;
+            color: #0d0d0d; border: none; font-family: 'Georgia', serif;
+            font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;
+            cursor: pointer; transition: background 0.3s; margin-top: auto;
         }
-
-        .wine-card .btn-notify:hover {
-            background: #d4ae5c;
-        }
-
+        .wine-card .btn-notify:hover { background: #d4ae5c; }
         .wine-card .btn-sold {
-            width: 100%;
-            padding: 14px 0;
-            background: transparent;
-            color: #8b3a3a;
-            border: 1px solid #8b3a3a;
-            font-family: 'Georgia', serif;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            cursor: not-allowed;
-            margin-top: auto;
+            width: 100%; padding: 14px 0; background: transparent;
+            color: #8b3a3a; border: 1px solid #8b3a3a;
+            font-family: 'Georgia', serif; font-size: 0.9rem;
+            letter-spacing: 2px; text-transform: uppercase;
+            cursor: not-allowed; margin-top: auto;
         }
 
-        /* ================================================================ */
-        /* FOOTER */
-        /* ================================================================ */
-        .shop-footer {
-            text-align: center;
-            padding: 60px 20px 40px;
-        }
-
+        .shop-footer { text-align: center; padding: 60px 20px 40px; }
         .shop-footer a {
-            color: #a0845c;
-            text-decoration: none;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            transition: color 0.3s;
+            color: #a0845c; text-decoration: none;
+            font-size: 0.9rem; letter-spacing: 1px; transition: color 0.3s;
         }
+        .shop-footer a:hover { color: #c49b4c; }
 
-        .shop-footer a:hover {
-            color: #c49b4c;
-        }
-
-        /* ================================================================ */
-        /* RESPONSIVE */
-        /* ================================================================ */
         @media (max-width: 768px) {
-            .top-bar {
-                padding: 0 12px;
-                top: 12px;
-            }
-
-            .shop-title h1 {
-                font-size: 2rem;
-            }
-
-            .wine-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .card-image {
-                height: 380px;
-                padding: 10px 12px;
-            }
-
-            .card-body {
-                padding: 20px 18px 24px;
-            }
-
-            .lightbox img {
-                max-height: 75vh;
-            }
-
-            .lightbox-close {
-                top: 16px;
-                right: 16px;
-                font-size: 1.5rem;
-                width: 36px;
-                height: 36px;
-            }
+            .top-bar { padding: 0 12px; top: 12px; }
+            .shop-title h1 { font-size: 2rem; }
+            .wine-grid { grid-template-columns: 1fr; }
+            .card-image { height: 380px; padding: 10px 12px; }
+            .card-body { padding: 20px 18px 24px; }
+            .lightbox img { max-height: 75vh; }
+            .lightbox-close { top: 16px; right: 16px; font-size: 1.5rem; width: 36px; height: 36px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ================================================================ -->
-    <!-- TOP BAR -->
-    <!-- ================================================================ -->
     <div class="top-bar">
         <a href="index.html" class="btn-back">
             <span class="lang-en">← Back</span>
-            <span class="lang-ru lang-hidden">← Назад</span>
+            <span class="lang-it lang-hidden">← Indietro</span>
         </a>
         <div class="lang-switcher">
             <button id="btnEn" class="active">EN</button>
-            <button id="btnRu">RU</button>
+            <button id="btnIt">IT</button>
         </div>
     </div>
 
-    <!-- ================================================================ -->
-    <!-- LIGHTBOX -->
-    <!-- ================================================================ -->
     <div class="lightbox" id="lightbox">
         <span class="lightbox-close" id="lightboxClose">&times;</span>
         <img src="" alt="" id="lightboxImg">
     </div>
 
-    <!-- ================================================================ -->
-    <!-- SHOP CONTENT -->
-    <!-- ================================================================ -->
     <div class="shop-page">
-
         <div class="shop-title">
             <div class="lang-en">
                 <h1>Our Wines</h1>
                 <p class="shop-subtitle">Small-batch · Biodynamic · Hunter Valley</p>
             </div>
-            <div class="lang-ru lang-hidden">
-                <h1>Наши вина</h1>
-                <p class="shop-subtitle">Малая серия · Биодинамика · Долина Хантер</p>
+            <div class="lang-it lang-hidden">
+                <h1>I Nostri Vini</h1>
+                <p class="shop-subtitle">Piccola produzione · Biodinamica · Hunter Valley</p>
             </div>
         </div>
 
         <div class="wine-grid">
 
-            <!-- ===== КАРТОЧКА 1: 2026 ===== -->
+            <!-- 2026 -->
             <div class="wine-card">
                 <div class="card-image" data-full="images/bottle2026.jpeg">
                     <img src="images/bottle2026.jpeg" alt="Semko Vicci 2026">
@@ -504,33 +232,29 @@
                 <div class="card-body">
                     <div class="card-status status-available">
                         <span class="lang-en">Available soon</span>
-                        <span class="lang-ru lang-hidden">Скоро в продаже</span>
+                        <span class="lang-it lang-hidden">Disponibile a breve</span>
                     </div>
                     <div class="card-name">Semko Vicci</div>
                     <div class="card-vintage">2026</div>
                     <div class="card-desc">
-                        <span class="lang-en">
-                            The one you've been reading about. Our flagship Shiraz-Sangiovese blend — bold, structured, with a Tuscan heart and a Hunter Valley body.
-                        </span>
-                        <span class="lang-ru lang-hidden">
-                            То самое вино, о котором вы читали. Наш флагманский бленд Шираз-Санджовезе — мощный, структурный, с сердцем Тосканы и телом долины Хантер.
-                        </span>
+                        <span class="lang-en">The one you've been reading about. Our flagship Shiraz-Sangiovese blend — bold, structured, with a Tuscan heart and a Hunter Valley body.</span>
+                        <span class="lang-it lang-hidden">Quello di cui avete letto. Il nostro blend di punta Shiraz-Sangiovese — audace, strutturato, con un cuore toscano e un corpo della Hunter Valley.</span>
                     </div>
                     <div class="card-specs">
-                        <span><span class="spec-label lang-en">Composition</span><span class="spec-label lang-ru lang-hidden">Состав</span> 60% Shiraz, 40% Sangiovese</span>
-                        <span><span class="spec-label lang-en">Maturation</span><span class="spec-label lang-ru lang-hidden">Выдержка</span> 14 months French oak</span>
-                        <span><span class="spec-label lang-en">Alcohol</span><span class="spec-label lang-ru lang-hidden">Алкоголь</span> 14.2%</span>
-                        <span><span class="spec-label lang-en">Production</span><span class="spec-label lang-ru lang-hidden">Тираж</span> 600 bottles</span>
+                        <span><span class="spec-label lang-en">Composition</span><span class="spec-label lang-it lang-hidden">Composizione</span> 60% Shiraz, 40% Sangiovese</span>
+                        <span><span class="spec-label lang-en">Maturation</span><span class="spec-label lang-it lang-hidden">Affinamento</span> 14 months French oak</span>
+                        <span><span class="spec-label lang-en">Alcohol</span><span class="spec-label lang-it lang-hidden">Alcol</span> 14.2%</span>
+                        <span><span class="spec-label lang-en">Production</span><span class="spec-label lang-it lang-hidden">Produzione</span> 600 bottles</span>
                     </div>
                     <div class="card-price">AUD 95</div>
                     <button class="btn-notify" data-wine="Semko Vicci 2026">
                         <span class="lang-en">Notify Me</span>
-                        <span class="lang-ru lang-hidden">Уведомить</span>
+                        <span class="lang-it lang-hidden">Avvisami</span>
                     </button>
                 </div>
             </div>
 
-            <!-- ===== КАРТОЧКА 2: 2025 (SOLD OUT) ===== -->
+            <!-- 2025 SOLD OUT -->
             <div class="wine-card sold-out-card">
                 <div class="card-image" data-full="images/bottle2025.jpeg">
                     <img src="images/bottle2025.jpeg" alt="Semko Vicci 2025" class="sold-out-img">
@@ -538,33 +262,29 @@
                 <div class="card-body">
                     <div class="card-status status-sold">
                         <span class="lang-en">Sold Out</span>
-                        <span class="lang-ru lang-hidden">Распродано</span>
+                        <span class="lang-it lang-hidden">Esaurito</span>
                     </div>
                     <div class="card-name">Semko Vicci</div>
                     <div class="card-vintage">2025</div>
                     <div class="card-desc">
-                        <span class="lang-en">
-                            The quiet one. A cooler year produced an elegant, restrained wine — less power, more finesse. Only 300 bottles made.
-                        </span>
-                        <span class="lang-ru lang-hidden">
-                            Тихий винтаж. Прохладный год дал элегантное, сдержанное вино — меньше мощи, больше утончённости. Всего 300 бутылок.
-                        </span>
+                        <span class="lang-en">The quiet one. A cooler year produced an elegant, restrained wine — less power, more finesse. Only 300 bottles made.</span>
+                        <span class="lang-it lang-hidden">Quello silenzioso. Un'annata più fresca ha prodotto un vino elegante e misurato — meno potenza, più finezza. Solo 300 bottiglie.</span>
                     </div>
                     <div class="card-specs">
-                        <span><span class="spec-label lang-en">Composition</span><span class="spec-label lang-ru lang-hidden">Состав</span> 65% Shiraz, 35% Sangiovese</span>
-                        <span><span class="spec-label lang-en">Maturation</span><span class="spec-label lang-ru lang-hidden">Выдержка</span> 12 months French oak</span>
-                        <span><span class="spec-label lang-en">Alcohol</span><span class="spec-label lang-ru lang-hidden">Алкоголь</span> 13.8%</span>
-                        <span><span class="spec-label lang-en">Production</span><span class="spec-label lang-ru lang-hidden">Тираж</span> 300 bottles</span>
+                        <span><span class="spec-label lang-en">Composition</span><span class="spec-label lang-it lang-hidden">Composizione</span> 65% Shiraz, 35% Sangiovese</span>
+                        <span><span class="spec-label lang-en">Maturation</span><span class="spec-label lang-it lang-hidden">Affinamento</span> 12 months French oak</span>
+                        <span><span class="spec-label lang-en">Alcohol</span><span class="spec-label lang-it lang-hidden">Alcol</span> 13.8%</span>
+                        <span><span class="spec-label lang-en">Production</span><span class="spec-label lang-it lang-hidden">Produzione</span> 300 bottles</span>
                     </div>
                     <div class="card-price">AUD 85</div>
                     <button class="btn-sold" disabled>
                         <span class="lang-en">Sold Out</span>
-                        <span class="lang-ru lang-hidden">Распродано</span>
+                        <span class="lang-it lang-hidden">Esaurito</span>
                     </button>
                 </div>
             </div>
 
-            <!-- ===== КАРТОЧКА 3: LIMITED RESERVE ===== -->
+            <!-- Limited Reserve -->
             <div class="wine-card">
                 <div class="card-image" data-full="images/bottlelimited.jpeg">
                     <img src="images/bottlelimited.jpeg" alt="Semko Vicci Limited Reserve">
@@ -572,29 +292,25 @@
                 <div class="card-body">
                     <div class="card-status status-available">
                         <span class="lang-en">Available soon</span>
-                        <span class="lang-ru lang-hidden">Скоро в продаже</span>
+                        <span class="lang-it lang-hidden">Disponibile a breve</span>
                     </div>
                     <div class="card-name">Semko Vicci</div>
                     <div class="card-vintage">Limited Reserve</div>
                     <div class="card-desc">
-                        <span class="lang-en">
-                            A tribute to the founders. Selected barrels from the original 1948 block. Extended ageing, unfiltered, unapologetic. Only 120 bottles.
-                        </span>
-                        <span class="lang-ru lang-hidden">
-                            Дань основателям. Отборные бочки с оригинального участка 1948 года. Долгая выдержка, без фильтрации, без компромиссов. Всего 120 бутылок.
-                        </span>
+                        <span class="lang-en">A tribute to the founders. Selected barrels from the original 1948 block. Extended ageing, unfiltered, unapologetic. Only 120 bottles.</span>
+                        <span class="lang-it lang-hidden">Un omaggio ai fondatori. Botti selezionate dal vigneto originale del 1948. Lungo affinamento, non filtrato, senza compromessi. Solo 120 bottiglie.</span>
                     </div>
                     <div class="card-specs">
-                        <span><span class="spec-label lang-en">Composition</span><span class="spec-label lang-ru lang-hidden">Состав</span> 50% Shiraz, 50% Sangiovese</span>
-                        <span><span class="spec-label lang-en">Vines planted</span><span class="spec-label lang-ru lang-hidden">Лозы посажены</span> 1948</span>
-                        <span><span class="spec-label lang-en">Maturation</span><span class="spec-label lang-ru lang-hidden">Выдержка</span> 24 months French oak</span>
-                        <span><span class="spec-label lang-en">Alcohol</span><span class="spec-label lang-ru lang-hidden">Алкоголь</span> 14.5%</span>
-                        <span><span class="spec-label lang-en">Production</span><span class="spec-label lang-ru lang-hidden">Тираж</span> 120 bottles</span>
+                        <span><span class="spec-label lang-en">Composition</span><span class="spec-label lang-it lang-hidden">Composizione</span> 50% Shiraz, 50% Sangiovese</span>
+                        <span><span class="spec-label lang-en">Vines planted</span><span class="spec-label lang-it lang-hidden">Viti piantate</span> 1948</span>
+                        <span><span class="spec-label lang-en">Maturation</span><span class="spec-label lang-it lang-hidden">Affinamento</span> 24 months French oak</span>
+                        <span><span class="spec-label lang-en">Alcohol</span><span class="spec-label lang-it lang-hidden">Alcol</span> 14.5%</span>
+                        <span><span class="spec-label lang-en">Production</span><span class="spec-label lang-it lang-hidden">Produzione</span> 120 bottles</span>
                     </div>
                     <div class="card-price">AUD 195</div>
                     <button class="btn-notify" data-wine="Semko Vicci Limited Reserve">
                         <span class="lang-en">Notify Me</span>
-                        <span class="lang-ru lang-hidden">Уведомить</span>
+                        <span class="lang-it lang-hidden">Avvisami</span>
                     </button>
                 </div>
             </div>
@@ -602,45 +318,38 @@
         </div>
     </div>
 
-    <!-- ================================================================ -->
-    <!-- FOOTER -->
-    <!-- ================================================================ -->
     <div class="shop-footer">
         <a href="index.html">
             <span class="lang-en">← Back to the story</span>
-            <span class="lang-ru lang-hidden">← Вернуться к истории</span>
+            <span class="lang-it lang-hidden">← Torna alla storia</span>
         </a>
     </div>
 
-    <!-- ================================================================ -->
-    <!-- SCRIPTS -->
-    <!-- ================================================================ -->
     <script>
-        // ===== LANGUAGE SWITCHER =====
         const btnEn = document.getElementById('btnEn');
-        const btnRu = document.getElementById('btnRu');
+        const btnIt = document.getElementById('btnIt');
 
         function switchLang(lang) {
             btnEn.classList.remove('active');
-            btnRu.classList.remove('active');
+            btnIt.classList.remove('active');
 
             if (lang === 'en') {
                 btnEn.classList.add('active');
                 document.querySelectorAll('.lang-en').forEach(el => el.classList.remove('lang-hidden'));
-                document.querySelectorAll('.lang-ru').forEach(el => el.classList.add('lang-hidden'));
+                document.querySelectorAll('.lang-it').forEach(el => el.classList.add('lang-hidden'));
                 document.documentElement.lang = 'en-AU';
             } else {
-                btnRu.classList.add('active');
-                document.querySelectorAll('.lang-ru').forEach(el => el.classList.remove('lang-hidden'));
+                btnIt.classList.add('active');
+                document.querySelectorAll('.lang-it').forEach(el => el.classList.remove('lang-hidden'));
                 document.querySelectorAll('.lang-en').forEach(el => el.classList.add('lang-hidden'));
-                document.documentElement.lang = 'ru';
+                document.documentElement.lang = 'it';
             }
         }
 
         btnEn.addEventListener('click', () => switchLang('en'));
-        btnRu.addEventListener('click', () => switchLang('ru'));
+        btnIt.addEventListener('click', () => switchLang('it'));
 
-        // ===== LIGHTBOX =====
+        // Lightbox
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightboxImg');
         const lightboxClose = document.getElementById('lightboxClose');
@@ -659,34 +368,23 @@
         function closeLightbox() {
             lightbox.classList.remove('active');
             document.body.style.overflow = '';
-            setTimeout(() => {
-                lightboxImg.src = '';
-            }, 300);
+            setTimeout(() => { lightboxImg.src = ''; }, 300);
         }
 
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                closeLightbox();
-            }
-        });
-
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
         lightboxClose.addEventListener('click', closeLightbox);
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox(); });
 
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-                closeLightbox();
-            }
-        });
-
-        // ===== NOTIFY ME BUTTONS =====
+        // Notify Me
         document.querySelectorAll('.btn-notify').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const wine = btn.getAttribute('data-wine');
+                const isEn = document.querySelector('.lang-en:not(.lang-hidden)');
                 const email = prompt(
-                    document.querySelector('.lang-en:not(.lang-hidden)')
+                    isEn
                         ? 'Enter your email to be notified when ' + wine + ' is available:'
-                        : 'Введите email, чтобы получить уведомление о поступлении ' + wine + ':'
+                        : 'Inserisci la tua email per essere avvisato quando ' + wine + ' sarà disponibile:'
                 );
                 if (email && email.trim()) {
                     const subs = JSON.parse(localStorage.getItem('semko_notify') || '[]');
@@ -694,7 +392,7 @@
                     localStorage.setItem('semko_notify', JSON.stringify(subs));
 
                     const originalText = btn.innerHTML;
-                    btn.innerHTML = '<span class="lang-en">✓ You\'re on the list</span><span class="lang-ru lang-hidden">✓ Вы в списке</span>';
+                    btn.innerHTML = '<span class="lang-en">✓ You\'re on the list</span><span class="lang-it lang-hidden">✓ Sei nella lista</span>';
                     btn.style.background = '#2e7d32';
                     setTimeout(() => {
                         btn.innerHTML = originalText;
