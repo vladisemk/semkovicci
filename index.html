@@ -165,29 +165,27 @@
         .why-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 28px 20px; margin-bottom: 32px;
+            gap: 28px 20px; margin-bottom: 28px;
         }
         .why-item {
             display: flex; flex-direction: column; align-items: center;
             gap: 10px; padding: 10px;
         }
-        .why-icon {
-            font-size: 2rem; color: #c49b4c; opacity: 0.85;
-        }
+        .why-icon { font-size: 2rem; color: #c49b4c; opacity: 0.85; }
         .why-label {
             font-family: 'Playfair Display', serif; font-size: 1rem;
             font-style: italic; color: #ddd; letter-spacing: 0.5px;
         }
         .why-btn {
-    display: inline-block; margin-top: 20px;
-    padding: 14px 32px;
-    background: #c49b4c; color: #0d0d0d;
-    border: none; font-family: 'Georgia', serif;
-    font-size: 0.85rem; letter-spacing: 2px;
-    text-transform: uppercase; text-decoration: none;
-    cursor: pointer; transition: background 0.3s;
-}
-.why-btn:hover { background: #d4ae5c; }
+            display: inline-block; margin-top: 8px;
+            padding: 14px 32px;
+            background: #c49b4c; color: #0d0d0d;
+            border: none; font-family: 'Georgia', serif;
+            font-size: 0.85rem; letter-spacing: 2px;
+            text-transform: uppercase; text-decoration: none;
+            cursor: pointer; transition: background 0.3s;
+        }
+        .why-btn:hover { background: #d4ae5c; }
 
         /* ===== BOTTLE SLIDE ===== */
         .bottle-slide { text-align: left; }
@@ -305,6 +303,7 @@
             .why-grid { grid-template-columns: 1fr 1fr; gap: 16px 12px; }
             .why-icon { font-size: 1.5rem; }
             .why-label { font-size: 0.85rem; }
+            .why-btn { padding: 12px 24px; font-size: 0.8rem; }
             .label-line-2 { font-size: 2.5rem; }
             .tech-line { font-size: 0.8rem; }
             .tech-line .tech-label { min-width: 120px; font-size: 0.7rem; }
@@ -332,7 +331,7 @@
         <div class="timeline-dot" data-label="1954" data-target="block5"></div>
         <div class="timeline-dot" data-label="2025" data-target="block6"></div>
         <div class="timeline-dot" data-label="Why" data-target="blockWhy"></div>
-        <div class="timeline-dot" data-label="Oggi" data-target="blockEpilogue"></div>
+        <div class="timeline-dot" data-label="Today" data-target="blockEpilogue"></div>
     </nav>
 
     <!-- HERO -->
@@ -584,6 +583,13 @@
         const btnIt = document.getElementById('btnIt');
         let currentLang = 'en';
 
+        function updateTimelineLabel() {
+            const lastDot = document.querySelector('.timeline-dot[data-target="blockEpilogue"]');
+            if (lastDot) {
+                lastDot.setAttribute('data-label', currentLang === 'en' ? 'Today' : 'Oggi');
+            }
+        }
+
         function switchLang(lang) {
             currentLang = lang;
             btnEn.classList.remove('active');
@@ -599,10 +605,13 @@
                 document.querySelectorAll('.lang-en').forEach(el => el.classList.add('lang-hidden'));
                 document.documentElement.lang = 'it';
             }
+            updateTimelineLabel();
             animateBottleBlock();
         }
         btnEn.addEventListener('click', () => switchLang('en'));
         btnIt.addEventListener('click', () => switchLang('it'));
+
+        updateTimelineLabel();
 
         const dots = document.querySelectorAll('.timeline-dot');
         const blocks = document.querySelectorAll('.story-block');
@@ -703,5 +712,6 @@
         if (formEn) handleSubscribe(formEn, document.getElementById('emailInput'));
         if (formIt) handleSubscribe(formIt, document.getElementById('emailInputIt'));
     </script>
+
 </body>
 </html>
