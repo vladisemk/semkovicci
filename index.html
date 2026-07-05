@@ -9,7 +9,7 @@
 
     <meta property="og:title" content="Semko Vicci — A Wine Born of Two Journeys">
     <meta property="og:description" content="The story of a Ukrainian farmer and an Italian winemaker who met in a Naples port and built a vineyard in Hunter Valley.">
-    <meta property="og:image" content="images/hero-vineyard.jpeg">
+    <meta property="og:image" content="images/frame-with-glass.jpg">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Semko Vicci">
 
@@ -82,13 +82,17 @@
         /* ===== HERO ===== */
         .hero-section {
             position: relative; width: 100%; height: 100vh;
-            background-image: url('images/hero-vineyard.jpeg');
-            background-size: cover; background-position: center;
-            display: flex; align-items: center; justify-content: center; z-index: 1;
+            display: flex; align-items: center; justify-content: center;
+            z-index: 1; overflow: hidden;
+        }
+        .hero-video {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover; z-index: 0;
         }
         .hero-section::after {
             content: ''; position: absolute; inset: 0;
-            background: rgba(0,0,0,0.45); z-index: 2;
+            background: rgba(0,0,0,0.4); z-index: 2;
         }
         .hero-content { position: relative; z-index: 3; text-align: center; }
         .hero-logo {
@@ -334,8 +338,11 @@
         <div class="timeline-dot" data-label="Today" data-target="blockEpilogue"></div>
     </nav>
 
-    <!-- HERO -->
+    <!-- ===== HERO ===== -->
     <div class="hero-section" id="hero">
+        <video autoplay muted loop playsinline class="hero-video" poster="images/frame-with-glass.jpg">
+            <source src="videos/hero-loop.mp4" type="video/mp4">
+        </video>
         <div class="hero-content">
             <img src="images/logo.png" alt="Semko Vicci" class="hero-logo">
             <div class="lang-en">
@@ -446,7 +453,7 @@
 
     <!-- БЛОК 6: БУТЫЛКА 2025 -->
     <div class="story-block" id="block6">
-        <div class="story-bg" style="background-image: url('images/bottle-2026.jpeg'); background-position: center 30%;"></div>
+        <div class="story-bg" style="background-image: url('images/hero-vineyard.jpeg'); background-position: center 30%;"></div>
         <div class="text-track">
             <div class="text-slide bottle-slide" id="bottleSlide">
                 <div class="lang-en">
@@ -583,12 +590,16 @@
         const btnIt = document.getElementById('btnIt');
         let currentLang = 'en';
 
-        function updateTimelineLabel() {
-            const lastDot = document.querySelector('.timeline-dot[data-target="blockEpilogue"]');
-            if (lastDot) {
-                lastDot.setAttribute('data-label', currentLang === 'en' ? 'Today' : 'Oggi');
-            }
-        }
+       function updateTimelineLabel() {
+    const lastDot = document.querySelector('.timeline-dot[data-target="blockEpilogue"]');
+    if (lastDot) {
+        lastDot.setAttribute('data-label', currentLang === 'en' ? 'Today' : 'Oggi');
+    }
+    const whyDot = document.querySelector('.timeline-dot[data-target="blockWhy"]');
+    if (whyDot) {
+        whyDot.setAttribute('data-label', currentLang === 'en' ? 'Why' : 'Perché');
+    }
+}
 
         function switchLang(lang) {
             currentLang = lang;
