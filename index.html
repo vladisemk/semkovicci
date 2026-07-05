@@ -9,7 +9,7 @@
 
     <meta property="og:title" content="Semko Vicci — A Wine Born of Two Journeys">
     <meta property="og:description" content="The story of a Ukrainian farmer and an Italian winemaker who met in a Naples port and built a vineyard in Hunter Valley.">
-    <meta property="og:image" content="images/frame-with-glass.jpg">
+    <meta property="og:image" content="images/frame-with-glass.jpeg">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Semko Vicci">
 
@@ -79,35 +79,44 @@
         }
         .timeline-dot.active::after { opacity: 1; color: #c49b4c; }
 
-        /* ===== HERO ===== */
-        .hero-section {
-            position: relative; width: 100%; height: 100vh;
-            display: flex; align-items: center; justify-content: center;
-            z-index: 1; overflow: hidden;
+        /* ===== HERO BLOCK (200vh: видео sticky + текст едет) ===== */
+        .hero-block {
+            position: relative; height: 200vh;
+        }
+        .hero-video-wrapper {
+            position: sticky; top: 0; width: 100%; height: 100vh;
+            overflow: hidden; z-index: 1;
+            background-image: url('images/frame-with-glass.jpeg');
+            background-size: cover; background-position: center;
         }
         .hero-video {
             position: absolute; top: 0; left: 0;
             width: 100%; height: 100%;
-            object-fit: cover; z-index: 0;
+            object-fit: cover; z-index: 1;
         }
-        .hero-section::after {
+        .hero-video-wrapper::after {
             content: ''; position: absolute; inset: 0;
-            background: rgba(0,0,0,0.4); z-index: 2;
+            background: rgba(0,0,0,0.35); z-index: 2;
         }
-        .hero-content { position: relative; z-index: 3; text-align: center; }
-        .hero-logo {
-            display: block; width: 320px; height: auto;
-            margin: 0 auto 20px auto;
-            filter: drop-shadow(0 0 18px rgba(196,155,76,0.5));
-            transition: filter 0.6s ease;
+
+        /* Текстовая плашка — едет поверх видео */
+        .hero-text-slide {
+    position: absolute; top: 110vh; left: 50%; transform: translateX(-50%);
+    width: 70%; max-width: 800px; padding: 50px 48px;
+    background: transparent; backdrop-filter: none;
+    text-align: center; z-index: 3;
+}
+        .hero-text-slide .hero-logo-slide {
+            display: block; width: 280px; height: auto;
+            margin: 0 auto 24px auto;
+            filter: drop-shadow(0 0 14px rgba(196,155,76,0.5));
         }
-        .hero-logo:hover { filter: drop-shadow(0 0 30px rgba(196,155,76,0.8)); }
-        .hero-content .subtitle {
-            font-family: 'Playfair Display', serif; font-size: 1.4rem;
-            font-style: italic; color: #ddd;
+        .hero-text-slide .subtitle {
+            font-family: 'Playfair Display', serif; font-size: 1.5rem;
+            font-style: italic; color: #ddd; margin-bottom: 30px;
         }
-        .hero-content .scroll-hint {
-            margin-top: 50px; font-size: 0.85rem; color: #999;
+        .hero-text-slide .scroll-hint {
+            font-size: 0.85rem; color: #999;
             letter-spacing: 2px; font-family: 'Georgia', serif;
             font-style: normal; animation: fadeInOut 2.5s infinite;
         }
@@ -298,11 +307,12 @@
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .top-bar { padding: 0 12px; top: 12px; }
-            .hero-logo { width: 240px; }
+            .hero-text-slide .hero-logo-slide { width: 200px; }
             .footer-logo { width: 260px; }
-            .text-slide, .why-content { width: 90%; padding: 24px 20px; }
+            .text-slide, .why-content, .hero-text-slide { width: 90%; padding: 24px 20px; }
             .text-slide h2 { font-size: 1.4rem; }
             .text-slide p { font-size: 0.95rem; }
+            .hero-text-slide .subtitle { font-size: 1.2rem; }
             .why-content h2 { font-size: 1.5rem; }
             .why-grid { grid-template-columns: 1fr 1fr; gap: 16px 12px; }
             .why-icon { font-size: 1.5rem; }
@@ -328,7 +338,8 @@
     </div>
 
     <nav class="timeline-nav" id="timelineNav">
-        <div class="timeline-dot active" data-label="1939" data-target="block1"></div>
+        <div class="timeline-dot active" data-label="Intro" data-target="heroBlock"></div>
+        <div class="timeline-dot" data-label="1939" data-target="block1"></div>
         <div class="timeline-dot" data-label="1943" data-target="block2"></div>
         <div class="timeline-dot" data-label="1946" data-target="block3"></div>
         <div class="timeline-dot" data-label="1947" data-target="block4"></div>
@@ -338,18 +349,21 @@
         <div class="timeline-dot" data-label="Today" data-target="blockEpilogue"></div>
     </nav>
 
-    <!-- ===== HERO ===== -->
-    <div class="hero-section" id="hero">
-        <video autoplay muted loop playsinline class="hero-video" poster="images/frame-with-glass.jpg">
-            <source src="videos/hero-loop.mp4" type="video/mp4">
-        </video>
-        <div class="hero-content">
-            <img src="images/logo.png" alt="Semko Vicci" class="hero-logo">
+    <!-- ===== HERO (200vh: видео sticky + текст едет) ===== -->
+    <div class="hero-block" id="heroBlock">
+        <div class="hero-video-wrapper">
+            <video autoplay muted loop playsinline class="hero-video" poster="images/frame-with-glass.jpeg">
+                <source src="videos/hero-loop.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="hero-text-slide" id="heroTextSlide">
             <div class="lang-en">
+                <img src="images/logo.png" alt="Semko Vicci" class="hero-logo-slide">
                 <p class="subtitle">A wine born of two journeys</p>
                 <p class="scroll-hint">▼  Scroll down to uncover the story  ▼</p>
             </div>
             <div class="lang-it lang-hidden">
+                <img src="images/logo.png" alt="Semko Vicci" class="hero-logo-slide">
                 <p class="subtitle">Un vino nato da due viaggi</p>
                 <p class="scroll-hint">▼  Scorri per scoprire la storia  ▼</p>
             </div>
@@ -590,21 +604,16 @@
         const btnIt = document.getElementById('btnIt');
         let currentLang = 'en';
 
-       function updateTimelineLabel() {
-    const lastDot = document.querySelector('.timeline-dot[data-target="blockEpilogue"]');
-    if (lastDot) {
-        lastDot.setAttribute('data-label', currentLang === 'en' ? 'Today' : 'Oggi');
-    }
-    const whyDot = document.querySelector('.timeline-dot[data-target="blockWhy"]');
-    if (whyDot) {
-        whyDot.setAttribute('data-label', currentLang === 'en' ? 'Why' : 'Perché');
-    }
-}
+        function updateTimelineLabel() {
+            const lastDot = document.querySelector('.timeline-dot[data-target="blockEpilogue"]');
+            if (lastDot) lastDot.setAttribute('data-label', currentLang === 'en' ? 'Today' : 'Oggi');
+            const whyDot = document.querySelector('.timeline-dot[data-target="blockWhy"]');
+            if (whyDot) whyDot.setAttribute('data-label', currentLang === 'en' ? 'Why' : 'Perché');
+        }
 
         function switchLang(lang) {
             currentLang = lang;
-            btnEn.classList.remove('active');
-            btnIt.classList.remove('active');
+            btnEn.classList.remove('active'); btnIt.classList.remove('active');
             if (lang === 'en') {
                 btnEn.classList.add('active');
                 document.querySelectorAll('.lang-en').forEach(el => el.classList.remove('lang-hidden'));
@@ -621,12 +630,11 @@
         }
         btnEn.addEventListener('click', () => switchLang('en'));
         btnIt.addEventListener('click', () => switchLang('it'));
-
         updateTimelineLabel();
 
         const dots = document.querySelectorAll('.timeline-dot');
         const blocks = document.querySelectorAll('.story-block');
-        const hero = document.getElementById('hero');
+        const heroBlock = document.getElementById('heroBlock');
         dots.forEach(dot => {
             dot.addEventListener('click', () => {
                 const targetId = dot.getAttribute('data-target');
@@ -636,8 +644,8 @@
         });
         function updateActiveDot() {
             let activeBlockId = null;
-            const heroRect = hero.getBoundingClientRect();
-            if (heroRect.bottom > window.innerHeight * 0.4) { activeBlockId = 'block1'; }
+            const hr = heroBlock.getBoundingClientRect();
+            if (hr.bottom > window.innerHeight * 0.4) { activeBlockId = 'heroBlock'; }
             else {
                 blocks.forEach(block => {
                     const rect = block.getBoundingClientRect();
@@ -652,10 +660,10 @@
         window.addEventListener('scroll', updateActiveDot);
         updateActiveDot();
 
-        const storyBlocks = document.querySelectorAll('.story-block');
-        storyBlocks.forEach(block => {
-            const bg = block.querySelector('.story-bg');
-            const slides = block.querySelectorAll('.text-slide, .why-content');
+        const allBlocks = document.querySelectorAll('.story-block, .hero-block');
+        allBlocks.forEach(block => {
+            const bg = block.querySelector('.story-bg, .hero-video-wrapper');
+            const slides = block.querySelectorAll('.text-slide, .why-content, .hero-text-slide');
             if (!bg || slides.length === 0) return;
             slides.forEach(slide => {
                 const observer = new IntersectionObserver((entries) => {
@@ -673,7 +681,7 @@
                 observer.observe(slide);
             });
             const styleEl = document.createElement('style');
-            styleEl.textContent = `#${block.id} .story-bg::after { background: var(--dim-bg, rgba(0,0,0,0)); transition: background 0.5s ease; }`;
+            styleEl.textContent = `#${block.id} .story-bg::after, #${block.id} .hero-video-wrapper::after { background: var(--dim-bg, rgba(0,0,0,0.35)); transition: background 0.5s ease; }`;
             document.head.appendChild(styleEl);
         });
 
@@ -683,21 +691,21 @@
             bottleSlide.querySelectorAll('.label-line-chapter, .label-line-1, .label-line-2, .label-line-3, .label-line-4, .tech-line').forEach(el => el.classList.remove('visible'));
             requestAnimationFrame(() => {
                 requestAnimationFrame(() => {
-                    const visibleContainer = bottleSlide.querySelector('.lang-en:not(.lang-hidden)') || bottleSlide.querySelector('.lang-it:not(.lang-hidden)');
-                    if (!visibleContainer) return;
-                    visibleContainer.querySelectorAll('.label-line-chapter, .label-line-1, .label-line-2, .label-line-3, .label-line-4').forEach(el => el.classList.add('visible'));
-                    visibleContainer.querySelectorAll('.tech-line').forEach(el => el.classList.add('visible'));
+                    const vc = bottleSlide.querySelector('.lang-en:not(.lang-hidden)') || bottleSlide.querySelector('.lang-it:not(.lang-hidden)');
+                    if (!vc) return;
+                    vc.querySelectorAll('.label-line-chapter, .label-line-1, .label-line-2, .label-line-3, .label-line-4').forEach(el => el.classList.add('visible'));
+                    vc.querySelectorAll('.tech-line').forEach(el => el.classList.add('visible'));
                 });
             });
         }
         if (bottleSlide) {
-            const labelObserver = new IntersectionObserver((entries) => {
+            const lo = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) animateBottleBlock();
                     else bottleSlide.querySelectorAll('.label-line-chapter, .label-line-1, .label-line-2, .label-line-3, .label-line-4, .tech-line').forEach(el => el.classList.remove('visible'));
                 });
             }, { threshold: 0.4 });
-            labelObserver.observe(bottleSlide);
+            lo.observe(bottleSlide);
         }
 
         function handleSubscribe(form, emailInput) {
@@ -709,19 +717,19 @@
                     subs.push({ email, date: new Date().toISOString() });
                     localStorage.setItem('semko_subscribers', JSON.stringify(subs));
                     const btn = form.querySelector('button');
-                    const originalHTML = btn.innerHTML;
+                    const o = btn.innerHTML;
                     btn.textContent = '✓ Done!';
                     btn.style.background = '#2e7d32';
                     setTimeout(() => { window.location.href = 'shop.html'; }, 1500);
-                    setTimeout(() => { btn.innerHTML = originalHTML; btn.style.background = '#c49b4c'; }, 3000);
+                    setTimeout(() => { btn.innerHTML = o; btn.style.background = '#c49b4c'; }, 3000);
                     form.reset();
                 }
             });
         }
-        const formEn = document.getElementById('subscribeForm');
-        const formIt = document.getElementById('subscribeFormIt');
-        if (formEn) handleSubscribe(formEn, document.getElementById('emailInput'));
-        if (formIt) handleSubscribe(formIt, document.getElementById('emailInputIt'));
+        const fe = document.getElementById('subscribeForm');
+        const fi = document.getElementById('subscribeFormIt');
+        if (fe) handleSubscribe(fe, document.getElementById('emailInput'));
+        if (fi) handleSubscribe(fi, document.getElementById('emailInputIt'));
     </script>
 
 </body>
