@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semko Vicci — Family Archive | Hunter Valley</title>
+
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <meta property="og:title" content="Semko Vicci — Family Archive">
+    <meta property="og:description" content="Rare photographs and artefacts from the Semko Vicci family archive.">
+    <meta property="og:image" content="images/archive-old-barrel-room.jpeg">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Semko Vicci">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background-color: #0d0d0d;
+            color: #f0ede8;
+            line-height: 1.8;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== TOP BAR ===== */
+        .top-bar {
+            position: fixed; top: 24px; left: 0; right: 0; z-index: 1001;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 28px; pointer-events: none;
+            flex-shrink: 0;
+        }
+        .top-bar > * { pointer-events: auto; }
+
+        .btn-back {
+            background: rgba(10,10,10,0.7); color: #a0845c;
+            border: 1px solid #a0845c; padding: 6px 14px;
+            font-size: 0.8rem; letter-spacing: 1px; cursor: pointer;
+            transition: all 0.3s; font-family: 'Georgia', serif;
+            backdrop-filter: blur(6px); text-transform: uppercase;
+            text-decoration: none; display: inline-block;
+        }
+        .btn-back:hover { background: #c49b4c; color: #0d0d0d; border-color: #c49b4c; }
+
+        .lang-switcher { display: flex; gap: 8px; }
+        .lang-switcher button {
+            background: rgba(10,10,10,0.7); color: #a0845c;
+            border: 1px solid #a0845c; padding: 6px 14px;
+            font-size: 0.8rem; letter-spacing: 1px; cursor: pointer;
+            transition: all 0.3s; font-family: 'Georgia', serif;
+            backdrop-filter: blur(6px); text-transform: uppercase;
+        }
+        .lang-switcher button.active { background: #c49b4c; color: #0d0d0d; border-color: #c49b4c; }
+        .lang-hidden { display: none !important; }
+
+        /* ===== MAIN CONTAINER ===== */
+        .archive-main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 80px 20px 20px;
+            gap: 20px;
+        }
+
+        /* ===== HEADER ===== */
+        .archive-header {
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .archive-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.6rem;
+            font-weight: 600;
+            font-style: italic;
+            color: #c49b4c;
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+        }
+        .archive-header .header-sub {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            font-style: italic;
+            color: #888;
+            letter-spacing: 1px;
+        }
+
+        /* ===== SHELF ===== */
+        .shelf {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 10px;
+            perspective: 1200px;
+            position: relative;
+            flex-grow: 1;
+            width: 100%;
+            max-height: 62vh;
+            min-height: 400px;
+        }
+
+        .shelf-item {
+            position: relative;
+            width: 110px;
+            height: 100%;
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+                        width 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+                        margin 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+                        z-index 0s 0s;
+            z-index: 1;
+            transform: rotateY(2deg) translateZ(0);
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #222;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .shelf-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 35%);
+            pointer-events: none;
+        }
+
+        .shelf-item:hover {
+            transform: rotateY(0deg) translateY(-16px) translateZ(40px);
+            z-index: 10;
+            border-color: #c49b4c;
+            box-shadow: 0 24px 50px rgba(0,0,0,0.6), 0 0 24px rgba(196,155,76,0.3);
+            transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1),
+                        border-color 0.3s,
+                        box-shadow 0.3s,
+                        z-index 0s 0s;
+        }
+
+        .shelf-item.active {
+            width: 600px;
+            z-index: 20;
+            transform: rotateY(0deg) translateY(-8px) translateZ(60px);
+            border-color: #c49b4c;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.7), 0 0 40px rgba(196,155,76,0.5);
+            cursor: default;
+        }
+
+        /* ===== CAPTION ===== */
+        .shelf-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 28px 28px 24px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+        .shelf-item.active .shelf-caption { opacity: 1; }
+        .shelf-caption .caption-year {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #c49b4c;
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+        }
+        .shelf-caption .caption-text {
+            font-size: 0.95rem;
+            color: #ddd;
+            line-height: 1.6;
+        }
+
+        .shelf-close {
+            position: absolute;
+            top: 14px;
+            right: 18px;
+            width: 40px;
+            height: 40px;
+            background: rgba(0,0,0,0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: #c49b4c;
+            cursor: pointer;
+            z-index: 30;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+        .shelf-item.active .shelf-close {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .shelf-close:hover { background: rgba(196,155,76,0.4); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .top-bar { padding: 0 12px; top: 12px; }
+            .archive-main { padding: 70px 12px 12px; gap: 12px; }
+            .archive-header h1 { font-size: 1.8rem; }
+            .archive-header .header-sub { font-size: 0.85rem; }
+
+            .shelf {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px;
+                max-height: none;
+                min-height: auto;
+                perspective: none;
+                align-content: center;
+            }
+            .shelf-item {
+                width: 55px;
+                height: 280px;
+                transform: none;
+            }
+            .shelf-item:hover { transform: translateY(-8px); }
+            .shelf-item.active {
+                width: 100%;
+                height: 380px;
+                transform: none;
+                margin: 8px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== TOP BAR ===== -->
+    <div class="top-bar">
+        <a href="index.html" class="btn-back">
+            <span class="lang-en">← Back</span>
+            <span class="lang-it lang-hidden">← Indietro</span>
+        </a>
+        <div class="lang-switcher">
+            <button id="btnEn" class="active">EN</button>
+            <button id="btnIt">IT</button>
+        </div>
+    </div>
+
+    <!-- ===== MAIN ===== -->
+    <div class="archive-main">
+
+        <!-- Заголовок -->
+        <div class="archive-header">
+            <div class="lang-en">
+                <h1>Family Archive</h1>
+                <p class="header-sub">Five artefacts. Two men. One story that refuses to be forgotten.</p>
+            </div>
+            <div class="lang-it lang-hidden">
+                <h1>Archivio di Famiglia</h1>
+                <p class="header-sub">Cinque reperti. Due uomini. Una storia che rifiuta di essere dimenticata.</p>
+            </div>
+        </div>
+
+        <!-- Полка -->
+        <div class="shelf" id="shelf">
+
+            <!-- 1: Taras -->
+            <div class="shelf-item" style="background-image: url('images/archive-taras-portrait.jpeg');" data-index="0">
+                <div class="shelf-close">&times;</div>
+                <div class="shelf-caption">
+                    <div class="lang-en">
+                        <div class="caption-year">Taras Semko, 1952</div>
+                        <div class="caption-text">The man who carried Ukrainian soil in his blood. He never saw his homeland again — but he planted its memory in Australian earth.</div>
+                    </div>
+                    <div class="lang-it lang-hidden">
+                        <div class="caption-year">Taras Semko, 1952</div>
+                        <div class="caption-text">L'uomo che portava la terra ucraina nel sangue. Non rivide mai più la sua patria — ma ne piantò il ricordo nella terra australiana.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2: Enzo -->
+            <div class="shelf-item" style="background-image: url('images/archive-enzo-portrait.jpeg');" data-index="1">
+                <div class="shelf-close">&times;</div>
+                <div class="shelf-caption">
+                    <div class="lang-en">
+                        <div class="caption-year">Enzo Vicci, 1953</div>
+                        <div class="caption-text">Six generations of Tuscan winemaking in his hands. He lost everything in the war — except the knowledge of how to make wine from nothing.</div>
+                    </div>
+                    <div class="lang-it lang-hidden">
+                        <div class="caption-year">Enzo Vicci, 1953</div>
+                        <div class="caption-text">Sei generazioni di vinificazione toscana nelle sue mani. Perse tutto in guerra — tranne il sapere di come fare il vino partendo dal nulla.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3: Label -->
+            <div class="shelf-item" style="background-image: url('images/archive-first-label.jpeg');" data-index="2">
+                <div class="shelf-close">&times;</div>
+                <div class="shelf-caption">
+                    <div class="lang-en">
+                        <div class="caption-year">The First Label, 1954</div>
+                        <div class="caption-text">Hand-drawn by Enzo. Wine-stained by Taras. Two hands clasped above the name they created together. This piece of paper is where our story became real.</div>
+                    </div>
+                    <div class="lang-it lang-hidden">
+                        <div class="caption-year">La Prima Etichetta, 1954</div>
+                        <div class="caption-text">Disegnata a mano da Enzo. Macchiata di vino da Taras. Due mani giunte sopra il nome che crearono insieme. Questo pezzo di carta è dove la nostra storia è diventata reale.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4: Barrel Room -->
+            <div class="shelf-item" style="background-image: url('images/archive-old-barrel-room.jpeg');" data-index="3">
+                <div class="shelf-close">&times;</div>
+                <div class="shelf-caption">
+                    <div class="lang-en">
+                        <div class="caption-year">The Barrel Room, 1955</div>
+                        <div class="caption-text">Where the pact was sealed every vintage. Taras stacked the barrels. Enzo filled them. The initials SV burned into the wood — a promise neither man ever broke.</div>
+                    </div>
+                    <div class="lang-it lang-hidden">
+                        <div class="caption-year">La Sala delle Botti, 1955</div>
+                        <div class="caption-text">Dove il patto veniva suggellato ad ogni vendemmia. Taras impilava le botti. Enzo le riempiva. Le iniziali SV impresse sul legno — una promessa che nessuno dei due ha mai infranto.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5: Notes -->
+            <div class="shelf-item" style="background-image: url('images/archive-enzos-notes.jpeg');" data-index="4">
+                <div class="shelf-close">&times;</div>
+                <div class="shelf-caption">
+                    <div class="lang-en">
+                        <div class="caption-year">Enzo's Notebook</div>
+                        <div class="caption-text">Blending ratios. Pruning sketches. Rainfall records. Dreams written in the margins. This notebook is the closest thing we have to a conversation with Enzo himself.</div>
+                    </div>
+                    <div class="lang-it lang-hidden">
+                        <div class="caption-year">Il Taccuino di Enzo</div>
+                        <div class="caption-text">Rapporti di assemblaggio. Schizzi di potatura. Registri delle piogge. Sogni scritti ai margini. Questo taccuino è quanto di più vicino abbiamo a una conversazione con Enzo.</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+        const btnEn = document.getElementById('btnEn');
+        const btnIt = document.getElementById('btnIt');
+        let currentLang = 'en';
+
+        function switchLang(lang) {
+            currentLang = lang;
+            btnEn.classList.remove('active'); btnIt.classList.remove('active');
+            if (lang === 'en') {
+                btnEn.classList.add('active');
+                document.querySelectorAll('.lang-en').forEach(el => el.classList.remove('lang-hidden'));
+                document.querySelectorAll('.lang-it').forEach(el => el.classList.add('lang-hidden'));
+                document.documentElement.lang = 'en-AU';
+            } else {
+                btnIt.classList.add('active');
+                document.querySelectorAll('.lang-it').forEach(el => el.classList.remove('lang-hidden'));
+                document.querySelectorAll('.lang-en').forEach(el => el.classList.add('lang-hidden'));
+                document.documentElement.lang = 'it';
+            }
+        }
+        btnEn.addEventListener('click', () => switchLang('en'));
+        btnIt.addEventListener('click', () => switchLang('it'));
+
+        const items = document.querySelectorAll('.shelf-item');
+        let activeItem = null;
+
+        items.forEach(item => {
+            item.addEventListener('click', (e) => {
+                if (e.target.classList.contains('shelf-close')) return;
+                if (activeItem === item) return;
+                if (activeItem) activeItem.classList.remove('active');
+                item.classList.add('active');
+                activeItem = item;
+            });
+
+            const closeBtn = item.querySelector('.shelf-close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    item.classList.remove('active');
+                    if (activeItem === item) activeItem = null;
+                });
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (activeItem && !activeItem.contains(e.target)) {
+                activeItem.classList.remove('active');
+                activeItem = null;
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && activeItem) {
+                activeItem.classList.remove('active');
+                activeItem = null;
+            }
+        });
+    </script>
+
+</body>
+</html>
