@@ -77,6 +77,30 @@
             margin-top: 12px; font-style: normal; font-family: 'Georgia', serif;
         }
 
+        /* ===== SHELF PROOF ===== */
+        .shelf-proof {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto 60px auto;
+        }
+        .shelf-proof img {
+            width: 100%;
+            height: auto;
+            max-height: 65vh;
+            object-fit: cover;
+            display: block;
+            border: 1px solid #222;
+        }
+        .shelf-proof .proof-caption {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-style: italic;
+            color: #a0845c;
+            margin-top: 14px;
+            letter-spacing: 0.5px;
+        }
+
         .wine-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -196,6 +220,7 @@
             .top-bar { padding: 0 12px; top: 12px; }
             .shop-title h1 { font-size: 2rem; }
             .expert-quote blockquote { font-size: 1rem; }
+            .shelf-proof img { max-height: 40vh; }
             .wine-grid { grid-template-columns: 1fr; }
             .card-image { height: 380px; padding: 10px 12px; }
             .card-body { padding: 20px 18px 24px; }
@@ -244,6 +269,15 @@
                 <blockquote>Un piccolo segreto della Hunter Valley. Solo poche centinaia di bottiglie, ma ogni annata si esaurisce prima di arrivare sugli scaffali. Da tenere d'occhio.</blockquote>
                 <p class="expert-name">— Mark Williamson, giudice enologico, Sydney Royal Wine Show</p>
             </div>
+        </div>
+
+        <!-- Фото с полки BWS -->
+        <div class="shelf-proof">
+            <img src="images/bws-shelf.jpeg" alt="Semko Vicci on the shelf at BWS">
+            <p class="proof-caption">
+                <span class="lang-en">On the shelf at BWS. Just like any other bottle. Except it's not.</span>
+                <span class="lang-it lang-hidden">Sugli scaffali di BWS. Come una bottiglia qualunque. Solo che non lo è.</span>
+            </p>
         </div>
 
         <div class="wine-grid">
@@ -414,5 +448,6 @@
             });
         });
     </script>
+
 </body>
 </html>
