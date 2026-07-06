@@ -235,6 +235,7 @@
                 height: 380px;
                 transform: none;
                 margin: 8px 0;
+		order: -1;
             }
         }
     </style>
@@ -383,6 +384,11 @@
                 if (activeItem) activeItem.classList.remove('active');
                 item.classList.add('active');
                 activeItem = item;
+if (window.innerWidth <= 768) {
+    setTimeout(() => {
+        item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 100);
+}
             });
 
             const closeBtn = item.querySelector('.shelf-close');
