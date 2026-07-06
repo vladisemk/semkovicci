@@ -142,7 +142,6 @@
 
         /* ===== STORY BLOCK ===== */
         .story-block { position: relative; height: 200vh; }
-        .story-block.epilogue-block { height: 300vh; }
         .story-block.why-block { height: 200vh; }
 
         .story-bg {
@@ -363,6 +362,7 @@
         <div class="timeline-dot" data-label="2025" data-target="block6"></div>
         <div class="timeline-dot" data-label="Why" data-target="blockWhy"></div>
         <div class="timeline-dot" data-label="Today" data-target="blockEpilogue"></div>
+	<div class="timeline-dot" data-label="Sign Up" data-target="blockCta"></div>
     </nav>
 
     <!-- ===== HERO (200vh: видео sticky + текст едет) ===== -->
@@ -572,8 +572,8 @@
         </div>
     </div>
 
-    <!-- ЭПИЛОГ + CTA -->
-    <div class="story-block epilogue-block" id="blockEpilogue">
+        <!-- ЭПИЛОГ -->
+    <div class="story-block" id="blockEpilogue">
         <div class="story-bg" style="background-image: url('images/winery-today.jpeg');"></div>
         <div class="text-track">
             <div class="text-slide" id="epilogueSlide">
@@ -596,7 +596,14 @@
                     <p style="text-align:center;">Quel bicchiere ora è alzato per voi.</p>
                 </div>
             </div>
-            <div class="text-slide text-slide-second" id="ctaSlide">
+        </div>
+    </div>
+
+    <!-- CTA на фото бутылок -->
+    <div class="story-block" id="blockCta">
+        <div class="story-bg" style="background-image: url('images/bottles-on-shelf.jpeg'); background-position: center 40%;"></div>
+        <div class="text-track">
+            <div class="text-slide" id="ctaSlide">
                 <div class="lang-en">
                     <h2>Be the first to know</h2>
                     <p>Our story began in 1954. The next chapter is being written right now in the Hunter Valley. Sign up and we'll let you know when the next vintage is ready.</p>
@@ -636,6 +643,10 @@
             if (lastDot) lastDot.setAttribute('data-label', currentLang === 'en' ? 'Today' : 'Oggi');
             const whyDot = document.querySelector('.timeline-dot[data-target="blockWhy"]');
             if (whyDot) whyDot.setAttribute('data-label', currentLang === 'en' ? 'Why' : 'Perché');
+const ctaDot = document.querySelector('.timeline-dot[data-target="blockCta"]');
+if (ctaDot) {
+    ctaDot.setAttribute('data-label', currentLang === 'en' ? 'Sign Up' : 'Iscriviti');
+}
         }
 
         function switchLang(lang) {
