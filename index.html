@@ -115,6 +115,78 @@
 }
 .text-slide-btn:hover { background: #d4ae5c; }
 
+/* ===== AGE GATE ===== */
+.age-gate {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.95); z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
+}
+.age-gate.hidden { display: none; }
+.age-gate-box {
+    text-align: center; max-width: 440px; padding: 40px 32px;
+}
+.age-gate-logo {
+    width: 180px; height: auto; margin-bottom: 28px;
+    filter: drop-shadow(0 0 12px rgba(196,155,76,0.4));
+}
+.age-gate-text {
+    font-family: 'Playfair Display', serif; font-size: 1.15rem;
+    font-style: italic; color: #ccc; margin-bottom: 32px; line-height: 1.6;
+}
+.age-gate-buttons {
+    display: flex; flex-direction: column; gap: 12px; align-items: center;
+}
+.age-btn {
+    width: 100%; max-width: 300px; padding: 14px 0;
+    font-family: 'Georgia', serif; font-size: 0.9rem;
+    letter-spacing: 2px; text-transform: uppercase;
+    cursor: pointer; border: none; transition: background 0.3s;
+}
+.age-btn-yes {
+    background: #c49b4c; color: #0d0d0d;
+}
+.age-btn-yes:hover { background: #d4ae5c; }
+.age-btn-no {
+    background: transparent; color: #8b3a3a; border: 1px solid #8b3a3a;
+}
+.age-btn-no:hover { background: rgba(139,58,58,0.2); }
+
+.footer-legal {
+    margin-top: 32px;
+    text-align: center;
+}
+.footer-warning {
+    font-size: 0.7rem; color: #666; letter-spacing: 0.3px;
+    max-width: 500px; margin: 0 auto 12px auto; line-height: 1.5;
+}
+.footer-licence {
+    font-size: 0.7rem; color: #555; letter-spacing: 0.3px; margin-bottom: 8px;
+}
+.footer-copy {
+    font-size: 0.7rem; color: #555; letter-spacing: 0.3px;
+}
+
+// ===== AGE GATE =====
+const ageGate = document.getElementById('ageGate');
+const ageYes = document.getElementById('ageYes');
+const ageNo = document.getElementById('ageNo');
+
+// Проверяем, проходил ли уже гейт
+const ageVerified = localStorage.getItem('semko_age_verified');
+if (ageVerified === 'true') {
+    ageGate.classList.add('hidden');
+}
+
+ageYes.addEventListener('click', () => {
+    localStorage.setItem('semko_age_verified', 'true');
+    ageGate.classList.add('hidden');
+});
+
+ageNo.addEventListener('click', () => {
+    window.location.href = 'https://www.google.com';
+});
+
+
         /* Текстовая плашка — едет поверх видео */
         .hero-text-slide {
     position: absolute; top: 110vh; left: 50%; transform: translateX(-50%);
@@ -343,6 +415,26 @@
     </style>
 </head>
 <body>
+<!-- ===== AGE GATE ===== -->
+<div class="age-gate" id="ageGate">
+    <div class="age-gate-box">
+        <img src="images/logo.png" alt="Semko Vicci" class="age-gate-logo">
+        <p class="age-gate-text">
+            <span class="lang-en">Please confirm that you are at least 18 years old.</span>
+            <span class="lang-it lang-hidden">Conferma di avere almeno 18 anni.</span>
+        </p>
+        <div class="age-gate-buttons">
+            <button class="age-btn age-btn-yes" id="ageYes">
+                <span class="lang-en">Yes, I am 18+</span>
+                <span class="lang-it lang-hidden">Sì, ho 18+ anni</span>
+            </button>
+            <button class="age-btn age-btn-no" id="ageNo">
+                <span class="lang-en">No, I am under 18</span>
+                <span class="lang-it lang-hidden">No, ho meno di 18 anni</span>
+            </button>
+        </div>
+    </div>
+</div>
 
     <div class="top-bar">
         <a href="shop.html" class="btn-shop">Shop</a>
@@ -626,12 +718,24 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
-    <div class="footer-section">
-        <div class="footer-content">
-            <img src="images/logo.png" alt="Semko Vicci" class="footer-logo">
+<!-- FOOTER -->
+<div class="footer-section">
+    <div class="footer-content">
+        <img src="images/logo.png" alt="Semko Vicci" class="footer-logo">
+        <div class="footer-legal">
+            <p class="footer-warning">
+                <span class="lang-en">It is against the law to sell or supply alcohol to, or obtain alcohol for, anyone under 18 years.</span>
+                <span class="lang-it lang-hidden">È vietato per legge vendere o fornire alcolici a minori di 18 anni, o procurarne per loro.</span>
+            </p>
+            <p class="footer-licence">
+                Liquor Licence No. LIQP724003533 &nbsp;—&nbsp; ABN 58 099 104 721
+            </p>
+            <p class="footer-copy">
+                Copyright © 2025 Vladimir Semkovich
+            </p>
         </div>
     </div>
+</div>
 
     <script>
         const btnEn = document.getElementById('btnEn');
