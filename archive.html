@@ -100,18 +100,18 @@
             display: flex;
             justify-content: center;
             align-items: flex-end;
-            gap: 10px;
+            gap: 14px;
             perspective: 1200px;
             position: relative;
             flex-grow: 1;
             width: 100%;
-            max-height: 62vh;
-            min-height: 400px;
+            max-height: 75vh;
+            min-height: 500px;
         }
 
         .shelf-item {
             position: relative;
-            width: 110px;
+            width: 150px;
             height: 100%;
             flex-shrink: 0;
             cursor: pointer;
@@ -148,7 +148,7 @@
         }
 
         .shelf-item.active {
-            width: 600px;
+            width: 900px;
             z-index: 20;
             transform: rotateY(0deg) translateY(-8px) translateZ(60px);
             border-color: #c49b4c;
