@@ -86,54 +86,26 @@
             display: flex; align-items: center; justify-content: center;
         }
         .age-gate.hidden { display: none; }
-        .age-gate-box {
-            text-align: center; max-width: 440px; padding: 40px 32px;
-        }
-        .age-gate-logo {
-            width: 180px; height: auto; margin-bottom: 28px;
-            filter: drop-shadow(0 0 12px rgba(196,155,76,0.4));
-        }
-        .age-gate-text {
-            font-family: 'Playfair Display', serif; font-size: 1.15rem;
-            font-style: italic; color: #ccc; margin-bottom: 32px; line-height: 1.6;
-        }
-        .age-gate-buttons {
-            display: flex; flex-direction: column; gap: 12px; align-items: center;
-        }
-        .age-btn {
-            width: 100%; max-width: 300px; padding: 14px 0;
-            font-family: 'Georgia', serif; font-size: 0.9rem;
-            letter-spacing: 2px; text-transform: uppercase;
-            cursor: pointer; border: none; transition: background 0.3s;
-        }
-        .age-btn-yes {
-            background: #c49b4c; color: #0d0d0d;
-        }
+        .age-gate-box { text-align: center; max-width: 440px; padding: 40px 32px; }
+        .age-gate-logo { width: 180px; height: auto; margin-bottom: 28px; filter: drop-shadow(0 0 12px rgba(196,155,76,0.4)); }
+        .age-gate-text { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-style: italic; color: #ccc; margin-bottom: 32px; line-height: 1.6; }
+        .age-gate-buttons { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+        .age-btn { width: 100%; max-width: 300px; padding: 14px 0; font-family: 'Georgia', serif; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border: none; transition: background 0.3s; }
+        .age-btn-yes { background: #c49b4c; color: #0d0d0d; }
         .age-btn-yes:hover { background: #d4ae5c; }
-        .age-btn-no {
-            background: transparent; color: #8b3a3a; border: 1px solid #8b3a3a;
-        }
+        .age-btn-no { background: transparent; color: #8b3a3a; border: 1px solid #8b3a3a; }
         .age-btn-no:hover { background: rgba(139,58,58,0.2); }
 
-        /* ===== HERO BLOCK (200vh: видео sticky + текст едет) ===== */
-        .hero-block {
-            position: relative; height: 200vh;
-        }
+        /* ===== HERO BLOCK ===== */
+        .hero-block { position: relative; height: 200vh; }
         .hero-video-wrapper {
             position: sticky; top: 0; width: 100%; height: 100vh;
             overflow: hidden; z-index: 1;
             background-image: url('images/frame-with-glass.jpeg');
             background-size: cover; background-position: center;
         }
-        .hero-video {
-            position: absolute; top: 0; left: 0;
-            width: 100%; height: 100%;
-            object-fit: cover; z-index: 1;
-        }
-        .hero-video-wrapper::after {
-            content: ''; position: absolute; inset: 0;
-            background: rgba(0,0,0,0.35); z-index: 2;
-        }
+        .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+        .hero-video-wrapper::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.35); z-index: 2; }
 
         .hero-text-slide {
             position: absolute; top: 110vh; left: 50%; transform: translateX(-50%);
@@ -141,23 +113,10 @@
             background: transparent; backdrop-filter: none;
             text-align: center; z-index: 3;
         }
-        .hero-text-slide .hero-logo-slide {
-            display: block; width: 280px; height: auto;
-            margin: 0 auto 24px auto;
-            filter: drop-shadow(0 0 14px rgba(196,155,76,0.5));
-        }
-        .hero-text-slide .subtitle {
-            font-family: 'Playfair Display', serif; font-size: 1.5rem;
-            font-style: italic; color: #ddd; margin-bottom: 30px;
-        }
-        .hero-text-slide .scroll-hint {
-            font-size: 0.85rem; color: #999;
-            letter-spacing: 2px; font-family: 'Georgia', serif;
-            font-style: normal; animation: fadeInOut 2.5s infinite;
-        }
-        @keyframes fadeInOut {
-            0%,100% { opacity: 0.4; } 50% { opacity: 1; }
-        }
+        .hero-text-slide .hero-logo-slide { display: block; width: 280px; height: auto; margin: 0 auto 24px auto; filter: drop-shadow(0 0 14px rgba(196,155,76,0.5)); }
+        .hero-text-slide .subtitle { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; color: #ddd; margin-bottom: 30px; }
+        .hero-text-slide .scroll-hint { font-size: 0.85rem; color: #999; letter-spacing: 2px; font-family: 'Georgia', serif; font-style: normal; animation: fadeInOut 2.5s infinite; }
+        @keyframes fadeInOut { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
 
         /* ===== STORY BLOCK ===== */
         .story-block { position: relative; height: 200vh; }
@@ -172,38 +131,17 @@
             background: rgba(0,0,0,0); transition: background 0.5s ease;
             z-index: 2; pointer-events: none;
         }
-        .text-track {
-            position: absolute; top: 0; left: 0;
-            width: 100%; height: 100%; z-index: 3; pointer-events: none;
-        }
+        .text-track { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 3; pointer-events: none; }
         .text-slide {
             position: absolute; top: 105vh; left: 50%; transform: translateX(-50%);
             width: 70%; max-width: 720px; padding: 40px 48px;
             background: rgba(10,10,10,0.85); border-left: 3px solid #c49b4c;
             backdrop-filter: blur(10px); pointer-events: auto;
         }
-
-        .text-slide h2 {
-            font-family: 'Playfair Display', serif; font-size: 1.9rem;
-            font-weight: 600; font-style: italic; color: #c49b4c;
-            margin-bottom: 20px; letter-spacing: 1px;
-        }
+        .text-slide h2 { font-family: 'Playfair Display', serif; font-size: 1.9rem; font-weight: 600; font-style: italic; color: #c49b4c; margin-bottom: 20px; letter-spacing: 1px; }
         .text-slide p { font-size: 1.1rem; text-align: justify; hyphens: auto; }
-        .text-slide .year-badge {
-            display: inline-block; font-size: 0.8rem; letter-spacing: 3px;
-            color: #a0845c; border: 1px solid #a0845c;
-            padding: 4px 12px; margin-bottom: 16px;
-            text-transform: uppercase; font-style: normal;
-        }
-        .text-slide-btn {
-            display: inline-block; margin-top: 20px;
-            padding: 12px 28px;
-            background: #c49b4c; color: #0d0d0d;
-            border: none; font-family: 'Georgia', serif;
-            font-size: 0.8rem; letter-spacing: 2px;
-            text-transform: uppercase; text-decoration: none;
-            cursor: pointer; transition: background 0.3s;
-        }
+        .text-slide .year-badge { display: inline-block; font-size: 0.8rem; letter-spacing: 3px; color: #a0845c; border: 1px solid #a0845c; padding: 4px 12px; margin-bottom: 16px; text-transform: uppercase; font-style: normal; }
+        .text-slide-btn { display: inline-block; margin-top: 20px; padding: 12px 28px; background: #c49b4c; color: #0d0d0d; border: none; font-family: 'Georgia', serif; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: background 0.3s; }
         .text-slide-btn:hover { background: #d4ae5c; }
 
         /* ===== WHY BLOCK ===== */
@@ -213,95 +151,34 @@
             background: rgba(10,10,10,0.85); backdrop-filter: blur(12px);
             text-align: center; pointer-events: auto; z-index: 3;
         }
-        .why-content h2 {
-            font-family: 'Playfair Display', serif; font-size: 2rem;
-            font-weight: 600; font-style: italic; color: #c49b4c;
-            margin-bottom: 36px; letter-spacing: 1px;
-        }
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 28px 20px; margin-bottom: 28px;
-        }
-        .why-item {
-            display: flex; flex-direction: column; align-items: center;
-            gap: 10px; padding: 10px;
-        }
+        .why-content h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 600; font-style: italic; color: #c49b4c; margin-bottom: 36px; letter-spacing: 1px; }
+        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 28px 20px; margin-bottom: 28px; }
+        .why-item { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 10px; }
         .why-icon { font-size: 2rem; color: #c49b4c; opacity: 0.85; }
-        .why-label {
-            font-family: 'Playfair Display', serif; font-size: 1rem;
-            font-style: italic; color: #ddd; letter-spacing: 0.5px;
-        }
-        .why-btn {
-            display: inline-block; margin-top: 8px;
-            padding: 14px 32px;
-            background: #c49b4c; color: #0d0d0d;
-            border: none; font-family: 'Georgia', serif;
-            font-size: 0.85rem; letter-spacing: 2px;
-            text-transform: uppercase; text-decoration: none;
-            cursor: pointer; transition: background 0.3s;
-        }
+        .why-label { font-family: 'Playfair Display', serif; font-size: 1rem; font-style: italic; color: #ddd; letter-spacing: 0.5px; }
+        .why-btn { display: inline-block; margin-top: 8px; padding: 14px 32px; background: #c49b4c; color: #0d0d0d; border: none; font-family: 'Georgia', serif; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: background 0.3s; }
         .why-btn:hover { background: #d4ae5c; }
 
         /* ===== BOTTLE SLIDE ===== */
         .bottle-slide { text-align: left; }
-        .bottle-slide .label-anim,
-        .bottle-slide .wine-tech-card { text-align: center; }
+        .bottle-slide .label-anim, .bottle-slide .wine-tech-card { text-align: center; }
         .bottle-slide .label-anim { margin-left: auto; margin-right: auto; }
         .bottle-slide .wine-tech-card { margin-left: auto; margin-right: auto; text-align: left; }
 
-        .label-anim {
-            display: flex; flex-direction: column; align-items: center;
-            gap: 4px; margin-top: 20px;
-        }
-        .label-line-1,.label-line-2,.label-line-3,.label-line-4,.label-line-chapter {
-            opacity: 0; transform: translateY(16px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-        .label-line-1.visible,.label-line-2.visible,.label-line-3.visible,.label-line-4.visible,.label-line-chapter.visible {
-            opacity: 1; transform: translateY(0);
-        }
-        .label-line-chapter {
-            font-family: 'Playfair Display', serif; font-size: 0.95rem;
-            font-style: italic; color: #a0845c; letter-spacing: 2px;
-            margin-bottom: 6px; transition-delay: 0.0s;
-        }
-        .label-line-1 {
-            font-family: 'Playfair Display', serif; font-size: 1.2rem;
-            font-style: italic; color: #c49b4c; letter-spacing: 3px;
-            transition-delay: 0.1s;
-        }
-        .label-line-2 {
-            font-family: 'Playfair Display', serif; font-size: 3.5rem;
-            font-weight: 600; font-style: italic; color: #c49b4c;
-            letter-spacing: 6px; line-height: 1; transition-delay: 0.35s;
-        }
-        .label-line-3 {
-            width: 60px; height: 1px; background: #c49b4c; transition-delay: 0.55s;
-        }
-        .label-line-4 {
-            font-family: 'Playfair Display', serif; font-size: 1.1rem;
-            font-style: italic; color: #ddd; letter-spacing: 2px;
-            transition-delay: 0.7s;
-        }
+        .label-anim { display: flex; flex-direction: column; align-items: center; gap: 4px; margin-top: 20px; }
+        .label-line-1,.label-line-2,.label-line-3,.label-line-4,.label-line-chapter { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .label-line-1.visible,.label-line-2.visible,.label-line-3.visible,.label-line-4.visible,.label-line-chapter.visible { opacity: 1; transform: translateY(0); }
+        .label-line-chapter { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-style: italic; color: #a0845c; letter-spacing: 2px; margin-bottom: 6px; transition-delay: 0.0s; }
+        .label-line-1 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; color: #c49b4c; letter-spacing: 3px; transition-delay: 0.1s; }
+        .label-line-2 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 600; font-style: italic; color: #c49b4c; letter-spacing: 6px; line-height: 1; transition-delay: 0.35s; }
+        .label-line-3 { width: 60px; height: 1px; background: #c49b4c; transition-delay: 0.55s; }
+        .label-line-4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-style: italic; color: #ddd; letter-spacing: 2px; transition-delay: 0.7s; }
 
         /* ===== TECH CARD ===== */
-        .wine-tech-card {
-            margin-top: 24px; display: flex; flex-direction: column;
-            gap: 8px; text-align: left; width: 100%; max-width: 400px;
-        }
-        .tech-line {
-            opacity: 0; transform: translateY(10px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-            font-size: 0.9rem; color: #ccc; font-family: 'Georgia', serif;
-            letter-spacing: 0.3px; display: flex; flex-wrap: wrap; gap: 6px;
-            border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 6px;
-        }
+        .wine-tech-card { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; text-align: left; width: 100%; max-width: 400px; }
+        .tech-line { opacity: 0; transform: translateY(10px); transition: opacity 0.7s ease, transform 0.7s ease; font-size: 0.9rem; color: #ccc; font-family: 'Georgia', serif; letter-spacing: 0.3px; display: flex; flex-wrap: wrap; gap: 6px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 6px; }
         .tech-line.visible { opacity: 1; transform: translateY(0); }
-        .tech-line .tech-label {
-            display: inline-block; min-width: 145px; color: #c49b4c;
-            font-size: 0.78rem; letter-spacing: 1.5px; text-transform: uppercase;
-        }
+        .tech-line .tech-label { display: inline-block; min-width: 145px; color: #c49b4c; font-size: 0.78rem; letter-spacing: 1.5px; text-transform: uppercase; }
         .tech-line-1 { transition-delay: 0.8s; }
         .tech-line-2 { transition-delay: 1.05s; }
         .tech-line-3 { transition-delay: 1.3s; }
@@ -309,57 +186,22 @@
         .tech-line-5 { transition-delay: 1.8s; }
 
         /* ===== CTA FORM ===== */
-        .cta-form-inline {
-            display: flex; flex-direction: column; align-items: center;
-            gap: 12px; width: 100%; margin-top: 20px;
-        }
-        .cta-form-inline input[type="email"] {
-            width: 100%; max-width: 380px; padding: 14px 18px;
-            background: transparent; border: 1px solid #555;
-            color: #f0ede8; font-family: 'Georgia', serif;
-            font-size: 1rem; letter-spacing: 0.5px; outline: none;
-            transition: border-color 0.3s;
-        }
+        .cta-form-inline { display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%; margin-top: 20px; }
+        .cta-form-inline input[type="email"] { width: 100%; max-width: 380px; padding: 14px 18px; background: transparent; border: 1px solid #555; color: #f0ede8; font-family: 'Georgia', serif; font-size: 1rem; letter-spacing: 0.5px; outline: none; transition: border-color 0.3s; }
         .cta-form-inline input[type="email"]:focus { border-color: #c49b4c; }
-        .cta-form-inline button {
-            width: 100%; max-width: 380px; padding: 14px 0;
-            background: #c49b4c; color: #0d0d0d; border: none;
-            font-family: 'Georgia', serif; font-size: 0.95rem;
-            letter-spacing: 2px; text-transform: uppercase;
-            cursor: pointer; transition: background 0.3s;
-        }
+        .cta-form-inline button { width: 100%; max-width: 380px; padding: 14px 0; background: #c49b4c; color: #0d0d0d; border: none; font-family: 'Georgia', serif; font-size: 0.95rem; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: background 0.3s; }
         .cta-form-inline button:hover { background: #d4ae5c; }
-        .cta-form-inline .form-note {
-            font-size: 0.75rem; color: #666; margin-top: 8px;
-        }
+        .cta-form-inline .form-note { font-size: 0.75rem; color: #666; margin-top: 8px; }
 
         /* ===== FOOTER ===== */
-        .footer-section {
-            position: relative; width: 100%; min-height: 50vh;
-            background: #0a0a0a; display: flex;
-            align-items: center; justify-content: center; z-index: 1;
-            padding: 60px 20px;
-        }
+        .footer-section { position: relative; width: 100%; min-height: 50vh; background: #0a0a0a; display: flex; align-items: center; justify-content: center; z-index: 1; padding: 60px 20px; }
         .footer-content { text-align: center; }
-        .footer-logo {
-            display: block; width: 360px; height: auto; margin: 0 auto;
-            filter: drop-shadow(0 0 20px rgba(196,155,76,0.5));
-            transition: filter 0.6s ease;
-        }
+        .footer-logo { display: block; width: 360px; height: auto; margin: 0 auto; filter: drop-shadow(0 0 20px rgba(196,155,76,0.5)); transition: filter 0.6s ease; }
         .footer-logo:hover { filter: drop-shadow(0 0 32px rgba(196,155,76,0.8)); }
-        .footer-legal {
-            margin-top: 32px; text-align: center;
-        }
-        .footer-warning {
-            font-size: 0.7rem; color: #666; letter-spacing: 0.3px;
-            max-width: 500px; margin: 0 auto 12px auto; line-height: 1.5;
-        }
-        .footer-licence {
-            font-size: 0.7rem; color: #555; letter-spacing: 0.3px; margin-bottom: 8px;
-        }
-        .footer-copy {
-            font-size: 0.7rem; color: #555; letter-spacing: 0.3px;
-        }
+        .footer-legal { margin-top: 32px; text-align: center; }
+        .footer-warning { font-size: 0.7rem; color: #666; letter-spacing: 0.3px; max-width: 500px; margin: 0 auto 12px auto; line-height: 1.5; }
+        .footer-licence { font-size: 0.7rem; color: #555; letter-spacing: 0.3px; margin-bottom: 8px; }
+        .footer-copy { font-size: 0.7rem; color: #555; letter-spacing: 0.3px; }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
@@ -424,13 +266,16 @@
         <div class="timeline-dot" data-label="1946" data-target="block3"></div>
         <div class="timeline-dot" data-label="1947" data-target="block4"></div>
         <div class="timeline-dot" data-label="1954" data-target="block5"></div>
+        <div class="timeline-dot" data-label="1962" data-target="block5b"></div>
+        <div class="timeline-dot" data-label="1978" data-target="block5c"></div>
+        <div class="timeline-dot" data-label="1998" data-target="block5d"></div>
         <div class="timeline-dot" data-label="2025" data-target="block6"></div>
         <div class="timeline-dot" data-label="Why" data-target="blockWhy"></div>
         <div class="timeline-dot" data-label="Today" data-target="blockEpilogue"></div>
         <div class="timeline-dot" data-label="Sign Up" data-target="blockCta"></div>
     </nav>
 
-    <!-- ===== HERO (200vh: видео sticky + текст едет) ===== -->
+    <!-- ===== HERO ===== -->
     <div class="hero-block" id="heroBlock">
         <div class="hero-video-wrapper">
             <video autoplay muted loop playsinline class="hero-video" poster="images/frame-with-glass.jpeg">
@@ -527,7 +372,7 @@
         </div>
     </div>
 
-    <!-- БЛОК 5: ПЕРВЫЙ ТОСТ -->
+    <!-- БЛОК 5: ПЕРВЫЙ ТОСТ 1954 -->
     <div class="story-block" id="block5">
         <div class="story-bg" style="background-image: url('images/first-toast-1954.jpeg');"></div>
         <div class="text-track">
@@ -547,6 +392,63 @@
                     <div style="text-align: center;">
                         <a href="archive.html" class="text-slide-btn">Esplora l'Archivio</a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- БЛОК 5b: ПЕРВАЯ ПРОДАЖА 1962 -->
+    <div class="story-block" id="block5b">
+        <div class="story-bg" style="background-image: url('images/first-sale-1962.jpeg');"></div>
+        <div class="text-track">
+            <div class="text-slide">
+                <div class="lang-en">
+                    <span class="year-badge">1962 · The first big order</span>
+                    <h2>A handshake in Hamilton</h2>
+                    <p>For eight years they sold from the cellar door — a case here, a case there. Enough to keep the wolves from the door. Then in 1962, a small chain of bottle shops in Newcastle called Hamilton Bottle Shops agreed to trial Semko Vicci across all three of their locations. Twelve cases — not bottles. The wine sold out in a fortnight. For the first time, the name Semko Vicci sat on shelves across an entire region.</p>
+                </div>
+                <div class="lang-it lang-hidden">
+                    <span class="year-badge">1962 · Il primo grande ordine</span>
+                    <h2>Una stretta di mano a Hamilton</h2>
+                    <p>Per otto anni vendettero dalla porta della cantina — una cassa qui, una cassa là. Abbastanza per tenere la fame lontana. Poi nel 1962, una piccola catena di bottle shop a Newcastle chiamata Hamilton Bottle Shops accettò di provare Semko Vicci in tutti e tre i loro negozi. Dodici casse — non bottiglie. Il vino si esaurì in due settimane. Per la prima volta, il nome Semko Vicci apparve sugli scaffali di un'intera regione.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- БЛОК 5c: ПЕРВАЯ МЕДАЛЬ 1978 -->
+    <div class="story-block" id="block5c">
+        <div class="story-bg" style="background-image: url('images/first-medal-1978.jpeg');"></div>
+        <div class="text-track">
+            <div class="text-slide">
+                <div class="lang-en">
+                    <span class="year-badge">1978 · First medal</span>
+                    <h2>Bronze, and proud of it</h2>
+                    <p>The 1976 vintage won bronze at the NSW Small Winemakers Wine Show. It wasn't gold — the judges said it was «too rustic, too wild.» Taras grinned when he heard that. «Wild is good,» he said. They sat in the barrel room that evening, the medal on a barrel between them, and said nothing. Nothing needed to be said. The medal hung on a nail in the barrel room for thirty years.</p>
+                </div>
+                <div class="lang-it lang-hidden">
+                    <span class="year-badge">1978 · Prima medaglia</span>
+                    <h2>Bronzo, e fieri di esserlo</h2>
+                    <p>L'annata 1976 vinse il bronzo al NSW Small Winemakers Wine Show. Non era oro — i giudici dissero che era «troppo rustico, troppo selvaggio.» Taras sorrise quando lo seppe. «Selvaggio va bene,» disse. Quella sera sedettero nella sala delle botti, la medaglia su una botte tra loro, in silenzio. Non c'era bisogno di parlare. La medaglia rimase appesa a un chiodo nella sala delle botti per trent'anni.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- БЛОК 5d: СМЕНА ПОКОЛЕНИЯ 1998 -->
+    <div class="story-block" id="block5d">
+        <div class="story-bg" style="background-image: url('images/passing-the-torch-1998.jpeg');"></div>
+        <div class="text-track">
+            <div class="text-slide">
+                <div class="lang-en">
+                    <span class="year-badge">1998 · Passing the torch</span>
+                    <h2>The keys to the cellar</h2>
+                    <p>Taras and Enzo made their last vintage together. Both were in their eighties, both still came to the cellar every morning. At the end of harvest, they called their children to the barrel room — the same room they'd built fifty years earlier — and handed over the keys. No speeches. Just a nod. The pact was now in younger hands.</p>
+                </div>
+                <div class="lang-it lang-hidden">
+                    <span class="year-badge">1998 · Passaggio di consegne</span>
+                    <h2>Le chiavi della cantina</h2>
+                    <p>Taras ed Enzo fecero insieme la loro ultima vendemmia. Avevano entrambi più di ottant'anni, e ogni mattina venivano ancora in cantina. Alla fine della raccolta, chiamarono i loro figli nella sala delle botti — la stessa stanza che avevano costruito cinquant'anni prima — e consegnarono le chiavi. Niente discorsi. Solo un cenno. Il patto ora era in mani più giovani.</p>
                 </div>
             </div>
         </div>
@@ -659,7 +561,7 @@
         </div>
     </div>
 
-    <!-- CTA на фото бутылок -->
+    <!-- CTA -->
     <div class="story-block" id="blockCta">
         <div class="story-bg" style="background-image: url('images/bottles-on-shelf.jpeg'); background-position: center 40%;"></div>
         <div class="text-track">
@@ -844,16 +746,9 @@
         const ageYes = document.getElementById('ageYes');
         const ageNo = document.getElementById('ageNo');
         const ageVerified = localStorage.getItem('semko_age_verified');
-        if (ageVerified === 'true') {
-            ageGate.classList.add('hidden');
-        }
-        ageYes.addEventListener('click', () => {
-            localStorage.setItem('semko_age_verified', 'true');
-            ageGate.classList.add('hidden');
-        });
-        ageNo.addEventListener('click', () => {
-            window.location.href = 'https://www.google.com';
-        });
+        if (ageVerified === 'true') { ageGate.classList.add('hidden'); }
+        ageYes.addEventListener('click', () => { localStorage.setItem('semko_age_verified', 'true'); ageGate.classList.add('hidden'); });
+        ageNo.addEventListener('click', () => { window.location.href = 'https://www.google.com'; });
     </script>
 
 </body>
