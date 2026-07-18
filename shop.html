@@ -164,6 +164,7 @@
             margin-bottom: 12px; font-family: 'Georgia', serif;
         }
         .status-available { color: #c49b4c; }
+        .status-limited { color: #d4ae5c; }
         .status-sold { color: #8b3a3a; }
         .wine-card .card-name {
             font-family: 'Playfair Display', serif; font-size: 1.7rem;
@@ -259,7 +260,6 @@
             </div>
         </div>
 
-        <!-- Экспертная цитата -->
         <div class="expert-quote">
             <div class="lang-en">
                 <blockquote>A tiny Hunter Valley secret. Only a few hundred bottles, but every vintage sells out before it hits the shelf. One to watch.</blockquote>
@@ -271,7 +271,6 @@
             </div>
         </div>
 
-        <!-- Фото с полки BWS -->
         <div class="shelf-proof">
             <img src="images/bws-shelf.jpeg" alt="Semko Vicci on the shelf at BWS">
             <p class="proof-caption">
@@ -308,8 +307,77 @@
                         <span><span class="spec-label lang-en">Alcohol</span><span class="spec-label lang-it lang-hidden">Alcol</span> 14.2%</span>
                         <span><span class="spec-label lang-en">Production</span><span class="spec-label lang-it lang-hidden">Produzione</span> 600 bottles</span>
                     </div>
-                    <div class="card-price">AUD 95</div>
+                    <div class="card-price">AUD 70</div>
                     <button class="btn-notify" data-wine="Semko Vicci 2026">
+                        <span class="lang-en">Notify Me</span>
+                        <span class="lang-it lang-hidden">Avvisami</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Old Taste -->
+            <div class="wine-card">
+                <div class="card-image" data-full="images/bottle-old-taste.jpeg">
+                    <img src="images/bottle-old-taste.jpeg" alt="Semko Vicci Old Taste">
+                </div>
+                <div class="card-body">
+                    <div class="card-chapter">
+                        <span class="lang-en">Special Edition · The Diary</span>
+                        <span class="lang-it lang-hidden">Edizione Speciale · Il Diario</span>
+                    </div>
+                    <div class="card-status status-limited">
+                        <span class="lang-en">Limited Release — 200 bottles</span>
+                        <span class="lang-it lang-hidden">Edizione Limitata — 200 bottiglie</span>
+                    </div>
+                    <div class="card-name">Semko Vicci</div>
+                    <div class="card-vintage">Old Taste</div>
+                    <div class="card-desc">
+                        <span class="lang-en">Not just a wine. A time capsule. This limited-edition box pairs a bottle of our most traditional Shiraz-Sangiovese — made to Enzo Vicci's original 1954 recipe — with a hardcover copy of his personal vineyard diary. 186 pages. 80 photographs and illustrations. The story of Semko Vicci, written by the man who lived it. Published worldwide on Amazon. When you order this wine, the book comes with it.</span>
+                        <span class="lang-it lang-hidden">Non solo un vino. Una capsula del tempo. Questo box in edizione limitata unisce una bottiglia del nostro Shiraz-Sangiovese più tradizionale — fatto secondo la ricetta originale di Enzo Vicci del 1954 — con una copia cartonata del suo diario personale della vigna. 186 pagine. 80 fotografie e illustrazioni. La storia di Semko Vicci, scritta dall'uomo che l'ha vissuta. Pubblicato in tutto il mondo su Amazon. Quando ordini questo vino, il libro arriva con lui.</span>
+                    </div>
+                    <div class="card-specs">
+                        <span><span class="spec-label lang-en">Composition</span><span class="spec-label lang-it lang-hidden">Composizione</span> 70% Shiraz, 30% Sangiovese</span>
+                        <span><span class="spec-label lang-en">Maturation</span><span class="spec-label lang-it lang-hidden">Affinamento</span> 18 months neutral French oak</span>
+                        <span><span class="spec-label lang-en">Alcohol</span><span class="spec-label lang-it lang-hidden">Alcol</span> 13.5%</span>
+                        <span><span class="spec-label lang-en">Production</span><span class="spec-label lang-it lang-hidden">Produzione</span> 200 bottles</span>
+                    </div>
+                    <div class="card-price">AUD 89</div>
+                    <button class="btn-notify" data-wine="Semko Vicci Old Taste">
+                        <span class="lang-en">Notify Me</span>
+                        <span class="lang-it lang-hidden">Avvisami</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Limited Reserve -->
+            <div class="wine-card">
+                <div class="card-image" data-full="images/bottlelimited.jpeg">
+                    <img src="images/bottlelimited.jpeg" alt="Semko Vicci Limited Reserve">
+                </div>
+                <div class="card-body">
+                    <div class="card-chapter">
+                        <span class="lang-en">Chapter III · The Pact</span>
+                        <span class="lang-it lang-hidden">Capitolo III · Il Patto</span>
+                    </div>
+                    <div class="card-status status-available">
+                        <span class="lang-en">Available soon</span>
+                        <span class="lang-it lang-hidden">Disponibile a breve</span>
+                    </div>
+                    <div class="card-name">Semko Vicci</div>
+                    <div class="card-vintage">Limited Reserve</div>
+                    <div class="card-desc">
+                        <span class="lang-en">A tribute to the founders. Selected barrels from the original 1948 block. Extended ageing, unfiltered, unapologetic. Only 120 bottles.</span>
+                        <span class="lang-it lang-hidden">Un omaggio ai fondatori. Botti selezionate dal vigneto originale del 1948. Lungo affinamento, non filtrato, senza compromessi. Solo 120 bottiglie.</span>
+                    </div>
+                    <div class="card-specs">
+                        <span><span class="spec-label lang-en">Composition</span><span class="spec-label lang-it lang-hidden">Composizione</span> 50% Shiraz, 50% Sangiovese</span>
+                        <span><span class="spec-label lang-en">Vines planted</span><span class="spec-label lang-it lang-hidden">Viti piantate</span> 1948</span>
+                        <span><span class="spec-label lang-en">Maturation</span><span class="spec-label lang-it lang-hidden">Affinamento</span> 24 months French oak</span>
+                        <span><span class="spec-label lang-en">Alcohol</span><span class="spec-label lang-it lang-hidden">Alcol</span> 14.5%</span>
+                        <span><span class="spec-label lang-en">Production</span><span class="spec-label lang-it lang-hidden">Produzione</span> 120 bottles</span>
+                    </div>
+                    <div class="card-price">AUD 99</div>
+                    <button class="btn-notify" data-wine="Semko Vicci Limited Reserve">
                         <span class="lang-en">Notify Me</span>
                         <span class="lang-it lang-hidden">Avvisami</span>
                     </button>
@@ -342,45 +410,10 @@
                         <span><span class="spec-label lang-en">Alcohol</span><span class="spec-label lang-it lang-hidden">Alcol</span> 13.8%</span>
                         <span><span class="spec-label lang-en">Production</span><span class="spec-label lang-it lang-hidden">Produzione</span> 300 bottles</span>
                     </div>
-                    <div class="card-price">AUD 85</div>
+                    <div class="card-price">AUD 65</div>
                     <button class="btn-sold" disabled>
                         <span class="lang-en">Sold Out</span>
                         <span class="lang-it lang-hidden">Esaurito</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Limited Reserve -->
-            <div class="wine-card">
-                <div class="card-image" data-full="images/bottlelimited.jpeg">
-                    <img src="images/bottlelimited.jpeg" alt="Semko Vicci Limited Reserve">
-                </div>
-                <div class="card-body">
-                    <div class="card-chapter">
-                        <span class="lang-en">Chapter III · The Pact</span>
-                        <span class="lang-it lang-hidden">Capitolo III · Il Patto</span>
-                    </div>
-                    <div class="card-status status-available">
-                        <span class="lang-en">Available soon</span>
-                        <span class="lang-it lang-hidden">Disponibile a breve</span>
-                    </div>
-                    <div class="card-name">Semko Vicci</div>
-                    <div class="card-vintage">Limited Reserve</div>
-                    <div class="card-desc">
-                        <span class="lang-en">A tribute to the founders. Selected barrels from the original 1948 block. Extended ageing, unfiltered, unapologetic. Only 120 bottles.</span>
-                        <span class="lang-it lang-hidden">Un omaggio ai fondatori. Botti selezionate dal vigneto originale del 1948. Lungo affinamento, non filtrato, senza compromessi. Solo 120 bottiglie.</span>
-                    </div>
-                    <div class="card-specs">
-                        <span><span class="spec-label lang-en">Composition</span><span class="spec-label lang-it lang-hidden">Composizione</span> 50% Shiraz, 50% Sangiovese</span>
-                        <span><span class="spec-label lang-en">Vines planted</span><span class="spec-label lang-it lang-hidden">Viti piantate</span> 1948</span>
-                        <span><span class="spec-label lang-en">Maturation</span><span class="spec-label lang-it lang-hidden">Affinamento</span> 24 months French oak</span>
-                        <span><span class="spec-label lang-en">Alcohol</span><span class="spec-label lang-it lang-hidden">Alcol</span> 14.5%</span>
-                        <span><span class="spec-label lang-en">Production</span><span class="spec-label lang-it lang-hidden">Produzione</span> 120 bottles</span>
-                    </div>
-                    <div class="card-price">AUD 195</div>
-                    <button class="btn-notify" data-wine="Semko Vicci Limited Reserve">
-                        <span class="lang-en">Notify Me</span>
-                        <span class="lang-it lang-hidden">Avvisami</span>
                     </button>
                 </div>
             </div>
