@@ -34,6 +34,9 @@
         }
         .top-bar > * { pointer-events: auto; }
 
+.top-left {
+    display: flex; gap: 8px;
+}
         .btn-shop {
             background: rgba(10,10,10,0.7); color: #a0845c;
             border: 1px solid #a0845c; padding: 6px 14px;
@@ -251,13 +254,19 @@
         </div>
     </div>
 
-    <div class="top-bar">
+<div class="top-bar">
+    <div class="top-left">
         <a href="shop.html" class="btn-shop">Shop</a>
-        <div class="lang-switcher">
-            <button id="btnEn" class="active">EN</button>
-            <button id="btnIt">IT</button>
-        </div>
+        <a href="biodynamics.html" class="btn-shop">
+            <span class="lang-en">Diary</span>
+            <span class="lang-it lang-hidden">Diario</span>
+        </a>
     </div>
+    <div class="lang-switcher">
+        <button id="btnEn" class="active">EN</button>
+        <button id="btnIt">IT</button>
+    </div>
+</div>
 
     <nav class="timeline-nav" id="timelineNav">
         <div class="timeline-dot active" data-label="Intro" data-target="heroBlock"></div>
@@ -382,7 +391,7 @@
                     <h2>Semko + Vicci = Semko Vicci</h2>
                     <p>The 1954 harvest was the one. The fruit hit that elusive balance — Sangiovese, grafted onto Australian rootstock, yielded grapes of astonishing depth. Enzo worked his alchemy in the cellar; Taras guarded every barrel like a watchdog. And then, one spring evening after the crush, they cracked open a trial bottle. The wine was bold, powerful, with a Tuscan heart and a Hunter Valley body. It deserved a name. Enzo wanted to call it <em>Vicci</em>. Taras wanted something Slavic. They argued late into the night, until Enzo laughed and said: <em>"We're both nobody here. But together we made this. Let the label carry both names."</em> And so <strong>Semko Vicci</strong> was born — not just a brand, but a pact sealed over a handshake and a glass.</p>
                     <div style="text-align: center;">
-                        <a href="archive.html" class="text-slide-btn">Explore the Archive</a>
+                        <a href="archive.html" class="text-slide-btn">Explore the Archive →</a>
                     </div>
                 </div>
                 <div class="lang-it lang-hidden">
@@ -390,7 +399,7 @@
                     <h2>Semko + Vicci = Semko Vicci</h2>
                     <p>La vendemmia del 1954 fu quella giusta. L'uva raggiunse quell'equilibrio difficile — il Sangiovese, innestato su portainnesto australiano, diede acini di una profondità sorprendente. Enzo fece la sua alchimia in cantina; Taras sorvegliò ogni botte come un cane da guardia. E poi, una sera di primavera dopo la pigiatura, stapparono una bottiglia di prova. Il vino era audace, potente, con un cuore toscano e un corpo della Hunter Valley. Meritava un nome. Enzo voleva chiamarlo <em>Vicci</em>. Taras voleva qualcosa di slavo. Discuterono fino a tarda notte, finché Enzo rise e disse: <em>"Qui non siamo nessuno, tutti e due. Ma insieme l'abbiamo creato. Che l'etichetta porti entrambi i nomi."</em> E così nacque <strong>Semko Vicci</strong>: non solo un marchio, ma un patto suggellato con una stretta di mano e un bicchiere.</p>
                     <div style="text-align: center;">
-                        <a href="archive.html" class="text-slide-btn">Esplora l'Archivio</a>
+                        <a href="archive.html" class="text-slide-btn">Esplora l'Archivio →</a>
                     </div>
                 </div>
             </div>
@@ -516,7 +525,7 @@
                         <div class="why-item"><span class="why-icon">🧬</span><span class="why-label">Wild yeast fermentation</span></div>
                         <div class="why-item"><span class="why-icon">🇦🇺</span><span class="why-label">Hunter Valley</span></div>
                     </div>
-                    <a href="about.html" class="why-btn">Learn More</a>
+                    <a href="about.html" class="why-btn">Learn More →</a>
                 </div>
                 <div class="lang-it lang-hidden">
                     <h2>Perché i collezionisti scelgono Semko Vicci</h2>
@@ -528,7 +537,7 @@
                         <div class="why-item"><span class="why-icon">🧬</span><span class="why-label">Fermentazione con lieviti indigeni</span></div>
                         <div class="why-item"><span class="why-icon">🇦🇺</span><span class="why-label">Hunter Valley</span></div>
                     </div>
-                    <a href="about.html" class="why-btn">Scopri di Più</a>
+                    <a href="about.html" class="why-btn">Scopri di Più →</a>
                 </div>
             </div>
         </div>
@@ -544,18 +553,20 @@
                     <h2>Epilogue · The next generation</h2>
                     <p>Taras and Enzo are long gone, but their pact holds. Today the vineyard is run by their grandchildren — two cousins who grew up among the barrels, one with a Ukrainian lullaby in her ear, the other with a Tuscan proverb on his lips.</p>
                     <p>They made one change the old men would have approved of: the estate went fully biodynamic. No chemicals, no shortcuts. Native grasses grow between the rows. Sheep graze the vineyard in winter. Compost is prepared by the lunar calendar. The cellar is still spotless, the vines still dry-grown, the barrels still stacked the way Taras left them.</p>
-                    <p>Every vintage, before the first bottle is sealed, the family gathers in the old barrel room, raises a single glass, and says the same words Enzo said in 1954:</p>
-                    <p style="text-align:center;font-style:italic;color:#c49b4c;">«We're both nobody here. But together we made this.»</p>
-                    <p style="text-align:center;">That glass is now raised to you.</p>
+                    <p>Enzo wrote down everything he learned. His complete vineyard diary — <em><strong style="color:#c49b4c;">The Vine in Australia: A Winemaker's Notebook</strong></em> — was published in 2025. The final chapter is a short, honest account of what biodynamics means to him. Not magic. Just listening.</p>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <a href="biodynamics.html" class="text-slide-btn">The Living Vineyard →</a>
+                    </div>
                 </div>
                 <div class="lang-it lang-hidden">
                     <span class="year-badge">Oggi · Hunter Valley</span>
                     <h2>Epilogo · La nuova generazione</h2>
-                    <p>Taras ed Enzo se ne sono andati da tempo, ma il loro patto resiste. Oggi la vigna è gestita dai loro nipoti: due cugini cresciuti tra le botti, una con una ninna nanna ucraina nell'orecchio, l'altro con un proverbio toscano sulle labbra.</p>
+                    <p>Taras ed Enzo se ne sono andati da tempo, ma il loro patto resiste. Oggi la vigna è gestita dai loro nipoti — due cugini cresciuti tra le botti, una con una ninna nanna ucraina nell'orecchio, l'altro con un proverbio toscano sulle labbra.</p>
                     <p>Hanno fatto un solo cambiamento che i vecchi avrebbero approvato: la tenuta è diventata completamente biodinamica. Niente chimica, niente scorciatoie. Erbe spontanee crescono tra i filari. D'inverno le pecore pascolano nella vigna. Il compost si prepara seguendo il calendario lunare. La cantina è ancora immacolata, le viti ancora coltivate a secco, le botti ancora impilate come le aveva lasciate Taras.</p>
-                    <p>Ogni vendemmia, prima di sigillare la prima bottiglia, la famiglia si riunisce nella vecchia sala delle botti, alza un solo bicchiere e dice le stesse parole che Enzo pronunciò nel 1954:</p>
-                    <p style="text-align:center;font-style:italic;color:#c49b4c;">«Qui non siamo nessuno, tutti e due. Ma insieme l'abbiamo creato.»</p>
-                    <p style="text-align:center;">Quel bicchiere ora è alzato per voi.</p>
+                    <p>Enzo scrisse tutto ciò che imparò. Il suo diario completo — <em><strong style="color:#c49b4c;">La Vite in Australia: Taccuino di un Vinificatore</strong></em> — è stato pubblicato nel 2025. L'ultimo capitolo è un resoconto breve e onesto di cosa significhi per lui la biodinamica. Non magia. Solo ascolto.</p>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <a href="biodynamics.html" class="text-slide-btn">La Vigna Viva →</a>
+                    </div>
                 </div>
             </div>
         </div>

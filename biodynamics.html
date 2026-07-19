@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semko Vicci — The Living Vineyard | Hunter Valley</title>
+
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <meta property="og:title" content="Semko Vicci — The Living Vineyard">
+    <meta property="og:description" content="The final chapter of Enzo Vicci's winemaker's notebook — a short, honest account of what biodynamics means to him.">
+    <meta property="og:image" content="images/cover.jpeg">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Semko Vicci">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background-color: #0d0d0d;
+            color: #f0ede8;
+            line-height: 1.8;
+        }
+
+        .top-bar {
+            position: fixed; top: 24px; left: 0; right: 0; z-index: 1001;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 28px; pointer-events: none;
+        }
+        .top-bar > * { pointer-events: auto; }
+        .btn-back {
+            background: rgba(10,10,10,0.7); color: #a0845c;
+            border: 1px solid #a0845c; padding: 6px 14px;
+            font-size: 0.8rem; letter-spacing: 1px; cursor: pointer;
+            transition: all 0.3s; font-family: 'Georgia', serif;
+            backdrop-filter: blur(6px); text-transform: uppercase;
+            text-decoration: none; display: inline-block;
+        }
+        .btn-back:hover { background: #c49b4c; color: #0d0d0d; border-color: #c49b4c; }
+
+        .lang-switcher { display: flex; gap: 8px; }
+        .lang-switcher button {
+            background: rgba(10,10,10,0.7); color: #a0845c;
+            border: 1px solid #a0845c; padding: 6px 14px;
+            font-size: 0.8rem; letter-spacing: 1px; cursor: pointer;
+            transition: all 0.3s; font-family: 'Georgia', serif;
+            backdrop-filter: blur(6px); text-transform: uppercase;
+        }
+        .lang-switcher button.active { background: #c49b4c; color: #0d0d0d; border-color: #c49b4c; }
+        .lang-hidden { display: none !important; }
+
+        /* ===== HERO ===== */
+        .biodynamics-hero {
+            position: relative; width: 100%; height: 70vh;
+            background-image: url('images/cover.jpeg');
+            background-size: cover; background-position: center;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .biodynamics-hero::after {
+            content: ''; position: absolute; inset: 0;
+            background: rgba(0,0,0,0.55); z-index: 1;
+        }
+        .hero-text {
+            position: relative; z-index: 2; text-align: center;
+            max-width: 700px; padding: 0 20px;
+        }
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif; font-size: 3.2rem;
+            font-weight: 600; font-style: italic; color: #c49b4c;
+            letter-spacing: 3px; margin-bottom: 16px;
+        }
+        .hero-text .hero-from {
+            font-family: 'Playfair Display', serif; font-size: 1.1rem;
+            font-style: italic; color: #ccc; line-height: 1.7;
+            margin-top: 0;
+        }
+
+        /* ===== CONTENT ===== */
+        .diary-content {
+            max-width: 720px; margin: 0 auto; padding: 80px 20px;
+        }
+        .diary-content h2 {
+            font-family: 'Playfair Display', serif; font-weight: 600;
+            font-style: italic; color: #c49b4c; margin-bottom: 20px;
+        }
+        .diary-content .chapter-title {
+            font-size: 1.9rem; text-align: left;
+        }
+        .diary-content .section-title {
+            font-size: 1.5rem; text-align: left; margin-top: 20px;
+        }
+        .diary-content p {
+            font-size: 1.1rem; text-align: justify; hyphens: auto;
+            margin-bottom: 1.5em; color: #ccc; line-height: 1.9;
+        }
+        .diary-content p.break-marker {
+            text-align: center; color: #c49b4c; font-size: 0.9rem;
+            letter-spacing: 3px; margin: 50px 0 30px; font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+        .diary-content .signature {
+            text-align: right; color: #a0845c; font-family: 'Playfair Display', serif;
+            font-style: italic; font-size: 1rem; line-height: 1.8; margin-top: 40px;
+        }
+	/* ===== AMAZON BUTTON ===== */
+        .amazon-btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: #c49b4c; color: #0d0d0d;
+            border: none; font-family: 'Georgia', serif;
+            font-size: 0.85rem; letter-spacing: 2px;
+            text-transform: uppercase; text-decoration: none;
+            cursor: pointer; transition: background 0.3s;
+        }
+        .amazon-btn:hover { background: #d4ae5c; }
+
+        /* ===== PLATES ===== */
+        .plate {
+            width: 100%; margin: 60px 0;
+            display: flex; flex-direction: column; align-items: center;
+            cursor: pointer;
+        }
+        .plate img {
+            width: 100%; height: auto; max-height: 75vh;
+            object-fit: contain; display: block;
+            transition: transform 0.3s ease;
+        }
+        .plate:hover img {
+            transform: scale(1.01);
+        }
+        .plate-caption {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.9rem; font-style: italic;
+            color: #a0845c; margin-top: 12px;
+            letter-spacing: 1px; text-align: center;
+        }
+
+        /* ===== LIGHTBOX ===== */
+       .lightbox {
+    display: none; position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%; background: rgba(0,0,0,0.95);
+    z-index: 9999; justify-content: center; align-items: center; cursor: pointer;
+    overflow: hidden;
+}
+.lightbox.active { display: flex; }
+.lightbox.zoomable {
+    overflow: auto;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.lightbox img {
+    max-width: 95vw; max-height: 90vh;
+    width: auto; height: auto;
+    object-fit: contain; cursor: zoom-in;
+    animation: lightboxIn 0.3s ease;
+    transition: transform 0.1s ease, max-width 0.1s ease, max-height 0.1s ease;
+}
+.lightbox img.zoomed {
+    cursor: zoom-out;
+    max-width: none;
+    max-height: none;
+    width: auto;
+    height: auto;
+    transform: none;
+}
+        }
+        @keyframes lightboxIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        .lightbox-close {
+            position: absolute; top: 28px; right: 28px; font-size: 2rem;
+            color: #c49b4c; cursor: pointer; z-index: 10000;
+            width: 44px; height: 44px; display: flex; align-items: center;
+            justify-content: center; background: rgba(0,0,0,0.5);
+            border-radius: 50%; transition: background 0.3s;
+        }
+        .lightbox-close:hover { background: rgba(196,155,76,0.3); }
+
+        /* ===== FOOTER ===== */
+        .diary-footer {
+            text-align: center; padding: 60px 20px 40px;
+        }
+        .diary-footer a {
+            color: #a0845c; text-decoration: none;
+            font-size: 0.9rem; letter-spacing: 1px; transition: color 0.3s;
+        }
+        .diary-footer a:hover { color: #c49b4c; }
+        .footer-logo {
+            display: block; width: 280px; height: auto;
+            margin: 0 auto 24px auto;
+            filter: drop-shadow(0 0 16px rgba(196,155,76,0.4));
+        }
+
+        /* ===== FADE-IN ===== */
+        .fade-in {
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 768px) {
+            .top-bar { padding: 0 12px; top: 12px; }
+            .biodynamics-hero { height: 50vh; }
+            .hero-text h1 { font-size: 2rem; }
+            .hero-text .hero-from { font-size: 0.95rem; }
+            .diary-content { padding: 50px 16px; }
+            .diary-content .chapter-title { font-size: 1.5rem; }
+            .diary-content .section-title { font-size: 1.2rem; }
+            .diary-content p { font-size: 1rem; }
+            .plate img { max-height: 50vh; }
+            .footer-logo { width: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <a href="index.html" class="btn-back">
+            <span class="lang-en">← Back</span>
+            <span class="lang-it lang-hidden">← Indietro</span>
+        </a>
+        <div class="lang-switcher">
+            <button id="btnEn" class="active">EN</button>
+            <button id="btnIt">IT</button>
+        </div>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <img src="" alt="" id="lightboxImg">
+    </div>
+
+    <!-- HERO -->
+    <div class="biodynamics-hero">
+        <div class="hero-text">
+            <div class="lang-en">
+                <h1>The Living Vineyard</h1>
+                <p class="hero-from">From «The Vine in Australia: A Winemaker's Notebook» by Enzo Vicci, 2025</p>
+            </div>
+            <div class="lang-it lang-hidden">
+                <h1>La Vigna Viva</h1>
+                <p class="hero-from">Da «La Vite in Australia: Taccuino di un Vinificatore» di Enzo Vicci, 2025</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="diary-content">
+
+        <!-- AMAZON BUTTON -->
+        <div style="text-align: center; margin: -40px 0 20px;">
+            <a href="https://www.amazon.com/dp/B0H9FW3347" target="_blank" rel="noopener" class="amazon-btn">
+                <span class="lang-en">Order Book from Amazon</span>
+                <span class="lang-it lang-hidden">Ordina il Libro su Amazon</span>
+            </a>
+        </div>
+
+        <!-- PLATE 0 -->
+        <div class="plate fade-in" data-full="images/plate0.png">
+            <img src="images/plate0.png" alt="Biodynamic Viticulture - Symbol reference sheet">
+            <p class="plate-caption">Biodynamic Viticulture — Symbol Reference Sheet</p>
+        </div>
+
+        <h2 class="chapter-title">Some Notes on Biodynamic Farming</h2>
+
+        <p>I have spent almost fourteen years learning how little I truly know. When I first arrived in Australia, I believed every answer could be found in hard work. If the vines struggled, I dug deeper. If they grew weak, I fed them more. If disease appeared, I searched for a stronger remedy. Some of those ideas worked. Some did not. The vineyard has a patient way of reminding a man that nature rarely obeys simple rules.</p>
+
+        <p>Several years ago I met a grower who spoke very little about grapes. Instead, he spoke about worms. About compost. About birds. About the smell of healthy soil after rain. I remember thinking that he sounded more like a shepherd than a winemaker. Yet his vineyard caught my attention long before I tasted his wine. The ground between the rows was alive with grasses and flowers. Bees moved from blossom to blossom. Small birds searched among the leaves. The soil was dark, soft, and easy to crumble in the hand. Nothing about the place looked neat by the standards I had learned as a young man. There were wild corners, old trees, patches of clover, and insects that many growers would have destroyed without hesitation. I asked him whether he was not afraid of weeds. He smiled. "They tell me the soil is still breathing." At the time I thought the answer was poetic rather than practical. Today I am no longer certain.</p>
+
+        <p class="break-marker">· · ·</p>
+
+        <h2 class="section-title">A Vineyard Is More Than Vines</h2>
+
+        <p>For many years I believed the vineyard ended where the last row of vines stopped. Now I think that was too narrow a view. A vineyard is also the grasses between the rows. The insects we never notice. The birds that arrive each spring. The fungi beneath the soil. The compost heap behind the shed. Even the old gum trees standing along the edge of the property. Every one of them changes the place in some small way. Some compete with the vine. Others protect it. The difficult part is learning which is which. Nature is seldom as simple as our first impression.</p>
+
+        <!-- PLATE 1 -->
+        <div class="plate fade-in" data-full="images/plate1.png">
+            <img src="images/plate1.png" alt="Living Soil">
+            <p class="plate-caption">Living Soil</p>
+        </div>
+
+        <h2 class="section-title">Soil Must Be Fed Before The Vine</h2>
+
+        <p>Many growers ask what fertilizer I recommend. That is not the first question. The first question should be: "What kind of soil do I wish to leave behind?" A hungry vine can be fed. Dead soil is much harder to restore. Over the years I learned that compost often accomplishes more than bags of purchased fertilizer. Not because it is stronger. Usually it is weaker. But because it feeds the soil itself. Healthy soil feeds the vine long after the compost has disappeared from sight. That lesson took me many seasons to understand.</p>
+
+        <!-- PLATE 2 -->
+        <div class="plate fade-in" data-full="images/plate2.png">
+            <img src="images/plate2.png" alt="The Biodynamic Estate">
+            <p class="plate-caption">The Biodynamic Estate</p>
+        </div>
+
+        <p class="break-marker">· · ·</p>
+
+        <h2 class="section-title">The Curious Men From Europe</h2>
+
+        <p>Not long ago I met several growers from Europe who followed what they called biodynamic farming. I confess I found some of their ideas difficult to understand. They buried cow horns filled with manure through the winter. They prepared compost with herbs. They watched the seasons with unusual care. Some even planned certain vineyard tasks according to the phases of the moon. To an ordinary farmer, some of this sounded rather strange. Perhaps it still does. I am not prepared to say which of these practices truly changes a vineyard. I have not tested them long enough. Nor do I believe that every old tradition must be accepted simply because it is old. But I have learned another lesson in life. When intelligent men, working in different countries, arrive at similar conclusions after many years, I prefer to observe before I dismiss them.</p>
+
+        <!-- PLATE 3 -->
+        <div class="plate fade-in" data-full="images/plate3.png">
+            <img src="images/plate3.png" alt="Biodynamic Preparation">
+            <p class="plate-caption">Biodynamic Preparation</p>
+        </div>
+
+        <h2 class="section-title">What I Did Try</h2>
+
+        <p>I did not bury horns. I did not abandon common sense. But I borrowed several ideas that required no faith at all. I made more compost. I sowed clover and lupins between the rows instead of leaving bare earth. I reduced unnecessary cultivation. I watched the insects more carefully before reaching for sulfur or copper. I allowed parts of the property to remain untidy if they seemed to encourage birds and beneficial insects. Most importantly, I spent more time observing before acting. This alone probably saved me from many foolish decisions.</p>
+
+        <!-- PLATE 4 -->
+        <div class="plate fade-in" data-full="images/plate4.png">
+            <img src="images/plate4.png" alt="The Vineyard Year">
+            <p class="plate-caption">The Vineyard Year</p>
+        </div>
+
+        <h2 class="section-title">The Horse And The Tractor</h2>
+
+        <p>When money finally allowed me to buy a tractor, I believed my problems were over. The work became faster. The rows looked cleaner. Everything appeared more efficient. Yet one old grower still preferred his horse. I asked him why. He simply stamped his boot into the soil. "Feel that," he said. The ground beneath the tractor had become firm. Where the horse walked, it remained loose. I still use the tractor. On a large vineyard it is almost impossible to do otherwise. But I have never forgotten that lesson. The fastest method is not always the gentlest one.</p>
+
+        <p class="break-marker">· · ·</p>
+
+        <h2 class="section-title">There Are No Miracles</h2>
+
+        <p>Some people speak about biodynamics as though it were magic. Others laugh at it without ever trying to understand it. I believe both make the same mistake. No preparation can save a neglected vineyard. No calendar can replace careful observation. No compost can correct years of poor pruning. The vine still demands the same things it always has. Good soil. Clean water. Fresh air. Sunlight. Patience. And the judgment of the man who cares for it.</p>
+
+        <!-- PLATE 5 -->
+        <div class="plate fade-in" data-full="images/plate5.png">
+            <img src="images/plate5.png" alt="The Quiet Cellar">
+            <p class="plate-caption">The Quiet Cellar</p>
+        </div>
+
+        <h2 class="section-title">The Vineyard Teaches Humility</h2>
+
+        <p>Perhaps the greatest gift these growers gave me had nothing to do with preparations or compost. It was humility. They spoke less about controlling nature than cooperating with it. That is a very different way of thinking. When I was young, I believed the vineyard belonged to me. Now I suspect that I merely borrow it for a few years before passing it to someone else. If that is true, then my responsibility is greater than producing good wine. I must also leave healthy soil for the man who follows me. Whether he calls himself conventional, organic, biodynamic, or something else entirely matters very little. The vine does not care what name we give our methods. It only responds to what we actually do.</p>
+
+        <p class="break-marker">· · ·</p>
+
+        <h2 class="section-title">What I Believe Today</h2>
+
+        <p>After fourteen years in Australia I have reached only one conclusion that I trust completely. A vineyard is not a factory. It is not even simply a field. It is a living community of soil, plants, insects, birds, weather, and people. Remove one part, and the others begin to change. Ignore one part, and sooner or later the vineyard reminds you of your mistake. If biodynamic growers have taught me anything worth remembering, it is not a particular preparation or a mysterious practice. It is the habit of looking more carefully. The vineyard always speaks. The question is whether we have learned to listen.</p>
+
+        <p class="signature">Enzo Vicci<br>Hunter Valley, Winter 1962</p>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="diary-footer">
+        <img src="images/logo.png" alt="Semko Vicci" class="footer-logo">
+        <br>
+        <a href="index.html">
+            <span class="lang-en">← Back to the story</span>
+            <span class="lang-it lang-hidden">← Torna alla storia</span>
+        </a>
+    </div>
+
+    <script>
+        const btnEn = document.getElementById('btnEn');
+        const btnIt = document.getElementById('btnIt');
+
+        function switchLang(lang) {
+            btnEn.classList.remove('active'); btnIt.classList.remove('active');
+            if (lang === 'en') {
+                btnEn.classList.add('active');
+                document.querySelectorAll('.lang-en').forEach(el => el.classList.remove('lang-hidden'));
+                document.querySelectorAll('.lang-it').forEach(el => el.classList.add('lang-hidden'));
+                document.documentElement.lang = 'en-AU';
+            } else {
+                btnIt.classList.add('active');
+                document.querySelectorAll('.lang-it').forEach(el => el.classList.remove('lang-hidden'));
+                document.querySelectorAll('.lang-en').forEach(el => el.classList.add('lang-hidden'));
+                document.documentElement.lang = 'it';
+            }
+        }
+        btnEn.addEventListener('click', () => switchLang('en'));
+        btnIt.addEventListener('click', () => switchLang('it'));
+
+        const fadeEls = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.15 });
+        fadeEls.forEach(el => observer.observe(el));
+
+        // Lightbox for plates
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxClose = document.getElementById('lightboxClose');
+
+        document.querySelectorAll('.plate').forEach(plate => {
+            plate.addEventListener('click', () => {
+                const fullSrc = plate.getAttribute('data-full');
+                if (fullSrc) {
+                    lightboxImg.src = fullSrc;
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+            setTimeout(() => { lightboxImg.src = ''; }, 300);
+        }
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+        lightboxClose.addEventListener('click', closeLightbox);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+        });
+    // ===== LIGHTBOX ZOOM =====
+lightboxImg.addEventListener('click', function(e) {
+    if (lightboxImg.classList.contains('zoomed')) {
+        // Возврат к обычному размеру
+        lightboxImg.classList.remove('zoomed');
+        lightbox.classList.remove('zoomable');
+        lightbox.scrollTop = 0;
+        lightbox.scrollLeft = 0;
+    } else {
+        // Зум — показываем картинку в реальном размере
+        lightboxImg.classList.add('zoomed');
+        lightbox.classList.add('zoomable');
+        // Скроллим к точке клика
+        const rect = lightboxImg.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        lightbox.scrollTop = y - lightbox.clientHeight / 2;
+        lightbox.scrollLeft = x - lightbox.clientWidth / 2;
+    }
+});
+
+// Сброс зума при закрытии
+const origCloseLightbox = closeLightbox;
+closeLightbox = function() {
+    lightboxImg.classList.remove('zoomed');
+    lightbox.classList.remove('zoomable');
+    origCloseLightbox();
+};
+	</script>
+
+</body>
+</html>
