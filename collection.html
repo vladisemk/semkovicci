@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semko Vicci — Vintage Collection</title>
+  <style>
+    /* --- Общие стили --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0d0d0d;
+      font-family: 'Georgia', serif;
+      color: #f0ede8;
+      padding: 40px 20px 80px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* --- Заголовок страницы --- */
+    .page-title {
+      text-align: center;
+      font-family: 'Playfair Display', 'Georgia', serif;
+      font-size: 3rem;
+      font-weight: 600;
+      font-style: italic;
+      color: #c49b4c;
+      margin-bottom: 10px;
+      letter-spacing: 4px;
+    }
+
+    .page-subtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #888;
+      letter-spacing: 2px;
+      margin-bottom: 40px;
+      border-bottom: 1px solid #2a2a2a;
+      padding-bottom: 30px;
+    }
+
+    /* --- Временная шкала --- */
+    .timeline {
+      position: relative;
+      padding: 20px 0;
+    }
+
+    /* Вертикальная линия по центру */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(to bottom, #c49b4c, #5a4a2a);
+      opacity: 0.4;
+    }
+
+    /* --- ЛОГОТИП В НАЧАЛЕ ЛИНИИ --- */
+    .logo-start {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 60px;
+      position: relative;
+      z-index: 2;
+    }
+    .logo-start img {
+      max-width: 180px;
+      height: auto;
+      filter: drop-shadow(0 0 30px rgba(196, 155, 76, 0.3));
+      transition: filter 0.4s ease;
+    }
+    .logo-start img:hover {
+      filter: drop-shadow(0 0 50px rgba(196, 155, 76, 0.6));
+    }
+    /* Точка под логотипом (продолжение линии) */
+    .logo-start::after {
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 12px;
+      background: #c49b4c;
+      border-radius: 50%;
+      border: 2px solid #c49b4c;
+      box-shadow: 0 0 20px rgba(196, 155, 76, 0.3);
+    }
+
+    /* Каждый блок года */
+    .timeline-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 80px;
+      position: relative;
+      opacity: 0.6;
+      transition: opacity 0.5s ease;
+    }
+    .timeline-item:hover {
+      opacity: 1;
+    }
+
+    /* Левая и правая колонки */
+    .timeline-item .left,
+    .timeline-item .right {
+      width: 42%;
+      padding: 20px;
+    }
+
+    .timeline-item .left {
+      text-align: right;
+      border-right: 1px dashed #2a2a2a;
+    }
+    .timeline-item .right {
+      text-align: left;
+      border-left: 1px dashed #2a2a2a;
+    }
+
+    /* Изображения */
+    .timeline-item img {
+      max-width: 100%;
+      max-height: 300px;
+      width: auto;
+      height: auto;
+      display: block;
+      margin: 0 auto 10px auto;
+      border: 1px solid #2a2a2a;
+      border-radius: 4px;
+      filter: grayscale(20%);
+      transition: filter 0.3s ease, transform 0.3s ease;
+      cursor: pointer;
+    }
+    .timeline-item img:hover {
+      filter: grayscale(0%);
+      transform: scale(1.02);
+    }
+
+    /* Год — центральная точка */
+    .year-marker {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: #0d0d0d;
+      border: 2px solid #c49b4c;
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #c49b4c;
+      box-shadow: 0 0 20px rgba(196, 155, 76, 0.15);
+      z-index: 2;
+      transition: box-shadow 0.3s ease;
+    }
+    .timeline-item:hover .year-marker {
+      box-shadow: 0 0 30px rgba(196, 155, 76, 0.4);
+    }
+
+    /* Подписи под изображениями */
+    .caption {
+      font-size: 0.9rem;
+      color: #aaa;
+      letter-spacing: 1px;
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    /* --- ЛАЙТБОКС (увеличение) --- */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.92);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+    }
+    .lightbox.active {
+      display: flex;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 85vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 6px;
+      box-shadow: 0 0 40px rgba(196, 155, 76, 0.3);
+    }
+    .lightbox .close-btn {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      font-size: 2.8rem;
+      color: #c49b4c;
+      cursor: pointer;
+      font-family: 'Georgia', serif;
+      transition: color 0.3s ease;
+      background: none;
+      border: none;
+      line-height: 1;
+    }
+    .lightbox .close-btn:hover {
+      color: #d4ae5c;
+    }
+    .lightbox .lb-caption {
+      color: #ccc;
+      font-size: 1.1rem;
+      margin-top: 20px;
+      font-style: italic;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+
+    /* --- Адаптация для мобильных --- */
+    @media (max-width: 768px) {
+      .timeline-item {
+        flex-direction: column;
+        margin-bottom: 100px;
+        align-items: stretch;
+      }
+      .timeline-item .left,
+      .timeline-item .right {
+        width: 100%;
+        text-align: center;
+        border: none;
+        padding: 10px 0;
+      }
+      .timeline-item .left {
+        border-bottom: 1px dashed #2a2a2a;
+        margin-bottom: 10px;
+      }
+      .timeline-item .right {
+        border-top: 1px dashed #2a2a2a;
+        margin-top: 10px;
+      }
+      .year-marker {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        margin: 10px auto;
+        width: 60px;
+        height: 60px;
+        font-size: 1.2rem;
+      }
+      .timeline::before {
+        display: none;
+      }
+      .timeline-item img {
+        max-height: 200px;
+      }
+      .lightbox .close-btn {
+        top: 20px;
+        right: 20px;
+        font-size: 2.2rem;
+      }
+      .logo-start img {
+        max-width: 120px;
+      }
+      .logo-start::after {
+        bottom: -20px;
+        width: 10px;
+        height: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <h1 class="page-title">Vintage Collection</h1>
+  <p class="page-subtitle">Each vintage tells a story. Each bottle holds a memory.</p>
+
+  <div class="timeline">
+
+    <!-- ЛОГОТИП В НАЧАЛЕ ЛИНИИ -->
+    <div class="logo-start">
+      <img src="images/logovar2.png" alt="Semko Vicci">
+    </div>
+
+    <!-- ===== 1954 ===== -->
+    <div class="timeline-item">
+      <div class="left">
+        <img src="images/1954.png" alt="Semko Vicci 1954 Vintage Bottle" data-caption="1954 — The First Vintage">
+        <div class="caption">1954 — The First Vintage</div>
+      </div>
+      <div class="year-marker">1954</div>
+      <div class="right">
+        <p><strong>The First Vintage.</strong> The wine that started it all. The Sangiovese cuttings from Tuscany met the soil of Hunter Valley for the first time.</p>
+      </div>
+    </div>
+
+    <!-- ===== 1955 ===== -->
+    <div class="timeline-item">
+      <div class="left">
+        <p><strong>Deep Roots.</strong> Two men, two languages, one dream. The cellar door opens for the first time.</p>
+      </div>
+      <div class="year-marker">1955</div>
+      <div class="right">
+        <img src="images/1955.png" alt="Enzo and Taras 1955" data-caption="1955 — Deep Roots">
+        <div class="caption">1955 — Deep Roots</div>
+      </div>
+    </div>
+
+    <!-- ===== 1956 ===== -->
+    <div class="timeline-item">
+      <div class="left">
+        <img src="images/1956.png" alt="Semko Vicci 1956 Shiraz Bottle" data-caption="1956 — After the Rain">
+        <div class="caption">1956 — After the Rain</div>
+      </div>
+      <div class="year-marker">1956</div>
+      <div class="right">
+        <p><strong>After the Rain.</strong> The Shiraz finds its feet. The red clay of Hunter Valley gives the wine its soul.</p>
+      </div>
+    </div>
+
+    <!-- ===== 1957 ===== -->
+    <div class="timeline-item">
+      <div class="left">
+        <p><strong>Trials and Errors.</strong> The weather was harsh, the harvest small. But the wine found its character.</p>
+      </div>
+      <div class="year-marker">1957</div>
+      <div class="right">
+        <img src="images/1957.png" alt="Barrels and Cellar 1957" data-caption="1957 — Trials and Errors">
+        <div class="caption">1957 — Trials and Errors</div>
+      </div>
+    </div>
+
+    <!-- ===== 1962 ===== -->
+    <div class="timeline-item">
+      <div class="left">
+        <img src="images/1962.png" alt="First order 1962" data-caption="1962 — The First Big Order">
+        <div class="caption">1962 — The First Big Order</div>
+      </div>
+      <div class="year-marker">1962</div>
+      <div class="right">
+        <p><strong>The First Big Order.</strong> Twelve cases to Newcastle. The name Semko Vicci reaches the shelf.</p>
+      </div>
+    </div>
+
+    <!-- Добавьте больше годов, копируя блок .timeline-item и меняя год и текст -->
+
+  </div>
+</div>
+
+<!-- ===== ЛАЙТБОКС ===== -->
+<div class="lightbox" id="lightbox">
+  <button class="close-btn" id="closeLightbox">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+  <div class="lb-caption" id="lightboxCaption"></div>
+</div>
+
+<script>
+  (function() {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const closeBtn = document.getElementById('closeLightbox');
+
+    const images = document.querySelectorAll('.timeline-item img[data-caption]');
+
+    images.forEach(img => {
+      img.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const src = this.getAttribute('src');
+        const caption = this.getAttribute('data-caption') || 'Vintage Collection';
+        lightboxImg.src = src;
+        lightboxCaption.textContent = caption;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeLightbox();
+      }
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
+
+  })();
+</script>
+
+</body>
+</html>
