@@ -25,20 +25,17 @@
             background-color: #0d0d0d;
             color: #f0ede8;
             line-height: 1.8;
-            overflow: hidden;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
+            overflow-x: hidden;
         }
 
-        /* ===== TOP BAR ===== */
         .top-bar {
             position: fixed; top: 24px; left: 0; right: 0; z-index: 1001;
             display: flex; justify-content: space-between; align-items: center;
             padding: 0 28px; pointer-events: none;
-            flex-shrink: 0;
         }
         .top-bar > * { pointer-events: auto; }
+
+        .top-left { display: flex; gap: 8px; }
 
         .btn-back {
             background: rgba(10,10,10,0.7); color: #a0845c;
@@ -61,203 +58,196 @@
         .lang-switcher button.active { background: #c49b4c; color: #0d0d0d; border-color: #c49b4c; }
         .lang-hidden { display: none !important; }
 
-        /* ===== MAIN CONTAINER ===== */
+        /* ===== MAIN ===== */
         .archive-main {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            padding: 80px 20px 20px;
+            display: flex; flex-direction: column;
+            align-items: center; width: 100%;
+            padding: 100px 20px 20px;
             gap: 20px;
         }
 
         /* ===== HEADER ===== */
-        .archive-header {
-            text-align: center;
-            flex-shrink: 0;
-        }
+        .archive-header { text-align: center; flex-shrink: 0; }
         .archive-header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.6rem;
-            font-weight: 600;
-            font-style: italic;
-            color: #c49b4c;
-            letter-spacing: 2px;
-            margin-bottom: 6px;
+            font-family: 'Playfair Display', serif; font-size: 2.6rem;
+            font-weight: 600; font-style: italic; color: #c49b4c;
+            letter-spacing: 2px; margin-bottom: 6px;
         }
         .archive-header .header-sub {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.05rem;
-            font-style: italic;
-            color: #888;
-            letter-spacing: 1px;
+            font-family: 'Playfair Display', serif; font-size: 1.05rem;
+            font-style: italic; color: #888; letter-spacing: 1px;
         }
 
         /* ===== SHELF ===== */
         .shelf {
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            gap: 14px;
-            perspective: 1200px;
-            position: relative;
-            flex-grow: 1;
-            width: 100%;
-            max-height: 75vh;
-            min-height: 500px;
+            display: flex; justify-content: center; align-items: flex-end;
+            gap: 14px; perspective: 1200px; position: relative;
+            width: 100%; height: 600px; flex-shrink: 0;
         }
-
         .shelf-item {
-            position: relative;
-            width: 150px;
-            height: 100%;
-            flex-shrink: 0;
-            cursor: pointer;
-            transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
-                        width 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
-                        margin 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+            position: relative; width: 150px; height: 100%;
+            flex-shrink: 0; cursor: pointer;
+            transition: transform 0.5s cubic-bezier(0.25,0.1,0.25,1),
+                        width 0.5s cubic-bezier(0.25,0.1,0.25,1),
                         z-index 0s 0s;
-            z-index: 1;
-            transform: rotateY(2deg) translateZ(0);
-            background-size: cover;
-            background-position: center;
-            border: 2px solid #222;
-            border-radius: 4px;
-            overflow: hidden;
+            z-index: 1; transform: rotateY(2deg) translateZ(0);
+            background-size: cover; background-position: center;
+            border: 2px solid #222; border-radius: 4px; overflow: hidden;
         }
-
         .shelf-item::after {
-            content: '';
-            position: absolute;
-            inset: 0;
+            content: ''; position: absolute; inset: 0;
             background: linear-gradient(to right, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 35%);
             pointer-events: none;
         }
-
         .shelf-item:hover {
             transform: rotateY(0deg) translateY(-16px) translateZ(40px);
-            z-index: 10;
-            border-color: #c49b4c;
+            z-index: 10; border-color: #c49b4c;
             box-shadow: 0 24px 50px rgba(0,0,0,0.6), 0 0 24px rgba(196,155,76,0.3);
-            transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1),
-                        border-color 0.3s,
-                        box-shadow 0.3s,
-                        z-index 0s 0s;
+            transition: transform 0.4s cubic-bezier(0.25,0.1,0.25,1),
+                        border-color 0.3s, box-shadow 0.3s, z-index 0s 0s;
         }
-
         .shelf-item.active {
-            width: 900px;
-            z-index: 20;
+            width: 900px; z-index: 20;
             transform: rotateY(0deg) translateY(-8px) translateZ(60px);
             border-color: #c49b4c;
             box-shadow: 0 40px 80px rgba(0,0,0,0.7), 0 0 40px rgba(196,155,76,0.5);
             cursor: default;
         }
-
-        /* ===== CAPTION ===== */
         .shelf-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            position: absolute; bottom: 0; left: 0; right: 0;
             padding: 28px 28px 24px;
             background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            pointer-events: none;
+            opacity: 0; transition: opacity 0.5s ease; pointer-events: none;
         }
         .shelf-item.active .shelf-caption { opacity: 1; }
         .shelf-caption .caption-year {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            font-style: italic;
-            color: #c49b4c;
-            letter-spacing: 2px;
-            margin-bottom: 6px;
+            font-family: 'Playfair Display', serif; font-size: 1.3rem;
+            font-style: italic; color: #c49b4c; letter-spacing: 2px; margin-bottom: 6px;
         }
-        .shelf-caption .caption-text {
-            font-size: 0.95rem;
-            color: #ddd;
-            line-height: 1.6;
+        .shelf-caption .caption-text { font-size: 0.95rem; color: #ddd; line-height: 1.6; }
+        .shelf-close {
+            position: absolute; top: 14px; right: 18px; width: 40px; height: 40px;
+            background: rgba(0,0,0,0.6); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; color: #c49b4c; cursor: pointer; z-index: 30;
+            opacity: 0; transition: opacity 0.4s ease; pointer-events: none;
+        }
+        .shelf-item.active .shelf-close { opacity: 1; pointer-events: auto; }
+        .shelf-close:hover { background: rgba(196,155,76,0.4); }
+
+        /* ===== DIVIDER ===== */
+        .archive-divider {
+            width: 100%; max-width: 1100px;
+            text-align: center; padding: 40px 0 10px;
+        }
+        .archive-divider span {
+            font-family: 'Playfair Display', serif; font-size: 1.1rem;
+            font-style: italic; color: #a0845c; letter-spacing: 1px;
         }
 
-        .shelf-close {
-            position: absolute;
-            top: 14px;
-            right: 18px;
-            width: 40px;
-            height: 40px;
-            background: rgba(0,0,0,0.6);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            color: #c49b4c;
-            cursor: pointer;
-            z-index: 30;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            pointer-events: none;
+        /* ===== GRID ===== */
+        .archive-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            width: 100%; max-width: 1100px;
         }
-        .shelf-item.active .shelf-close {
-            opacity: 1;
-            pointer-events: auto;
+        .archive-grid .grid-item {
+            aspect-ratio: 4 / 5;
+            background-size: cover; background-position: center;
+            cursor: pointer; border: 2px solid #222;
+            transition: border-color 0.3s, transform 0.3s;
         }
-        .shelf-close:hover { background: rgba(196,155,76,0.4); }
+        .archive-grid .grid-item:hover {
+            border-color: #c49b4c; transform: scale(1.03);
+        }
+
+        /* ===== GRID LIGHTBOX ===== */
+        .grid-lightbox {
+            display: none; position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%; background: rgba(0,0,0,0.95);
+            z-index: 9999; justify-content: center; align-items: center;
+            flex-direction: column;
+        }
+        .grid-lightbox.active { display: flex; }
+        .grid-lightbox img {
+            max-width: 90vw; max-height: 75vh; object-fit: contain;
+            animation: lightboxIn 0.3s ease;
+        }
+        @keyframes lightboxIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        .grid-lightbox .grid-caption {
+            font-family: 'Playfair Display', serif; font-size: 1rem;
+            font-style: italic; color: #a0845c; margin-top: 16px;
+            letter-spacing: 1px; text-align: center; max-width: 600px;
+        }
+        .grid-lightbox-close {
+            position: absolute; top: 28px; right: 28px; font-size: 2rem;
+            color: #c49b4c; cursor: pointer; z-index: 10000;
+            width: 44px; height: 44px; display: flex; align-items: center;
+            justify-content: center; background: rgba(0,0,0,0.5);
+            border-radius: 50%; transition: background 0.3s;
+        }
+        .grid-lightbox-close:hover { background: rgba(196,155,76,0.3); }
+
+        /* ===== FOOTER ===== */
+        .archive-footer { text-align: center; padding: 60px 20px 40px; }
+        .archive-footer a {
+            color: #a0845c; text-decoration: none;
+            font-size: 0.9rem; letter-spacing: 1px; transition: color 0.3s;
+        }
+        .archive-footer a:hover { color: #c49b4c; }
+        .footer-logo {
+            display: block; width: 280px; height: auto;
+            margin: 0 auto 24px auto;
+            filter: drop-shadow(0 0 16px rgba(196,155,76,0.4));
+        }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .top-bar { padding: 0 12px; top: 12px; }
-            .archive-main { padding: 70px 12px 12px; gap: 12px; }
             .archive-header h1 { font-size: 1.8rem; }
             .archive-header .header-sub { font-size: 0.85rem; }
-
             .shelf {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 8px;
-                max-height: none;
-                min-height: auto;
-                perspective: none;
-                align-content: center;
+                flex-wrap: wrap; justify-content: center; gap: 8px;
+                height: auto; min-height: auto; perspective: none;
+                align-content: center; padding: 20px 0;
             }
-            .shelf-item {
-                width: 55px;
-                height: 280px;
-                transform: none;
-            }
+            .shelf-item { width: 55px; height: 280px; transform: none; }
             .shelf-item:hover { transform: translateY(-8px); }
             .shelf-item.active {
-                width: 100%;
-                height: 380px;
-                transform: none;
-                margin: 8px 0;
-		order: -1;
+                width: 100%; height: 380px; transform: none;
+                margin: 8px 0; order: -1;
             }
+            .archive-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+            .grid-lightbox img { max-height: 60vh; }
+            .footer-logo { width: 200px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== TOP BAR ===== -->
     <div class="top-bar">
-        <a href="index.html" class="btn-back">
-            <span class="lang-en">← Back</span>
-            <span class="lang-it lang-hidden">← Indietro</span>
-        </a>
+        <div class="top-left">
+            <a href="index.html" class="btn-back">
+                <span class="lang-en">← Back</span>
+                <span class="lang-it lang-hidden">← Indietro</span>
+            </a>
+        </div>
         <div class="lang-switcher">
             <button id="btnEn" class="active">EN</button>
             <button id="btnIt">IT</button>
         </div>
     </div>
 
-    <!-- ===== MAIN ===== -->
+    <!-- ===== GRID LIGHTBOX ===== -->
+    <div class="grid-lightbox" id="gridLightbox">
+        <span class="grid-lightbox-close" id="gridLightboxClose">&times;</span>
+        <img src="" alt="" id="gridLightboxImg">
+        <p class="grid-caption" id="gridLightboxCaption"></p>
+    </div>
+
     <div class="archive-main">
 
-        <!-- Заголовок -->
         <div class="archive-header">
             <div class="lang-en">
                 <h1>Family Archive</h1>
@@ -269,88 +259,65 @@
             </div>
         </div>
 
-        <!-- Полка -->
+        <!-- Полка (первые 5) -->
         <div class="shelf" id="shelf">
-
-            <!-- 1: Taras -->
             <div class="shelf-item" style="background-image: url('images/archive-taras-portrait.jpeg');" data-index="0">
                 <div class="shelf-close">&times;</div>
                 <div class="shelf-caption">
-                    <div class="lang-en">
-                        <div class="caption-year">Taras Semko, 1952</div>
-                        <div class="caption-text">The man who carried Ukrainian soil in his blood. He never saw his homeland again — but he planted its memory in Australian earth.</div>
-                    </div>
-                    <div class="lang-it lang-hidden">
-                        <div class="caption-year">Taras Semko, 1952</div>
-                        <div class="caption-text">L'uomo che portava la terra ucraina nel sangue. Non rivide mai più la sua patria — ma ne piantò il ricordo nella terra australiana.</div>
-                    </div>
+                    <div class="lang-en"><div class="caption-year">Taras Semko, 1952</div><div class="caption-text">The man who carried Ukrainian soil in his blood. He never saw his homeland again — but he planted its memory in Australian earth.</div></div>
+                    <div class="lang-it lang-hidden"><div class="caption-year">Taras Semko, 1952</div><div class="caption-text">L'uomo che portava la terra ucraina nel sangue. Non rivide mai più la sua patria — ma ne piantò il ricordo nella terra australiana.</div></div>
                 </div>
             </div>
-
-            <!-- 2: Enzo -->
             <div class="shelf-item" style="background-image: url('images/archive-enzo-portrait.jpeg');" data-index="1">
                 <div class="shelf-close">&times;</div>
                 <div class="shelf-caption">
-                    <div class="lang-en">
-                        <div class="caption-year">Enzo Vicci, 1953</div>
-                        <div class="caption-text">Six generations of Tuscan winemaking in his hands. He lost everything in the war — except the knowledge of how to make wine from nothing.</div>
-                    </div>
-                    <div class="lang-it lang-hidden">
-                        <div class="caption-year">Enzo Vicci, 1953</div>
-                        <div class="caption-text">Sei generazioni di vinificazione toscana nelle sue mani. Perse tutto in guerra — tranne il sapere di come fare il vino partendo dal nulla.</div>
-                    </div>
+                    <div class="lang-en"><div class="caption-year">Enzo Vicci, 1953</div><div class="caption-text">Six generations of Tuscan winemaking in his hands. He lost everything in the war — except the knowledge of how to make wine from nothing.</div></div>
+                    <div class="lang-it lang-hidden"><div class="caption-year">Enzo Vicci, 1953</div><div class="caption-text">Sei generazioni di vinificazione toscana nelle sue mani. Perse tutto in guerra — tranne il sapere di come fare il vino partendo dal nulla.</div></div>
                 </div>
             </div>
-
-            <!-- 3: Label -->
             <div class="shelf-item" style="background-image: url('images/archive-first-label.jpeg');" data-index="2">
                 <div class="shelf-close">&times;</div>
                 <div class="shelf-caption">
-                    <div class="lang-en">
-                        <div class="caption-year">The First Label, 1954</div>
-                        <div class="caption-text">Hand-drawn by Enzo. Wine-stained by Taras. Two hands clasped above the name they created together. This piece of paper is where our story became real.</div>
-                    </div>
-                    <div class="lang-it lang-hidden">
-                        <div class="caption-year">La Prima Etichetta, 1954</div>
-                        <div class="caption-text">Disegnata a mano da Enzo. Macchiata di vino da Taras. Due mani giunte sopra il nome che crearono insieme. Questo pezzo di carta è dove la nostra storia è diventata reale.</div>
-                    </div>
+                    <div class="lang-en"><div class="caption-year">The First Label, 1954</div><div class="caption-text">Hand-drawn by Enzo. Wine-stained by Taras. Two hands clasped above the name they created together. This piece of paper is where our story became real.</div></div>
+                    <div class="lang-it lang-hidden"><div class="caption-year">La Prima Etichetta, 1954</div><div class="caption-text">Disegnata a mano da Enzo. Macchiata di vino da Taras. Due mani giunte sopra il nome che crearono insieme. Questo pezzo di carta è dove la nostra storia è diventata reale.</div></div>
                 </div>
             </div>
-
-            <!-- 4: Barrel Room -->
             <div class="shelf-item" style="background-image: url('images/archive-old-barrel-room.jpeg');" data-index="3">
                 <div class="shelf-close">&times;</div>
                 <div class="shelf-caption">
-                    <div class="lang-en">
-                        <div class="caption-year">The Barrel Room, 1955</div>
-                        <div class="caption-text">Where the pact was sealed every vintage. Taras stacked the barrels. Enzo filled them. The initials SV burned into the wood — a promise neither man ever broke.</div>
-                    </div>
-                    <div class="lang-it lang-hidden">
-                        <div class="caption-year">La Sala delle Botti, 1955</div>
-                        <div class="caption-text">Dove il patto veniva suggellato ad ogni vendemmia. Taras impilava le botti. Enzo le riempiva. Le iniziali SV impresse sul legno — una promessa che nessuno dei due ha mai infranto.</div>
-                    </div>
+                    <div class="lang-en"><div class="caption-year">The Barrel Room, 1955</div><div class="caption-text">Where the pact was sealed every vintage. Taras stacked the barrels. Enzo filled them. The initials SV burned into the wood — a promise neither man ever broke.</div></div>
+                    <div class="lang-it lang-hidden"><div class="caption-year">La Sala delle Botti, 1955</div><div class="caption-text">Dove il patto veniva suggellato ad ogni vendemmia. Taras impilava le botti. Enzo le riempiva. Le iniziali SV impresse sul legno — una promessa che nessuno dei due ha mai infranto.</div></div>
                 </div>
             </div>
-
-            <!-- 5: Notes -->
             <div class="shelf-item" style="background-image: url('images/archive-enzos-notes.jpeg');" data-index="4">
                 <div class="shelf-close">&times;</div>
                 <div class="shelf-caption">
-                    <div class="lang-en">
-                        <div class="caption-year">Enzo's Notebook</div>
-                        <div class="caption-text">Blending ratios. Pruning sketches. Rainfall records. Dreams written in the margins. This notebook is the closest thing we have to a conversation with Enzo himself.</div>
-                    </div>
-                    <div class="lang-it lang-hidden">
-                        <div class="caption-year">Il Taccuino di Enzo</div>
-                        <div class="caption-text">Rapporti di assemblaggio. Schizzi di potatura. Registri delle piogge. Sogni scritti ai margini. Questo taccuino è quanto di più vicino abbiamo a una conversazione con Enzo.</div>
-                    </div>
+                    <div class="lang-en"><div class="caption-year">Enzo's Notebook</div><div class="caption-text">Blending ratios. Pruning sketches. Rainfall records. Dreams written in the margins. This notebook is the closest thing we have to a conversation with Enzo himself.</div></div>
+                    <div class="lang-it lang-hidden"><div class="caption-year">Il Taccuino di Enzo</div><div class="caption-text">Rapporti di assemblaggio. Schizzi di potatura. Registri delle piogge. Sogni scritti ai margini. Questo taccuino è quanto di più vicino abbiamo a una conversazione con Enzo.</div></div>
                 </div>
             </div>
-
         </div>
+
+        <!-- Разделитель -->
+        <div class="archive-divider">
+            <span class="lang-en">A Season in the Vines</span>
+            <span class="lang-it lang-hidden">Una Stagione tra le Viti</span>
+        </div>
+
+        <!-- Сетка (25 фото) -->
+        <div class="archive-grid" id="archiveGrid"></div>
     </div>
 
-    <!-- ===== SCRIPTS ===== -->
+    <!-- FOOTER -->
+    <div class="archive-footer">
+        <img src="images/logo.png" alt="Semko Vicci" class="footer-logo">
+        <br>
+        <a href="index.html">
+            <span class="lang-en">← Back to the story</span>
+            <span class="lang-it lang-hidden">← Torna alla storia</span>
+        </a>
+    </div>
+
     <script>
         const btnEn = document.getElementById('btnEn');
         const btnIt = document.getElementById('btnIt');
@@ -374,9 +341,9 @@
         btnEn.addEventListener('click', () => switchLang('en'));
         btnIt.addEventListener('click', () => switchLang('it'));
 
+        // Shelf (первые 5)
         const items = document.querySelectorAll('.shelf-item');
         let activeItem = null;
-
         items.forEach(item => {
             item.addEventListener('click', (e) => {
                 if (e.target.classList.contains('shelf-close')) return;
@@ -384,13 +351,12 @@
                 if (activeItem) activeItem.classList.remove('active');
                 item.classList.add('active');
                 activeItem = item;
-if (window.innerWidth <= 768) {
-    setTimeout(() => {
-        item.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 100);
-}
+                if (window.innerWidth <= 768) {
+                    setTimeout(() => {
+                        item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 100);
+                }
             });
-
             const closeBtn = item.querySelector('.shelf-close');
             if (closeBtn) {
                 closeBtn.addEventListener('click', (e) => {
@@ -400,19 +366,84 @@ if (window.innerWidth <= 768) {
                 });
             }
         });
-
         document.addEventListener('click', (e) => {
             if (activeItem && !activeItem.contains(e.target)) {
                 activeItem.classList.remove('active');
                 activeItem = null;
             }
         });
-
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && activeItem) {
                 activeItem.classList.remove('active');
                 activeItem = null;
             }
+        });
+
+             // Grid (25 фото)
+        const captions = [
+            'Enzo and Taras in the vineyard',  // archive6
+            '',  // archive7
+            '',  // archive8
+            '',  // archive9
+            '',  // archive10
+            '',  // archive11
+            '',  // archive12
+            '',  // archive13
+            '',  // archive14
+            '',  // archive15
+            '',  // archive16
+            '',  // archive17
+            '',  // archive18
+            '',  // archive19
+            '',  // archive20
+            '',  // archive21
+            '',  // archive22
+            '',  // archive23
+            '',  // archive24
+            '',  // archive25
+            '',  // archive26
+            '',  // archive27
+            '',  // archive28
+            '',  // archive29
+            ''   // archive30
+        ];
+
+        const grid = document.getElementById('archiveGrid');
+        for (let i = 6; i <= 30; i++) {
+            const div = document.createElement('div');
+            div.className = 'grid-item';
+            div.style.backgroundImage = `url('images/archive${i}.jpeg')`;
+            div.setAttribute('data-src', `images/archive${i}.jpeg`);
+            div.setAttribute('data-caption', captions[i - 6] || '');
+            grid.appendChild(div);
+        }
+
+        // Grid lightbox
+        const gridLightbox = document.getElementById('gridLightbox');
+        const gridLightboxImg = document.getElementById('gridLightboxImg');
+        const gridLightboxCaption = document.getElementById('gridLightboxCaption');
+        const gridLightboxClose = document.getElementById('gridLightboxClose');
+
+        document.querySelectorAll('.grid-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const src = item.getAttribute('data-src');
+                const caption = item.getAttribute('data-caption');
+                gridLightboxImg.src = src;
+                gridLightboxCaption.textContent = caption;
+                gridLightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        function closeGridLightbox() {
+            gridLightbox.classList.remove('active');
+            document.body.style.overflow = '';
+            setTimeout(() => { gridLightboxImg.src = ''; }, 300);
+        }
+        gridLightbox.addEventListener('click', (e) => { if (e.target === gridLightbox) closeGridLightbox(); });
+        gridLightboxClose.addEventListener('click', closeGridLightbox);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && gridLightbox.classList.contains('active')) closeGridLightbox();
         });
     </script>
 
