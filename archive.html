@@ -379,37 +379,42 @@
             }
         });
 
-             // Grid (25 фото)
+// Grid (30 фото)
         const captions = [
             'Enzo and Taras in the vineyard',  // archive6
-            '',  // archive7
-            '',  // archive8
-            '',  // archive9
-            '',  // archive10
-            '',  // archive11
-            '',  // archive12
-            '',  // archive13
-            '',  // archive14
-            '',  // archive15
-            '',  // archive16
-            '',  // archive17
-            '',  // archive18
-            '',  // archive19
-            '',  // archive20
-            '',  // archive21
-            '',  // archive22
-            '',  // archive23
-            '',  // archive24
-            '',  // archive25
-            '',  // archive26
-            '',  // archive27
-            '',  // archive28
-            '',  // archive29
-            ''   // archive30
+            'Enzo pointing at the sun, 1948',  // archive7
+    'Enzo and Taras in the cellar, 1948',  // archive8
+            'Enzo holding soil',  // archive9
+            'Taras holding clay',  // archive10
+            'Enzo holding a vine root, 1948',  // archive11
+            'Enzo and Taras measuring rows, 1948',  // archive12
+            'Enzo planting a vine, 1948',  // archive13
+            'Enzo and Taras sitting in new vineyard, 1948',  // archive14
+            'Enzo and Taras pruning in winter, 1953',  // archive15
+            'Mature vineyard in winter, pruned and ready, 1961',  // archive16
+            'Enzo walking between rows, 1954',  // archive17
+            'Enzo holding a bunch of ripe Shiraz, 1955',  // archive18
+            'Laboratory bench, 1958',  // archive19
+            'Enzo and workers, harvest, 1957',  // archive20
+            'Grape crusher — manual Bagshaw',  // archive21
+            'Enzo treading the grapes',  // archive22
+            'Enzo at the fermenting vat, 1958',  // archive23
+            'Enzo punching down the cap',  // archive24
+            'Enzo checking fermentation, 1959',  // archive25
+            'Enzo checking a barrel, 1959',  // archive26
+            'Enzo tasting from the barrel, 1960',  // archive27
+            'Enzo at the bottling table, 1961',  // archive28
+            'Enzo opening a bottle, 1961',  // archive29
+            'Enzo with a buyer, tasting from the barrel, 1960',  // archive30
+            'Enzo with a buyer, shaking hands, 1961',  // archive31
+            'Enzo and Taras in the cellar, looking at old notebooks',  // archive32
+            'Enzo at the edge of the vineyard, sunset, 1961',  // archive33
+            'Enzo holding a glass, looking at it, 1954',  // archive34
+            'Enzo and Taras sharing a toast, 1954'   // archive35
         ];
 
         const grid = document.getElementById('archiveGrid');
-        for (let i = 6; i <= 30; i++) {
+        for (let i = 6; i <= 35; i++) {
             const div = document.createElement('div');
             div.className = 'grid-item';
             div.style.backgroundImage = `url('images/archive${i}.jpeg')`;
