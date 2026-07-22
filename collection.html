@@ -1,669 +1,925 @@
 <!DOCTYPE html>
 <html lang="en-AU">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Semko Vicci — Vintage Collection</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semko Vicci — Vintage Collection</title>
 
-  <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="icon" type="image/png" href="images/favicon.png">
 
-  <meta property="og:title" content="Semko Vicci — Vintage Collection">
-  <meta property="og:description" content="Each vintage tells a story. Each bottle holds a memory. Explore the Semko Vicci vintage collection from 1954 to today.">
-  <meta property="og:image" content="images/logo.png">
+    <meta property="og:title" content="Semko Vicci — Vintage Collection">
+    <meta property="og:description" content="Each vintage tells a story. Each bottle holds a memory. Explore the Semko Vicci vintage collection from 1954 to today.">
+    <meta property="og:image" content="images/logo.png">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 
-  <style>
-    /* --- Общие стили --- */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      background-color: #0d0d0d;
-      font-family: 'Georgia', serif;
-      color: #f0ede8;
-      padding: 80px 20px 80px 20px;
-    }
+        body {
+            background-color: #0d0d0d;
+            font-family: 'Georgia', serif;
+            color: #f0ede8;
+            padding: 80px 20px 80px 20px;
+        }
 
-    /* --- TOP BAR (как в about.html) --- */
-    .top-bar {
-      position: fixed;
-      top: 24px;
-      left: 0;
-      right: 0;
-      z-index: 1001;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 28px;
-      pointer-events: none;
-    }
-    .top-bar > * {
-      pointer-events: auto;
-    }
+        .top-bar {
+            position: fixed;
+            top: 24px;
+            left: 0;
+            right: 0;
+            z-index: 1001;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 28px;
+            pointer-events: none;
+        }
+        .top-bar>* {
+            pointer-events: auto;
+        }
 
-    .btn-back {
-      background: rgba(10, 10, 10, 0.7);
-      color: #a0845c;
-      border: 1px solid #a0845c;
-      padding: 6px 14px;
-      font-size: 0.8rem;
-      letter-spacing: 1px;
-      cursor: pointer;
-      transition: all 0.3s;
-      font-family: 'Georgia', serif;
-      backdrop-filter: blur(6px);
-      text-transform: uppercase;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .btn-back:hover {
-      background: #c49b4c;
-      color: #0d0d0d;
-      border-color: #c49b4c;
-    }
+        .btn-back {
+            background: rgba(10, 10, 10, 0.7);
+            color: #a0845c;
+            border: 1px solid #a0845c;
+            padding: 6px 14px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Georgia', serif;
+            backdrop-filter: blur(6px);
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-back:hover {
+            background: #c49b4c;
+            color: #0d0d0d;
+            border-color: #c49b4c;
+        }
 
-    .lang-switcher {
-      display: flex;
-      gap: 8px;
-    }
-    .lang-switcher button {
-      background: rgba(10, 10, 10, 0.7);
-      color: #a0845c;
-      border: 1px solid #a0845c;
-      padding: 6px 14px;
-      font-size: 0.8rem;
-      letter-spacing: 1px;
-      cursor: pointer;
-      transition: all 0.3s;
-      font-family: 'Georgia', serif;
-      backdrop-filter: blur(6px);
-      text-transform: uppercase;
-    }
-    .lang-switcher button.active {
-      background: #c49b4c;
-      color: #0d0d0d;
-      border-color: #c49b4c;
-    }
-    .lang-hidden {
-      display: none !important;
-    }
+        .lang-switcher {
+            display: flex;
+            gap: 8px;
+        }
+        .lang-switcher button {
+            background: rgba(10, 10, 10, 0.7);
+            color: #a0845c;
+            border: 1px solid #a0845c;
+            padding: 6px 14px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Georgia', serif;
+            backdrop-filter: blur(6px);
+            text-transform: uppercase;
+        }
+        .lang-switcher button.active {
+            background: #c49b4c;
+            color: #0d0d0d;
+            border-color: #c49b4c;
+        }
+        .lang-hidden {
+            display: none !important;
+        }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-    /* --- Заголовок страницы --- */
-    .page-title {
-      text-align: center;
-      font-family: 'Playfair Display', 'Georgia', serif;
-      font-size: 3rem;
-      font-weight: 600;
-      font-style: italic;
-      color: #c49b4c;
-      margin-bottom: 10px;
-      letter-spacing: 4px;
-    }
+        .page-title {
+            text-align: center;
+            font-family: 'Playfair Display', 'Georgia', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            font-style: italic;
+            color: #c49b4c;
+            margin-bottom: 10px;
+            letter-spacing: 4px;
+        }
 
-    .page-subtitle {
-      text-align: center;
-      font-size: 1.1rem;
-      color: #888;
-      letter-spacing: 2px;
-      margin-bottom: 40px;
-      border-bottom: 1px solid #2a2a2a;
-      padding-bottom: 30px;
-    }
+        .page-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #888;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #2a2a2a;
+            padding-bottom: 30px;
+        }
 
-    /* --- Временная шкала --- */
-    .timeline {
-      position: relative;
-      padding: 20px 0;
-    }
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
 
-    .timeline::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 2px;
-      height: 100%;
-      background: linear-gradient(to bottom, #c49b4c, #5a4a2a);
-      opacity: 0.4;
-    }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, #c49b4c, #5a4a2a);
+            opacity: 0.4;
+        }
 
-    /* --- ЛОГОТИП В НАЧАЛЕ ЛИНИИ --- */
-    .logo-start {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 60px;
-      position: relative;
-      z-index: 2;
-    }
-    .logo-start img {
-      max-width: 180px;
-      height: auto;
-      filter: drop-shadow(0 0 30px rgba(196, 155, 76, 0.3));
-      transition: filter 0.4s ease;
-    }
-    .logo-start img:hover {
-      filter: drop-shadow(0 0 50px rgba(196, 155, 76, 0.6));
-    }
-    .logo-start::after {
-      content: '';
-      position: absolute;
-      bottom: -30px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 12px;
-      height: 12px;
-      background: #c49b4c;
-      border-radius: 50%;
-      border: 2px solid #c49b4c;
-      box-shadow: 0 0 20px rgba(196, 155, 76, 0.3);
-    }
+        .logo-start {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 2;
+        }
+        .logo-start img {
+            max-width: 180px;
+            height: auto;
+            filter: drop-shadow(0 0 30px rgba(196, 155, 76, 0.3));
+            transition: filter 0.4s ease;
+        }
+        .logo-start img:hover {
+            filter: drop-shadow(0 0 50px rgba(196, 155, 76, 0.6));
+        }
+        .logo-start::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            background: #c49b4c;
+            border-radius: 50%;
+            border: 2px solid #c49b4c;
+            box-shadow: 0 0 20px rgba(196, 155, 76, 0.3);
+        }
 
-    /* Каждый блок года */
-    .timeline-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 80px;
-      position: relative;
-      opacity: 0.6;
-      transition: opacity 0.5s ease;
-    }
-    .timeline-item:hover {
-      opacity: 1;
-    }
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 80px;
+            position: relative;
+            opacity: 0.6;
+            transition: opacity 0.5s ease;
+        }
+        .timeline-item:hover {
+            opacity: 1;
+        }
 
-    .timeline-item .left,
-    .timeline-item .right {
-      width: 42%;
-      padding: 20px;
-    }
+        .timeline-item .left,
+        .timeline-item .right {
+            width: 42%;
+            padding: 20px;
+        }
 
-    .timeline-item .left {
-      text-align: right;
-      border-right: 1px dashed #2a2a2a;
-    }
-    .timeline-item .right {
-      text-align: left;
-      border-left: 1px dashed #2a2a2a;
-    }
+        .timeline-item .left {
+            text-align: right;
+            border-right: 1px dashed #2a2a2a;
+        }
+        .timeline-item .right {
+            text-align: left;
+            border-left: 1px dashed #2a2a2a;
+        }
 
-    /* Изображения */
-    .timeline-item img {
-      max-width: 100%;
-      max-height: 300px;
-      width: auto;
-      height: auto;
-      display: block;
-      margin: 0 auto 10px auto;
-      border: 1px solid #2a2a2a;
-      border-radius: 4px;
-      filter: grayscale(20%);
-      transition: filter 0.3s ease, transform 0.3s ease;
-      cursor: pointer;
-    }
-    .timeline-item img:hover {
-      filter: grayscale(0%);
-      transform: scale(1.02);
-    }
+        .timeline-item img {
+            max-width: 100%;
+            max-height: 300px;
+            width: auto;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px auto;
+            border: 1px solid #2a2a2a;
+            border-radius: 4px;
+            filter: grayscale(20%);
+            transition: filter 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+        }
+        .timeline-item img:hover {
+            filter: grayscale(0%);
+            transform: scale(1.02);
+        }
 
-    .year-marker {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      background: #0d0d0d;
-      border: 2px solid #c49b4c;
-      border-radius: 50%;
-      width: 70px;
-      height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #c49b4c;
-      box-shadow: 0 0 20px rgba(196, 155, 76, 0.15);
-      z-index: 2;
-      transition: box-shadow 0.3s ease;
-    }
-    .timeline-item:hover .year-marker {
-      box-shadow: 0 0 30px rgba(196, 155, 76, 0.4);
-    }
+        .year-marker {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: #0d0d0d;
+            border: 2px solid #c49b4c;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #c49b4c;
+            box-shadow: 0 0 20px rgba(196, 155, 76, 0.15);
+            z-index: 2;
+            transition: box-shadow 0.3s ease;
+        }
+        .timeline-item:hover .year-marker {
+            box-shadow: 0 0 30px rgba(196, 155, 76, 0.4);
+        }
 
-    .caption {
-      font-size: 0.9rem;
-      color: #aaa;
-      letter-spacing: 1px;
-      margin-top: 8px;
-      font-style: italic;
-    }
+        .caption {
+            font-size: 0.9rem;
+            color: #aaa;
+            letter-spacing: 1px;
+            margin-top: 8px;
+            font-style: italic;
+        }
 
-    /* --- КНОПКА BACK ВНИЗУ --- */
-    .back-btn-wrapper {
-      text-align: center;
-      margin: 60px 0 40px 0;
-    }
-    .back-btn-bottom {
-      display: inline-block;
-      padding: 14px 32px;
-      background: #c49b4c;
-      color: #0d0d0d;
-      border: none;
-      font-family: 'Georgia', serif;
-      font-size: 0.85rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      border-radius: 2px;
-    }
-    .back-btn-bottom:hover {
-      background: #d4ae5c;
-    }
+        .about-footer {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
 
-    /* --- ЛАЙТБОКС --- */
-    .lightbox {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.92);
-      z-index: 9999;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      padding: 20px;
-    }
-    .lightbox.active {
-      display: flex;
-    }
-    .lightbox img {
-      max-width: 90%;
-      max-height: 85vh;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      border-radius: 6px;
-      box-shadow: 0 0 40px rgba(196, 155, 76, 0.3);
-    }
-    .lightbox .close-btn {
-      position: absolute;
-      top: 30px;
-      right: 40px;
-      font-size: 2.8rem;
-      color: #c49b4c;
-      cursor: pointer;
-      font-family: 'Georgia', serif;
-      transition: color 0.3s ease;
-      background: none;
-      border: none;
-      line-height: 1;
-    }
-    .lightbox .close-btn:hover {
-      color: #d4ae5c;
-    }
-    .lightbox .lb-caption {
-      color: #ccc;
-      font-size: 1.1rem;
-      margin-top: 20px;
-      font-style: italic;
-      letter-spacing: 1px;
-      text-align: center;
-    }
+        .footer-logo {
+            display: block;
+            width: 280px;
+            height: auto;
+            margin: 0 auto 24px auto;
+            filter: drop-shadow(0 0 16px rgba(196, 155, 76, 0.4));
+        }
 
-    /* --- Адаптация для мобильных --- */
-    @media (max-width: 768px) {
-      .top-bar {
-        padding: 0 12px;
-        top: 12px;
-      }
-      body {
-        padding: 70px 12px 60px 12px;
-      }
-      .timeline-item {
-        flex-direction: column;
-        margin-bottom: 100px;
-        align-items: stretch;
-      }
-      .timeline-item .left,
-      .timeline-item .right {
-        width: 100%;
-        text-align: center;
-        border: none;
-        padding: 10px 0;
-      }
-      .timeline-item .left {
-        border-bottom: 1px dashed #2a2a2a;
-        margin-bottom: 10px;
-      }
-      .timeline-item .right {
-        border-top: 1px dashed #2a2a2a;
-        margin-top: 10px;
-      }
-      .year-marker {
-        position: relative;
-        left: auto;
-        top: auto;
-        transform: none;
-        margin: 10px auto;
-        width: 60px;
-        height: 60px;
-        font-size: 1.2rem;
-      }
-      .timeline::before {
-        display: none;
-      }
-      .timeline-item img {
-        max-height: 200px;
-      }
-      .lightbox .close-btn {
-        top: 20px;
-        right: 20px;
-        font-size: 2.2rem;
-      }
-      .logo-start img {
-        max-width: 120px;
-      }
-      .logo-start::after {
-        bottom: -20px;
-        width: 10px;
-        height: 10px;
-      }
-      .page-title {
-        font-size: 2.2rem;
-      }
-      .page-subtitle {
-        font-size: 0.95rem;
-        margin-bottom: 30px;
-        padding-bottom: 20px;
-      }
-    }
-/* --- FOOTER (как в about.html) --- */
-  .about-footer {
-    text-align: center;
-    padding: 60px 20px 40px;
-  }
-  .footer-logo {
-    display: block;
-    width: 280px;
-    height: auto;
-    margin: 0 auto 24px auto;
-    filter: drop-shadow(0 0 16px rgba(196,155,76,0.4));
-  }
-  .about-footer a {
-    color: #a0845c;
-    text-decoration: none;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    transition: color 0.3s;
-  }
-  .about-footer a:hover {
-    color: #c49b4c;
-  }
-  </style>
+        .about-footer a {
+            color: #a0845c;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        .about-footer a:hover {
+            color: #c49b4c;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 85vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 6px;
+            box-shadow: 0 0 40px rgba(196, 155, 76, 0.3);
+        }
+        .lightbox .close-btn {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 2.8rem;
+            color: #c49b4c;
+            cursor: pointer;
+            font-family: 'Georgia', serif;
+            transition: color 0.3s ease;
+            background: none;
+            border: none;
+            line-height: 1;
+        }
+        .lightbox .close-btn:hover {
+            color: #d4ae5c;
+        }
+        .lightbox .lb-caption {
+            color: #ccc;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            font-style: italic;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .top-bar {
+                padding: 0 12px;
+                top: 12px;
+            }
+            body {
+                padding: 70px 12px 60px 12px;
+            }
+            .timeline-item {
+                flex-direction: column;
+                margin-bottom: 100px;
+                align-items: stretch;
+            }
+            .timeline-item .left,
+            .timeline-item .right {
+                width: 100%;
+                text-align: center;
+                border: none;
+                padding: 10px 0;
+            }
+            .timeline-item .left {
+                border-bottom: 1px dashed #2a2a2a;
+                margin-bottom: 10px;
+            }
+            .timeline-item .right {
+                border-top: 1px dashed #2a2a2a;
+                margin-top: 10px;
+            }
+            .year-marker {
+                position: relative;
+                left: auto;
+                top: auto;
+                transform: none;
+                margin: 10px auto;
+                width: 60px;
+                height: 60px;
+                font-size: 1.2rem;
+            }
+            .timeline::before {
+                display: none;
+            }
+            .timeline-item img {
+                max-height: 200px;
+            }
+            .lightbox .close-btn {
+                top: 20px;
+                right: 20px;
+                font-size: 2.2rem;
+            }
+            .logo-start img {
+                max-width: 120px;
+            }
+            .logo-start::after {
+                bottom: -20px;
+                width: 10px;
+                height: 10px;
+            }
+            .page-title {
+                font-size: 2.2rem;
+            }
+            .page-subtitle {
+                font-size: 0.95rem;
+                margin-bottom: 30px;
+                padding-bottom: 20px;
+            }
+            .footer-logo {
+                width: 200px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- ===== TOP BAR (как в about.html) ===== -->
-  <div class="top-bar">
-    <a href="index.html" class="btn-back">
-      <span class="lang-en">← Back</span>
-      <span class="lang-it lang-hidden">← Indietro</span>
-    </a>
-    <div class="lang-switcher">
-      <button id="btnEn" class="active">EN</button>
-      <button id="btnIt">IT</button>
-    </div>
-  </div>
-
-  <div class="container">
-
-    <h1 class="page-title">
-      <span class="lang-en">Vintage Collection</span>
-      <span class="lang-it lang-hidden">Collezione Vintage</span>
-    </h1>
-    <p class="page-subtitle">
-      <span class="lang-en">Each vintage tells a story. Each bottle holds a memory.</span>
-      <span class="lang-it lang-hidden">Ogni annata racconta una storia. Ogni bottiglia custodisce un ricordo.</span>
-    </p>
-
-    <div class="timeline">
-
-      <!-- ЛОГОТИП В НАЧАЛЕ ЛИНИИ -->
-      <div class="logo-start">
-        <img src="images/logovar2.png" alt="Semko Vicci">
-      </div>
-
-      <!-- ===== 1954 ===== -->
-      <div class="timeline-item">
-        <div class="left">
-          <img src="images/1954.png" alt="Semko Vicci 1954 Vintage Bottle" data-caption-en="1954 — The First Vintage" data-caption-it="1954 — La Prima Vendemmia">
-          <div class="caption">
-            <span class="lang-en">1954 — The First Vintage</span>
-            <span class="lang-it lang-hidden">1954 — La Prima Vendemmia</span>
-          </div>
+    <div class="top-bar">
+        <a href="index.html" class="btn-back">
+            <span class="lang-en">← Back</span>
+            <span class="lang-it lang-hidden">← Indietro</span>
+        </a>
+        <div class="lang-switcher">
+            <button id="btnEn" class="active">EN</button>
+            <button id="btnIt">IT</button>
         </div>
-        <div class="year-marker">1954</div>
-        <div class="right">
-          <p>
-            <span class="lang-en"><strong>The First Vintage.</strong> The wine that started it all. The Sangiovese cuttings from Tuscany met the soil of Hunter Valley for the first time.</span>
-            <span class="lang-it lang-hidden"><strong>La Prima Vendemmia.</strong> Il vino che ha dato inizio a tutto. Le talee di Sangiovese dalla Toscana incontrarono per la prima volta il suolo della Hunter Valley.</span>
-          </p>
-        </div>
-      </div>
-
-      <!-- ===== 1955 ===== -->
-      <div class="timeline-item">
-        <div class="left">
-          <p>
-            <span class="lang-en"><strong>Deep Roots.</strong> Two men, two languages, one dream. The cellar door opens for the first time.</span>
-            <span class="lang-it lang-hidden"><strong>Radici Profonde.</strong> Due uomini, due lingue, un sogno. La porta della cantina si apre per la prima volta.</span>
-          </p>
-        </div>
-        <div class="year-marker">1955</div>
-        <div class="right">
-          <img src="images/1955.png" alt="Enzo and Taras 1955" data-caption-en="1955 — Deep Roots" data-caption-it="1955 — Radici Profonde">
-          <div class="caption">
-            <span class="lang-en">1955 — Deep Roots</span>
-            <span class="lang-it lang-hidden">1955 — Radici Profonde</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- ===== 1956 ===== -->
-      <div class="timeline-item">
-        <div class="left">
-          <img src="images/1956.png" alt="Semko Vicci 1956 Shiraz Bottle" data-caption-en="1956 — After the Rain" data-caption-it="1956 — Dopo la Pioggia">
-          <div class="caption">
-            <span class="lang-en">1956 — After the Rain</span>
-            <span class="lang-it lang-hidden">1956 — Dopo la Pioggia</span>
-          </div>
-        </div>
-        <div class="year-marker">1956</div>
-        <div class="right">
-          <p>
-            <span class="lang-en"><strong>After the Rain.</strong> The Shiraz finds its feet. The red clay of Hunter Valley gives the wine its soul.</span>
-            <span class="lang-it lang-hidden"><strong>Dopo la Pioggia.</strong> Lo Shiraz trova la sua strada. L'argilla rossa della Hunter Valley dà l'anima al vino.</span>
-          </p>
-        </div>
-      </div>
-
-      <!-- ===== 1957 ===== -->
-      <div class="timeline-item">
-        <div class="left">
-          <p>
-            <span class="lang-en"><strong>Trials and Errors.</strong> The weather was harsh, the harvest small. But the wine found its character.</span>
-            <span class="lang-it lang-hidden"><strong>Prove ed Errori.</strong> Il clima fu rigido, il raccolto scarso. Ma il vino trovò il suo carattere.</span>
-          </p>
-        </div>
-        <div class="year-marker">1957</div>
-        <div class="right">
-          <img src="images/1957.png" alt="Barrels and Cellar 1957" data-caption-en="1957 — Trials and Errors" data-caption-it="1957 — Prove ed Errori">
-          <div class="caption">
-            <span class="lang-en">1957 — Trials and Errors</span>
-            <span class="lang-it lang-hidden">1957 — Prove ed Errori</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- ===== 1962 ===== -->
-      <div class="timeline-item">
-        <div class="left">
-          <img src="images/1962.png" alt="First order 1962" data-caption-en="1962 — The First Big Order" data-caption-it="1962 — Il Primo Grande Ordine">
-          <div class="caption">
-            <span class="lang-en">1962 — The First Big Order</span>
-            <span class="lang-it lang-hidden">1962 — Il Primo Grande Ordine</span>
-          </div>
-        </div>
-        <div class="year-marker">1962</div>
-        <div class="right">
-          <p>
-            <span class="lang-en"><strong>The First Big Order.</strong> Twelve cases to Newcastle. The name Semko Vicci reaches the shelf.</span>
-            <span class="lang-it lang-hidden"><strong>Il Primo Grande Ordine.</strong> Dodici casse per Newcastle. Il nome Semko Vicci arriva sugli scaffali.</span>
-          </p>
-        </div>
-      </div>
-
-      <!-- ===== ДОБАВЬТЕ БОЛЬШЕ ГОДОВ ЗДЕСЬ ===== -->
-
     </div>
 
-    <!-- ===== КНОПКА BACK ВНИЗУ ===== -->
-<div class="about-footer" style="text-align: center; padding: 60px 20px 40px;">
-  <img src="images/logo.png" alt="Semko Vicci" class="footer-logo" style="display: block; width: 280px; height: auto; margin: 0 auto 24px auto; filter: drop-shadow(0 0 16px rgba(196,155,76,0.4));">
-  <br>
-  <a href="index.html" style="color: #a0845c; text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; transition: color 0.3s;">
-    <span class="lang-en">← Back to the story</span>
-    <span class="lang-it lang-hidden">← Torna alla storia</span>
-  </a>
-</div>
+    <div class="container">
 
-  </div>
+        <h1 class="page-title">
+            <span class="lang-en">Vintage Collection</span>
+            <span class="lang-it lang-hidden">Collezione Vintage</span>
+        </h1>
+        <p class="page-subtitle">
+            <span class="lang-en">Each vintage tells a story. Each bottle holds a memory.</span>
+            <span class="lang-it lang-hidden">Ogni annata racconta una storia. Ogni bottiglia custodisce un ricordo.</span>
+        </p>
 
-  <!-- ===== ЛАЙТБОКС ===== -->
-  <div class="lightbox" id="lightbox">
-    <button class="close-btn" id="closeLightbox">&times;</button>
-    <img id="lightboxImg" src="" alt="">
-    <div class="lb-caption" id="lightboxCaption"></div>
-  </div>
+        <div class="timeline">
 
-  <!-- ===== SCRIPTS ===== -->
-  <script>
-    // ===== LANGUAGE SWITCHER =====
-    const btnEn = document.getElementById('btnEn');
-    const btnIt = document.getElementById('btnIt');
-    let currentLang = 'en';
+            <div class="logo-start">
+                <img src="images/logovar2.png" alt="Semko Vicci">
+            </div>
 
-    function switchLang(lang) {
-      currentLang = lang;
-      btnEn.classList.remove('active');
-      btnIt.classList.remove('active');
-      if (lang === 'en') {
-        btnEn.classList.add('active');
-        document.querySelectorAll('.lang-en').forEach(el => el.classList.remove('lang-hidden'));
-        document.querySelectorAll('.lang-it').forEach(el => el.classList.add('lang-hidden'));
-        document.documentElement.lang = 'en-AU';
-      } else {
-        btnIt.classList.add('active');
-        document.querySelectorAll('.lang-it').forEach(el => el.classList.remove('lang-hidden'));
-        document.querySelectorAll('.lang-en').forEach(el => el.classList.add('lang-hidden'));
-        document.documentElement.lang = 'it';
-      }
-    }
+            <!-- 1954 -->
+            <div class="timeline-item">
+                <div class="left">
+                    <img src="images/1954.png" alt="Semko Vicci 1954" data-caption-en="The first bottle. The promise kept." data-caption-it="La prima bottiglia. La promessa mantenuta.">
+                    <div class="caption">
+                        <span class="lang-en">1954 — The First Vintage</span>
+                        <span class="lang-it lang-hidden">1954 — La Prima Vendemmia</span>
+                    </div>
+                </div>
+                <div class="year-marker">1954</div>
+                <div class="right">
+                    <p>
+                        <span class="lang-en"><strong>The First Vintage.</strong> The wine that started it all. The Sangiovese cuttings from Tuscany met the soil of Hunter Valley for the first time.</span>
+                        <span class="lang-it lang-hidden"><strong>La Prima Vendemmia.</strong> Il vino che ha dato inizio a tutto. Le talee di Sangiovese dalla Toscana incontrarono per la prima volta il suolo della Hunter Valley.</span>
+                    </p>
+                </div>
+            </div>
 
-    btnEn.addEventListener('click', () => switchLang('en'));
-    btnIt.addEventListener('click', () => switchLang('it'));
+            <!-- 1955 -->
+            <div class="timeline-item">
+                <div class="left">
+                    <p>
+                        <span class="lang-en"><strong>Deep Roots.</strong> The vines held. The red clay took them in, and they did not let go.</span>
+                        <span class="lang-it lang-hidden"><strong>Radici Profonde.</strong> Le viti resistettero. L'argilla rossa le accolse, e non le lasciò più andare.</span>
+                    </p>
+                </div>
+                <div class="year-marker">1955</div>
+                <div class="right">
+                    <img src="images/1955.png" alt="Semko Vicci 1955" data-caption-en="The vines held" data-caption-it="Le viti resistettero">
+                    <div class="caption">
+                        <span class="lang-en">1955 — Deep Roots</span>
+                        <span class="lang-it lang-hidden">1955 — Radici Profonde</span>
+                    </div>
+                </div>
+            </div>
 
-    // ===== LIGHTBOX =====
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const lightboxCaption = document.getElementById('lightboxCaption');
-    const closeBtn = document.getElementById('closeLightbox');
+            <!-- 1956 -->
+            <div class="timeline-item">
+                <div class="left">
+                    <img src="images/1956.png" alt="Semko Vicci 1956" data-caption-en="The wettest summer. The wine softened." data-caption-it="L'estate più piovosa. Il vino si addolcì.">
+                    <div class="caption">
+                        <span class="lang-en">1956 — After the Rain</span>
+                        <span class="lang-it lang-hidden">1956 — Dopo la Pioggia</span>
+                    </div>
+                </div>
+                <div class="year-marker">1956</div>
+                <div class="right">
+                    <p>
+                        <span class="lang-en"><strong>After the Rain.</strong> The wettest summer in years. The grapes swelled, the wine softened. It taught us patience.</span>
+                        <span class="lang-it lang-hidden"><strong>Dopo la Pioggia.</strong> L'estate più piovosa degli ultimi anni. Gli acini si gonfiarono, il vino si addolcì. Ci insegnò la pazienza.</span>
+                    </p>
+                </div>
+            </div>
 
-    const images = document.querySelectorAll('.timeline-item img[data-caption-en]');
+            <!-- 1957 -->
+            <div class="timeline-item">
+                <div class="left">
+                    <p>
+                        <span class="lang-en"><strong>The Cellar.</strong> The first barrel room was dug into the hill. Stone walls, cool earth, and the quiet beginning of something lasting.</span>
+                        <span class="lang-it lang-hidden"><strong>La Cantina.</strong> La prima sala delle botti fu scavata nella collina. Mura di pietra, terra fresca, l'inizio silenzioso di qualcosa di duraturo.</span>
+                    </p>
+                </div>
+                <div class="year-marker">1957</div>
+                <div class="right">
+                    <img src="images/1957.png" alt="Semko Vicci 1957" data-caption-en="A home beneath the ground" data-caption-it="Una casa sotto terra">
+                    <div class="caption">
+                        <span class="lang-en">1957 — The Cellar</span>
+                        <span class="lang-it lang-hidden">1957 — La Cantina</span>
+                    </div>
+                </div>
+            </div>
 
-    images.forEach(img => {
-      img.addEventListener('click', function(e) {
-        e.stopPropagation();
-        const src = this.getAttribute('src');
-        const captionEn = this.getAttribute('data-caption-en') || 'Vintage Collection';
-        const captionIt = this.getAttribute('data-caption-it') || 'Collezione Vintage';
-        lightboxImg.src = src;
-        // Показываем подпись на текущем языке
-        if (currentLang === 'en') {
-          lightboxCaption.textContent = captionEn;
-        } else {
-          lightboxCaption.textContent = captionIt;
-        }
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      });
-    });
+            <!-- 1959 -->
+            <div class="timeline-item">
+                <div class="left">
+                    <img src="images/1959.png" alt="Semko Vicci 1959" data-caption-en="The wine spoke in its own time" data-caption-it="Il vino parlò a suo tempo">
+                    <div class="caption">
+                        <span class="lang-en">1959 — Quiet Winter</span>
+                        <span class="lang-it lang-hidden">1959 — Inverno Silenzioso</span>
+                    </div>
+                </div>
+                <div class="year-marker">1959</div>
+                <div class="right">
+                    <p>
+                        <span class="lang-en"><strong>Quiet Winter.</strong> A year without incident. The wine was not rushed. It spoke in its own time, with its own voice.</span>
+                        <span class="lang-it lang-hidden"><strong>Inverno Silenzioso.</strong> Un anno senza incidenti. Il vino non fu affrettato. Parlò a suo tempo, con la sua voce.</span>
+                    </p>
+                </div>
+            </div>
 
-    function closeLightbox() {
-      lightbox.classList.remove('active');
-      document.body.style.overflow = '';
-    }
+            <!-- 1960 -->
+            <div class="timeline-item">
+                <div class="left">
+                    <p>
+                        <span class="lang-en"><strong>In Patience.</strong> Eight years, no profit. The barrels were full, the bank account was not. But the wine waited.</span>
+                        <span class="lang-it lang-hidden"><strong>Nella Pazienza.</strong> Otto anni, nessun profitto. Le botti erano piene, il conto in banca no. Ma il vino aspettò.</span>
+                    </p>
+                </div>
+                <div class="year-marker">1960</div>
+                <div class="right">
+                    <img src="images/1960.png" alt="Semko Vicci 1960" data-caption-en="The wine waited" data-caption-it="Il vino aspettò">
+                    <div class="caption">
+                        <span class="lang-en">1960 — In Patience</span>
+                        <span class="lang-it lang-hidden">1960 — Nella Pazienza</span>
+                    </div>
+                </div>
+            </div>
 
-    closeBtn.addEventListener('click', closeLightbox);
-    lightbox.addEventListener('click', function(e) {
-      if (e.target === this) {
-        closeLightbox();
-      }
-    });
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-        closeLightbox();
-      }
-    });
+            <!-- 1961 -->
+            <div class="timeline-item">
+                <div class="left">
+                    <img src="images/1961.png" alt="Semko Vicci 1961" data-caption-en="A name on the label" data-caption-it="Un nome sull'etichetta">
+                    <div class="caption">
+                        <span class="lang-en">1961 — The Mark</span>
+                        <span class="lang-it lang-hidden">1961 — Il Segno</span>
+                    </div>
+                </div>
+                <div class="year-marker">1961</div>
+                <div class="right">
+                    <p>
+                        <span class="lang-en"><strong>The Mark.</strong> The first label with the Semko Vicci name. A mark on the bottle, a mark in the world.</span>
+                        <span class="lang-it lang-hidden"><strong>Il Segno.</strong> La prima etichetta con il nome Semko Vicci. Un segno sulla bottiglia, un segno nel mondo.</span>
+                    </p>
+                </div>
+            </div>
 
-    // Обновляем подпись в лайтбоксе при смене языка (если открыт)
-    function updateLightboxCaption() {
-      if (lightbox.classList.contains('active')) {
-        const img = document.querySelector('.lightbox img');
-        if (img) {
-          const src = img.getAttribute('src');
-          const imgElement = document.querySelector(`.timeline-item img[src="${src}"]`);
-          if (imgElement) {
-            if (currentLang === 'en') {
-              lightboxCaption.textContent = imgElement.getAttribute('data-caption-en') || 'Vintage Collection';
+            <!-- 1963 -->
+            <div class="timeline-item">
+                <div class="left">
+                    <p>
+                        <span class="lang-en"><strong>Hamilton's Pride.</strong> The first repeat order from Hamilton Bottle Shops. They came back. The wine had friends in Newcastle.</span>
+                        <span class="lang-it lang-hidden"><strong>L'Orgoglio di Hamilton.</strong> Il primo ordine ripetuto da Hamilton Bottle Shops. Tornarono. Il vino aveva amici a Newcastle.</span>
+                    </p>
+                </div>
+                <div class="year-marker">1963</div>
+                <div class="right">
+                    <img src="images/1963.png" alt="Semko Vicci 1963" data-caption-en="They came back for more" data-caption-it="Tornarono per averne ancora">
+                    <div class="caption">
+                        <span class="lang-en">1963 — Hamilton's Pride</span>
+                        <span class="lang-it lang-hidden">1963 — L'Orgoglio di Hamilton</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1966 -->
+            <div class="timeline-item">
+                <div class="left">
+                    <img src="images/1966.png" alt="Semko Vicci 1966" data-caption-en="A new currency, the same wine" data-caption-it="Una nuova valuta, lo stesso vino">
+                    <div class="caption">
+                        <span class="lang-en">1966 — Decimal Change</span>
+                        <span class="lang-it lang-hidden">1966 — Cambio Decimale</span>
+                    </div>
+                </div>
+                <div class="year-marker">1966</div>
+                <div class="right">
+                    <p>
+                        <span class="lang-en"><strong>Decimal Change.</strong> Australia changed its currency. The wine stayed the same. The price tag read dollars for the first time.</span>
+                        <span class="lang-it lang-hidden"><strong>Cambio Decimale.</strong> L'Australia cambiò valuta. Il vino rimase lo stesso. Il prezzo recitava dollari per la prima volta.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- 1969 -->
+            <div class="timeline-item">
+                <div class="left">
+                    <p>
+                        <span class="lang-en"><strong>The Long Dry.</strong> No rain for months. The vines withered, but did not die. They remembered thirst, and the wine was better for it.</span>
+                        <span class="lang-it lang-hidden"><strong>La Lunga Siccità.</strong> Nessuna pioggia per mesi. Le viti appassirono, ma non morirono. Ricordarono la sete, e il vino ne fu migliore.</span>
+                    </p>
+                </div>
+                <div class="year-marker">1969</div>
+                <div class="right">
+                    <img src="images/1969.png" alt="Semko Vicci 1969" data-caption-en="No water. No surrender." data-caption-it="Nessuna acqua. Nessuna resa.">
+                    <div class="caption">
+                        <span class="lang-en">1969 — The Long Dry</span>
+                        <span class="lang-it lang-hidden">1969 — La Lunga Siccità</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1972 -->
+            <div class="timeline-item">
+                <div class="left">
+                    <img src="images/1972.png" alt="Semko Vicci 1972" data-caption-en="Seventy years old. Still digging." data-caption-it="Settant'anni. Scavava ancora.">
+                    <div class="caption">
+                        <span class="lang-en">1972 — Taras's Hands</span>
+                        <span class="lang-it lang-hidden">1972 — Le Mani di Taras</span>
+                    </div>
+                </div>
+                <div class="year-marker">1972</div>
+                <div class="right">
+                    <p>
+                        <span class="lang-en"><strong>Taras's Hands.</strong> Taras at sixty-five, still in the field. The same hands that cleared the scrub, now tending the oldest vines.</span>
+                        <span class="lang-it lang-hidden"><strong>Le Mani di Taras.</strong> Taras a sessantacinque anni, ancora nei campi. Le stesse mani che avevano dissodato il terreno, ora curavano le viti più antiche.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- 1975 -->
+            <div class="timeline-item">
+                <div class="left">
+                    <p>
+                        <span class="lang-en"><strong>Enzo's Blend.</strong> Enzo mixed Shiraz and Sangiovese for the first time. It was a gamble. It became the house style.</span>
+                        <span class="lang-it lang-hidden"><strong>Il Taglio di Enzo.</strong> Enzo mescolò Shiraz e Sangiovese per la prima volta. Fu un azzardo. Divenne lo stile della casa.</span>
+                    </p>
+                </div>
+                <div class="year-marker">1975</div>
+                <div class="right">
+                    <img src="images/1975.png" alt="Semko Vicci 1975" data-caption-en="A gamble that worked" data-caption-it="Un azzardo che funzionò">
+                    <div class="caption">
+                        <span class="lang-en">1975 — Enzo's Blend</span>
+                        <span class="lang-it lang-hidden">1975 — Il Taglio di Enzo</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1978 -->
+            <div class="timeline-item">
+                <div class="left">
+                    <img src="images/1978.png" alt="Semko Vicci 1978" data-caption-en="Bronze, and proud of it" data-caption-it="Bronzo, e fieri di esserlo">
+                    <div class="caption">
+                        <span class="lang-en">1978 — Bronze</span>
+                        <span class="lang-it lang-hidden">1978 — Bronzo</span>
+                    </div>
+                </div>
+                <div class="year-marker">1978</div>
+                <div class="right">
+                    <p>
+                        <span class="lang-en"><strong>Bronze.</strong> The first medal. Not gold — bronze. The judges said it was "too rustic." Taras smiled and hung it on a nail.</span>
+                        <span class="lang-it lang-hidden"><strong>Bronzo.</strong> La prima medaglia. Non oro — bronzo. I giudici dissero che era «troppo rustico». Taras sorrise e l'appese a un chiodo.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- 1981 -->
+            <div class="timeline-item">
+                <div class="left">
+                    <p>
+                        <span class="lang-en"><strong>The Letter.</strong> A letter arrived from Italy. A cousin had found them. The old country remembered, and so did they.</span>
+                        <span class="lang-it lang-hidden"><strong>La Lettera.</strong> Arrivò una lettera dall'Italia. Un cugino li aveva trovati. Il vecchio paese li ricordava, e anche loro.</span>
+                    </p>
+                </div>
+                <div class="year-marker">1981</div>
+                <div class="right">
+                    <img src="images/1981.png" alt="Semko Vicci 1981" data-caption-en="A cousin from the old country" data-caption-it="Un cugino dal vecchio paese">
+                    <div class="caption">
+                        <span class="lang-en">1981 — The Letter</span>
+                        <span class="lang-it lang-hidden">1981 — La Lettera</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1984 -->
+            <div class="timeline-item">
+                <div class="left">
+                    <img src="images/1984.png" alt="Semko Vicci 1984" data-caption-en="The next generation arrives" data-caption-it="Arriva la nuova generazione">
+                    <div class="caption">
+                        <span class="lang-en">1984 — New Blood</span>
+                        <span class="lang-it lang-hidden">1984 — Nuovo Sangue</span>
+                    </div>
+                </div>
+                <div class="year-marker">1984</div>
+                <div class="right">
+                    <p>
+                        <span class="lang-en"><strong>New Blood.</strong> The children of the founders stepped into the cellar. The work continued, with younger hands.</span>
+                        <span class="lang-it lang-hidden"><strong>Nuovo Sangue.</strong> I figli dei fondatori entrarono in cantina. Il lavoro continuò, con mani più giovani.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- 1987 -->
+            <div class="timeline-item">
+                <div class="left">
+                    <p>
+                        <span class="lang-en"><strong>Wild Ferment.</strong> No yeast added. The grapes fermented on their own, with the wild flora of the vineyard. It worked.</span>
+                        <span class="lang-it lang-hidden"><strong>Fermentazione Selvaggia.</strong> Nessun lievito aggiunto. Gli acini fermentarono da soli, con la flora selvatica del vigneto. Funzionò.</span>
+                    </p>
+                </div>
+                <div class="year-marker">1987</div>
+                <div class="right">
+                    <img src="images/1987.png" alt="Semko Vicci 1987" data-caption-en="No yeast added" data-caption-it="Nessun lievito aggiunto">
+                    <div class="caption">
+                        <span class="lang-en">1987 — Wild Ferment</span>
+                        <span class="lang-it lang-hidden">1987 — Fermentazione Selvaggia</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1990 -->
+            <div class="timeline-item">
+                <div class="left">
+                    <img src="images/1990.png" alt="Semko Vicci 1990" data-caption-en="A new logo for a new era" data-caption-it="Un nuovo logo per una nuova era">
+                    <div class="caption">
+                        <span class="lang-en">1990 — The Torch</span>
+                        <span class="lang-it lang-hidden">1990 — La Torcia</span>
+                    </div>
+                </div>
+                <div class="year-marker">1990</div>
+                <div class="right">
+                    <p>
+                        <span class="lang-en"><strong>The Torch.</strong> A new logo, a new decade. The old men were still there, but the next generation was already carrying the flame.</span>
+                        <span class="lang-it lang-hidden"><strong>La Torcia.</strong> Un nuovo logo, un nuovo decennio. I vecchi erano ancora lì, ma la nuova generazione portava già la fiamma.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- 1993 -->
+            <div class="timeline-item">
+                <div class="left">
+                    <p>
+                        <span class="lang-en"><strong>Thirty-Nine.</strong> The thirty-ninth vintage. One more until forty. The cellar was full, the memories even fuller.</span>
+                        <span class="lang-it lang-hidden"><strong>Trentanove.</strong> La trentanovesima annata. Ancora una fino ai quaranta. La cantina era piena, i ricordi ancora di più.</span>
+                    </p>
+                </div>
+                <div class="year-marker">1993</div>
+                <div class="right">
+                    <img src="images/1993.png" alt="Semko Vicci 1993" data-caption-en="The last before forty" data-caption-it="L'ultima prima dei quaranta">
+                    <div class="caption">
+                        <span class="lang-en">1993 — Thirty-Nine</span>
+                        <span class="lang-it lang-hidden">1993 — Trentanove</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1996 -->
+            <div class="timeline-item">
+                <div class="left">
+                    <img src="images/1996.png" alt="Semko Vicci 1996" data-caption-en="Fifty years since Naples" data-caption-it="Cinquant'anni da Napoli">
+                    <div class="caption">
+                        <span class="lang-en">1996 — Ruby Wedding</span>
+                        <span class="lang-it lang-hidden">1996 — Nozze di Rubino</span>
+                    </div>
+                </div>
+                <div class="year-marker">1996</div>
+                <div class="right">
+                    <p>
+                        <span class="lang-en"><strong>Ruby Wedding.</strong> Fifty years since Naples. The handshake that started it all. Two bottles were opened — one for Enzo, one for Taras.</span>
+                        <span class="lang-it lang-hidden"><strong>Nozze di Rubino.</strong> Cinquant'anni da Napoli. La stretta di mano che ha dato inizio a tutto. Furono aperte due bottiglie — una per Enzo, una per Taras.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- 1998 -->
+            <div class="timeline-item">
+                <div class="left">
+                    <p>
+                        <span class="lang-en"><strong>Last Hands.</strong> The last vintage made together. Enzo and Taras, side by side, for the last time. The pact held.</span>
+                        <span class="lang-it lang-hidden"><strong>Ultime Mani.</strong> L'ultima annata fatta insieme. Enzo e Taras, fianco a fianco, per l'ultima volta. Il patto resistette.</span>
+                    </p>
+                </div>
+                <div class="year-marker">1998</div>
+                <div class="right">
+                    <img src="images/1998.png" alt="Semko Vicci 1998" data-caption-en="The last vintage together" data-caption-it="L'ultima annata insieme">
+                    <div class="caption">
+                        <span class="lang-en">1998 — Last Hands</span>
+                        <span class="lang-it lang-hidden">1998 — Ultime Mani</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2001 -->
+            <div class="timeline-item">
+                <div class="left">
+                    <img src="images/2001.png" alt="Semko Vicci 2001" data-caption-en="A new century, the same soil" data-caption-it="Un nuovo secolo, lo stesso suolo">
+                    <div class="caption">
+                        <span class="lang-en">2001 — Millennium Vines</span>
+                        <span class="lang-it lang-hidden">2001 — Viti del Millennio</span>
+                    </div>
+                </div>
+                <div class="year-marker">2001</div>
+                <div class="right">
+                    <p>
+                        <span class="lang-en"><strong>Millennium Vines.</strong> The first vintage of the new century. The vines were older, the soil deeper, the wine quieter — but still alive.</span>
+                        <span class="lang-it lang-hidden"><strong>Viti del Millennio.</strong> La prima annata del nuovo secolo. Le viti erano più vecchie, il suolo più profondo, il vino più silenzioso — ma ancora vivo.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- 2004 -->
+            <div class="timeline-item">
+                <div class="left">
+                    <p>
+                        <span class="lang-en"><strong>Half Century.</strong> Fifty years since the first bottle. The same name, the same soil, the same stubborn belief. Semko Vicci had become a legacy.</span>
+                        <span class="lang-it lang-hidden"><strong>Mezzo Secolo.</strong> Cinquant'anni dalla prima bottiglia. Lo stesso nome, lo stesso suolo, la stessa ostinata convinzione. Semko Vicci era diventato un'eredità.</span>
+                    </p>
+                </div>
+                <div class="year-marker">2004</div>
+                <div class="right">
+                    <img src="images/2004.png" alt="Semko Vicci 2004" data-caption-en="Fifty years of wine" data-caption-it="Cinquant'anni di vino">
+                    <div class="caption">
+                        <span class="lang-en">2004 — Half Century</span>
+                        <span class="lang-it lang-hidden">2004 — Mezzo Secolo</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="about-footer">
+            <img src="images/logo.png" alt="Semko Vicci" class="footer-logo">
+            <br>
+            <a href="index.html">
+                <span class="lang-en">← Back to the story</span>
+                <span class="lang-it lang-hidden">← Torna alla storia</span>
+            </a>
+        </div>
+
+    </div>
+
+    <div class="lightbox" id="lightbox">
+        <button class="close-btn" id="closeLightbox">&times;</button>
+        <img id="lightboxImg" src="" alt="">
+        <div class="lb-caption" id="lightboxCaption"></div>
+    </div>
+
+    <script>
+        const btnEn = document.getElementById('btnEn');
+        const btnIt = document.getElementById('btnIt');
+        let currentLang = 'en';
+
+        function switchLang(lang) {
+            currentLang = lang;
+            btnEn.classList.remove('active');
+            btnIt.classList.remove('active');
+            if (lang === 'en') {
+                btnEn.classList.add('active');
+                document.querySelectorAll('.lang-en').forEach(el => el.classList.remove('lang-hidden'));
+                document.querySelectorAll('.lang-it').forEach(el => el.classList.add('lang-hidden'));
+                document.documentElement.lang = 'en-AU';
             } else {
-              lightboxCaption.textContent = imgElement.getAttribute('data-caption-it') || 'Collezione Vintage';
+                btnIt.classList.add('active');
+                document.querySelectorAll('.lang-it').forEach(el => el.classList.remove('lang-hidden'));
+                document.querySelectorAll('.lang-en').forEach(el => el.classList.add('lang-hidden'));
+                document.documentElement.lang = 'it';
             }
-          }
+            updateLightboxCaption();
         }
-      }
-    }
 
-    // Подписываемся на смену языка
-    const origSwitch = switchLang;
-    switchLang = function(lang) {
-      origSwitch(lang);
-      updateLightboxCaption();
-    };
-    btnEn.removeEventListener('click', () => {});
-    btnIt.removeEventListener('click', () => {});
-    btnEn.addEventListener('click', () => switchLang('en'));
-    btnIt.addEventListener('click', () => switchLang('it'));
+        btnEn.addEventListener('click', () => switchLang('en'));
+        btnIt.addEventListener('click', () => switchLang('it'));
 
-  </script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+        const closeBtn = document.getElementById('closeLightbox');
+
+        const images = document.querySelectorAll('.timeline-item img[data-caption-en]');
+
+        images.forEach(img => {
+            img.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const src = this.getAttribute('src');
+                const captionEn = this.getAttribute('data-caption-en') || 'Vintage Collection';
+                const captionIt = this.getAttribute('data-caption-it') || 'Collezione Vintage';
+                lightboxImg.src = src;
+                if (currentLang === 'en') {
+                    lightboxCaption.textContent = captionEn;
+                } else {
+                    lightboxCaption.textContent = captionIt;
+                }
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        closeBtn.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+
+        function updateLightboxCaption() {
+            if (lightbox.classList.contains('active')) {
+                const img = document.querySelector('.lightbox img');
+                if (img) {
+                    const src = img.getAttribute('src');
+                    const imgElement = document.querySelector(`.timeline-item img[src="${src}"]`);
+                    if (imgElement) {
+                        if (currentLang === 'en') {
+                            lightboxCaption.textContent = imgElement.getAttribute('data-caption-en') || 'Vintage Collection';
+                        } else {
+                            lightboxCaption.textContent = imgElement.getAttribute('data-caption-it') || 'Collezione Vintage';
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 
 </body>
 </html>
